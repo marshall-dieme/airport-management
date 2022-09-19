@@ -1,0 +1,10 @@
+# h2 Database Configuration
+
+spring:
+    datasource:
+    url: jdbc:h2:mem:airport-db
+    username: diallocode
+    password: passer
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect

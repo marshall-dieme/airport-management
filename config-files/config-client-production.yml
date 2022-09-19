@@ -1,0 +1,18 @@
+spring:
+    datasource:
+    driver-class-name:
+    username: diallocodeur
+    password: Codeur5!
+    url: jdbc:mysql://localhost:3306/airport-db
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+        hibernate:
+          format_sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  
+
+
