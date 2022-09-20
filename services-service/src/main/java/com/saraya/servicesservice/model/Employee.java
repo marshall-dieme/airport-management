@@ -1,4 +1,4 @@
-package com.saraya.employeeservice.model;
+package com.saraya.servicesservice.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -40,6 +40,9 @@ public class Employee {
 
     @ManyToMany
     private List<Services> servicesList;
+
+    public Employee() {
+    }
 
     public Long getEmployee_id() {
         return employee_id;

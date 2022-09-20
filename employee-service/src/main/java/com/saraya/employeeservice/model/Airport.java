@@ -1,4 +1,4 @@
-package com.saraya.airportservice.model;
+package com.saraya.employeeservice.model;
 
 import javax.persistence.*;
 

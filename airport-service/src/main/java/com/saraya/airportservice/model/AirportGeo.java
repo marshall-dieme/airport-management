@@ -1,9 +1,6 @@
-package com.saraya.airportgeo.model;
+package com.saraya.airportservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class AirportGeo {
@@ -14,6 +11,9 @@ public class AirportGeo {
     private String country;
 
     private String city;
+
+    @OneToOne
+    private AirportGeo airportGeo;
 
     public AirportGeo() {
     }
@@ -42,9 +42,18 @@ public class AirportGeo {
         this.city = city;
     }
 
-    public AirportGeo(int airport_geo_id, String country, String city) {
+    public AirportGeo getAirportGeo() {
+        return airportGeo;
+    }
+
+    public void setAirportGeo(AirportGeo airportGeo) {
+        this.airportGeo = airportGeo;
+    }
+
+    public AirportGeo(int airport_geo_id, String country, String city, AirportGeo airportGeo) {
         this.airport_geo_id = airport_geo_id;
         this.country = country;
         this.city = city;
+        this.airportGeo = airportGeo;
     }
 }

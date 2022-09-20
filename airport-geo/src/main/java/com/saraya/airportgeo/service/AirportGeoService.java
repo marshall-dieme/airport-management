@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Serviceg
+@Service
 @Transactional
 public class AirportGeoService {
 
@@ -21,7 +21,8 @@ public class AirportGeoService {
         return repo.findAll();
     }
 
-    public  AirportGeo getByCountryAndCity(String country , String city){
+    public  AirportGeo getByCountryAndCity(
+            String country , String city){
         return repo.findByCountryAndCity(country, city);
     }
 

@@ -1,4 +1,4 @@
-package com.saraya.airportgeo.model;
+package com.saraya.servicesservice.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

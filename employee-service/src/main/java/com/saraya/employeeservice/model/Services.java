@@ -1,4 +1,4 @@
-package com.saraya.servicesservice.model;
+package com.saraya.employeeservice.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,6 +17,9 @@ public class Services {
 
     @ManyToMany
     private List<Employee> employees;
+
+    public Services() {
+    }
 
     public int getService_id() {
         return service_id;
