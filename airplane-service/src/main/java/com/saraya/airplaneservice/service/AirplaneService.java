@@ -3,6 +3,8 @@ package com.saraya.airplaneservice.service;
 import com.saraya.airplaneservice.model.Airplane;
 import com.saraya.airplaneservice.repository.AirplaneRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -16,7 +18,6 @@ public class AirplaneService {
     public AirplaneService(AirplaneRepository repo) {
         this.repo = repo;
     }
-
     public List<Airplane> getAll(){
         return repo.findAll();
     }
@@ -41,5 +42,6 @@ public class AirplaneService {
     public void deleteById(int airplane_id){
         repo.deleteById(airplane_id);
     }
+
 
 }

@@ -1,6 +1,7 @@
 package com.saraya.airlineservice.controller;
 
 import com.saraya.airlineservice.model.Airline;
+import com.saraya.airlineservice.model.AirlineDTO;
 import com.saraya.airlineservice.service.AirlineService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,6 @@ public class AirlineController {
         this.service = service;
     }
 
-
     @GetMapping
     public List<Airline> getAll(){
         return service.getAll();
@@ -29,12 +29,12 @@ public class AirlineController {
     }
 
     @PostMapping
-    public Airline create(@RequestBody Airline airline){
+    public Airline create(@RequestBody AirlineDTO airline){
         return service.create(airline);
     }
 
     @PutMapping
-    public Airline update(@RequestBody Airline airline){
+    public Airline update(@RequestBody AirlineDTO airline){
         return service.update(airline);
     }
 
@@ -48,7 +48,5 @@ public class AirlineController {
     public void deleteById(@PathVariable int airline_id){
         service.deleteById(airline_id);
     }
-
-
 
 }

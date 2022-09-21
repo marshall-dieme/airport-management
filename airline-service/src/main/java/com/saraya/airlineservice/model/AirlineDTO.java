@@ -8,6 +8,8 @@ public class AirlineDTO {
 
     private String iata;
 
+    private int airplane_id;
+
     public int getAirline_id() {
         return airline_id;
     }
@@ -32,9 +34,22 @@ public class AirlineDTO {
         this.iata = iata;
     }
 
-    public AirlineDTO(int airline_id, String airlineName, String iata) {
+    public int getAirplane_id() {
+        return airplane_id;
+    }
+
+    public void setAirplane_id(int airplane_id) {
+        this.airplane_id = airplane_id;
+    }
+
+    public AirlineDTO(int airline_id, String airlineName, String iata, int airplane_id) {
         this.airline_id = airline_id;
         this.airlineName = airlineName;
         this.iata = iata;
+        this.airplane_id = airplane_id;
+    }
+
+    public Integer airplane_id() {
+        return airplane_id;
     }
 }

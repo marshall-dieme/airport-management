@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AirplaneRepository extends JpaRepository<Airplane , Integer> {
     Airplane findByCapacity(String capacity);
+
 }
