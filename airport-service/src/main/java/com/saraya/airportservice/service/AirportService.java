@@ -32,8 +32,8 @@ public class AirportService {
     public Airport create (AirportDTO dto){
         Airport airport = new Airport();
         RestTemplate template = new RestTemplate();
-        Map<Integer , Integer> UrlValues = new HashMap<>();
-        UrlValues.put(Integer.valueOf("name"), dto.getAirport_geo_id());
+            Map<String , Integer> UrlValues = new HashMap<>();
+        UrlValues.put(("country"), dto.getAirport_geo_id());
         Integer airport_geo_id = template.getForEntity(
                 "http://localhost:8081/airport-geo/{country}",
                 Integer.class, UrlValues)
