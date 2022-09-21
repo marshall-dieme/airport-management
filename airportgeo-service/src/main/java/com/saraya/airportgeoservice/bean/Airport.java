@@ -1,20 +1,20 @@
 package com.saraya.airportgeoservice.bean;
 
-import javax.persistence.*;
+public class Airport {
 
-@Entity
-@Table(name = "airportgeos")
-public class AirportGeo {
+    private int airportId;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private boolean iata;
+
+    private boolean icao;
+
     private int airportGeoId;
 
     private String country;
 
     private String city;
 
-    private int airportId;
+    private String name;
 
     public int getAirportId() {
         return airportId;
@@ -22,6 +22,22 @@ public class AirportGeo {
 
     public void setAirportId(int airportId) {
         this.airportId = airportId;
+    }
+
+    public boolean isIata() {
+        return iata;
+    }
+
+    public void setIata(boolean iata) {
+        this.iata = iata;
+    }
+
+    public boolean isIcao() {
+        return icao;
+    }
+
+    public void setIcao(boolean icao) {
+        this.icao = icao;
     }
 
     public int getAirportGeoId() {
@@ -48,4 +64,11 @@ public class AirportGeo {
         this.city = city;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

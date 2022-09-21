@@ -1,18 +1,14 @@
 package com.saraya.airportgeoservice.bean;
 
-import javax.persistence.*;
+public class AirportGeoDto {
 
-@Entity
-@Table(name = "airportgeos")
-public class AirportGeo {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int airportGeoId;
 
     private String country;
 
     private String city;
+
+    private String name;
 
     private int airportId;
 
@@ -48,4 +44,11 @@ public class AirportGeo {
         this.city = city;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
