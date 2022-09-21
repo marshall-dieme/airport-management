@@ -48,6 +48,7 @@ public class Airport {
 	public int getAirport_geo_id() {
 		return airport_geo_id;
 	}
+	
 	public void setAirport_geo_id(int airport_geo_id) {
 		this.airport_geo_id = airport_geo_id;
 	}

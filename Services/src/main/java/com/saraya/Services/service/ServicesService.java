@@ -56,7 +56,6 @@ public class ServicesService {
 	    }
 
 	    public static void changeToModel(Services_airportDto dto , Services_airport service){
-	        service.setServices_id(dto.getServices_id());
 	        service.setServices_name(dto.getServices_name());
 	        service.setAirport_id(dto.getAirport_id());
 	        service.setEmployee_id(dto.getEmployee_id());

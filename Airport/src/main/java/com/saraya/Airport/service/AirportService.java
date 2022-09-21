@@ -48,8 +48,8 @@ public class AirportService {
 		                Integer.class, UrlValues)
 		                .getBody();
 		        changeToModel(dto, airport);
-		        airport.setAirport_geo_id(airport_geo_id);
-		        airport.setServices_id(services_id);
+		        airport.setAirport_geo_id(dto.getAirport_geo_id());
+		        airport.setServices_id(dto.getServices_id());
 		        return repo.save(airport);
 		    }
 
@@ -64,6 +64,10 @@ public class AirportService {
 		        airport.setAirport_name(dto.getAirport_name());
 		        airport.setIata(dto.getIata());
 		        airport.setIcao(dto.getIcao());
+		        airport.setAirport_geo_id(dto.getAirport_geo_id());
+		        airport.setServices_id(dto.getServices_id());
+
+
 		    }
 
 			
