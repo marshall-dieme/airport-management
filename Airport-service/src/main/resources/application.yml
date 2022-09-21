@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: airport-service
+
+server:
+  port: 8081
