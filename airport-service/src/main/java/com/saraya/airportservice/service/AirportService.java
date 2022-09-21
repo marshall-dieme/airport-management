@@ -39,7 +39,7 @@ public class AirportService {
                 Integer.class, UrlValues)
                 .getBody();
         changeToModel(dto, airport);
-        airport.setAirport_geo_id(airport_geo_id);
+        airport.setAirport_geo_id(dto.getAirport_geo_id());
         return repo.save(airport);
     }
 
