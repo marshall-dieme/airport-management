@@ -13,8 +13,6 @@ public class Airport {
     private String icao;
 
     private String airport_name;
-
-
     private int airport_geo_id;
 
     public Airport() {
