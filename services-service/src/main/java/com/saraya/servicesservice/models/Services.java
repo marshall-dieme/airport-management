@@ -11,6 +11,14 @@ public class Services {
 
     private String services_name;
 
+    public Services() {
+    }
+
+    public Services(Long services_id, String services_name) {
+        this.services_id = services_id;
+        this.services_name = services_name;
+    }
+
     public Long getServices_id() {
         return services_id;
     }
