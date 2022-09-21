@@ -35,19 +35,21 @@ public class AirportService {
 
     }*/
 
+    public Long getAirportId(String airport_name){
+        return repo.getIdAirport(airport_name);
+    }
+
+
+
 
     public Airport create(AirportDto dto) {
         Airport airport= new Airport();
         RestTemplate template = new RestTemplate();
-
-        Map<String, String> urlValues1 = new HashMap<>();
-        Map<String, String> urlValues2 = new HashMap<>();
-
-        urlValues1.put("city", dto.getAirportGeo());
-        urlValues2.put("country", dto.getAirportGeo());
-
-        Long idAirportGeo = template.getForEntity("http://localhost:8110/geo/city/country/{city}{country}",
-                Long.class, urlValues1,urlValues2).getBody();
+        Map<String, String> urlValues = new HashMap<>();
+        urlValues.put("city", dto.getAirportGeoCity());
+        urlValues.put("country", dto.getAirportGeoCountry());
+        Long idAirportGeo = template.getForEntity("http://localhost:8110/geo/city/country/{city}/{country}",
+                Long.class, urlValues).getBody();
         changeToModel(dto, airport);
         airport.setIdAirportGeo(idAirportGeo);
         return repo.save(airport);

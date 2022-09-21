@@ -34,9 +34,15 @@ public class AirportController {
         return service.getByAirportName(name);
     }*/
 
+   @GetMapping("/airportName/{airport_name}")
+    public Long getIdAirport(@PathVariable String airport_name){
+       return service.getAirportId(airport_name);
+   }
+
+
     @PostMapping
-    public Airport create(@RequestBody AirportDto emp) {
-        return service.create(emp);
+    public Airport create(@RequestBody AirportDto dto) {
+        return service.create(dto);
     }
 
     @PutMapping

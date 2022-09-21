@@ -10,7 +10,8 @@ public class AirportDto {
     private String icao;
     private String airport_name;
 
-    private String airportGeo;
+    private String airportGeoCity;
+    private String airportGeoCountry;
 
     public Long getId() {
         return id;
@@ -44,11 +45,19 @@ public class AirportDto {
         this.airport_name = airport_name;
     }
 
-    public String getAirportGeo() {
-        return airportGeo;
+    public String getAirportGeoCity() {
+        return airportGeoCity;
     }
 
-    public void setAirportGeo(String airportGeo) {
-        this.airportGeo = airportGeo;
+    public void setAirportGeoCity(String airportGeoCity) {
+        this.airportGeoCity = airportGeoCity;
+    }
+
+    public String getAirportGeoCountry() {
+        return airportGeoCountry;
+    }
+
+    public void setAirportGeoCountry(String airportGeoCountry) {
+        this.airportGeoCountry = airportGeoCountry;
     }
 }
