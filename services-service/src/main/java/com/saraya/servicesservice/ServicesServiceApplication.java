@@ -25,6 +25,6 @@ public class ServicesServiceApplication implements CommandLineRunner {
         this.servicesRepository.save(new Services(null,"Service3"));
         this.servicesRepository.save(new Services(null,"Service4"));
         this.servicesRepository.save(new Services(null,"Service5"));
-      
+
     }
 }
