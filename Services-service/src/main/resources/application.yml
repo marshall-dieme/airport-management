@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: services-service
+
+
+server:
+  port: 8082
