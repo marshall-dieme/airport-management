@@ -25,6 +25,10 @@ public class AirportGeoService {
 
     }
 
+    public Long getIdAirportGeo(String city,String country) {
+        return repo.getIdAirportGeo(city, country);
+    }
+
 
     public AirportGeo create(AirportGeo airportGeo){
         return repo.save(airportGeo);
@@ -39,6 +43,7 @@ public class AirportGeoService {
         repo.delete(airportGeo);
 
     }
+
 
     public void delete(Long id ){
         repo.deleteById(id);

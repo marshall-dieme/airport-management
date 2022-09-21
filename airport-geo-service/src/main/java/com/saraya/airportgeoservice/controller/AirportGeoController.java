@@ -23,11 +23,15 @@ public class AirportGeoController {
         return service.getAll();
     }
 
-    @GetMapping("/{city}/{country}")
-    public AirportGeo getByCity(String city, String country){
+    /*@GetMapping("/{city}/{country}")
+    public AirportGeo getByCityAndCountry(String city, String country){
         return service.getByCityAndCountry(city,country);
-    }
+    }*/
 
+    @GetMapping("/city/country/{city}/{country}")
+    public Long getIdAirportGeo(@PathVariable String city, @PathVariable String country){
+        return service.getIdAirportGeo(city, country);
+    }
 
 
     @PostMapping("/")
