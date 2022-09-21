@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete 2 resources" deleteContents="false" description="Delete 2 resources" element1="/config-server" element2="/naming-server" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="2" stamp="1663714906942"/>
+<session version="1.0">&#x0A;<refactoring comment="Delete 2 resources" deleteContents="false" description="Delete 2 resources" element1="/config-server" element2="/naming-server" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="2" stamp="1663714906942"/>&#x0A;<refactoring comment="Delete 2 resources" deleteContents="false" description="Delete 2 resources" element1="/Airport" element2="/Airport_Geo" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="2" stamp="1663732309010"/>
 </session>

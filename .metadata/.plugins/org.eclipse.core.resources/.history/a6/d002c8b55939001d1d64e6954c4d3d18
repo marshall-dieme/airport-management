@@ -1,8 +1,0 @@
-package com.saraya.airport.mapping;
-
-import org.springframework.stereotype.Component;
-
-@Component
-public class ConvertAirport {
-
-}

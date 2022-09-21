@@ -1,5 +1,0 @@
-package com.saraya.airportgeo.services;
-
-public interface AirportService {
-
-}

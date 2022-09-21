@@ -1,5 +1,0 @@
-package com.saraya.airport.repository;
-
-public interface AirportRepo {
-
-}
