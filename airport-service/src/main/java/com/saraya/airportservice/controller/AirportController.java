@@ -1,6 +1,7 @@
 package com.saraya.airportservice.controller;
 
 import com.saraya.airportservice.model.Airport;
+import com.saraya.airportservice.model.AirportDTO;
 import com.saraya.airportservice.service.AirportService;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,12 +30,12 @@ public class AirportController {
     }
 
     @PostMapping
-    public Airport create(@RequestBody Airport airport){
+    public Airport create(@RequestBody AirportDTO airport){
         return service.create(airport);
     }
 
     @PutMapping
-    public Airport update(@RequestBody Airport airport){
+    public Airport update(@RequestBody AirportDTO airport){
         return service.update(airport);
     }
 

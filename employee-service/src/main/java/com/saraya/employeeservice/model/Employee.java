@@ -38,8 +38,7 @@ public class Employee {
 
     private String password;
 
-    @ManyToMany
-    private List<Services> servicesList;
+    private int service_id;
 
     public Employee() {
     }
@@ -156,15 +155,15 @@ public class Employee {
         this.password = password;
     }
 
-    public List<Services> getServicesList() {
-        return servicesList;
+    public int getService_id() {
+        return service_id;
     }
 
-    public void setServicesList(List<Services> servicesList) {
-        this.servicesList = servicesList;
+    public void setService_id(int service_id) {
+        this.service_id = service_id;
     }
 
-    public Employee(int employee_id, String firstName, String lastName, LocalDate hireDate, String sex, String street, String city, String zip, String country, String email, String telephone, Double salary, String username, String password, List<Services> servicesList) {
+    public Employee(int employee_id, String firstName, String lastName, LocalDate hireDate, String sex, String street, String city, String zip, String country, String email, String telephone, Double salary, String username, String password, int service_id) {
         this.employee_id = employee_id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -179,6 +178,6 @@ public class Employee {
         this.salary = salary;
         this.username = username;
         this.password = password;
-        this.servicesList = servicesList;
+        this.service_id = service_id;
     }
 }

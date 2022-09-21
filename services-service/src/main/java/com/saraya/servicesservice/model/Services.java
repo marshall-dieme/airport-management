@@ -9,14 +9,11 @@ public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int service_id;
-
     private String servicesName;
 
-    @OneToMany
-    private List<Airport> airports;
+    private int airport_id;
 
-    @ManyToMany
-    private List<Employee> employees;
+    private int employee_id;
 
     public Services() {
     }
@@ -37,26 +34,26 @@ public class Services {
         this.servicesName = servicesName;
     }
 
-    public List<Airport> getAirports() {
-        return airports;
+    public int getAirport_id() {
+        return airport_id;
     }
 
-    public void setAirports(List<Airport> airports) {
-        this.airports = airports;
+    public void setAirport_id(int airport_id) {
+        this.airport_id = airport_id;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public int getEmployee_id() {
+        return employee_id;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setEmployee_id(int employee_id) {
+        this.employee_id = employee_id;
     }
 
-    public Services(int service_id, String servicesName, List<Airport> airports, List<Employee> employees) {
+    public Services(int service_id, String servicesName, int airport_id, int employee_id) {
         this.service_id = service_id;
         this.servicesName = servicesName;
-        this.airports = airports;
-        this.employees = employees;
+        this.airport_id = airport_id;
+        this.employee_id = employee_id;
     }
 }

@@ -48,4 +48,9 @@ public class AirportGeoController {
         service.deleteById(airport_geo_id);
     }
 
+
+    @GetMapping("/{country}")
+    public String getIdAirportGeo(@PathVariable String country) {
+        return service.getIdAirportGeo(country);
+    }
 }

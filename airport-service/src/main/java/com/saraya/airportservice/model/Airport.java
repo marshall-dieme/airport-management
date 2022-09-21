@@ -14,8 +14,8 @@ public class Airport {
 
     private String airport_name;
 
-    @OneToOne
-    private AirportGeo airportGeo;
+
+    private int airport_geo_id;
 
     public Airport() {
     }
@@ -52,19 +52,19 @@ public class Airport {
         this.airport_name = airport_name;
     }
 
-    public AirportGeo getAirportGeo() {
-        return airportGeo;
+    public int getAirport_geo_id() {
+        return airport_geo_id;
     }
 
-    public void setAirportGeo(AirportGeo airportGeo) {
-        this.airportGeo = airportGeo;
+    public void setAirport_geo_id(int airport_geo_id) {
+        this.airport_geo_id = airport_geo_id;
     }
 
-    public Airport(int airport_id, String iata, String icao, String airport_name, AirportGeo airportGeo) {
+    public Airport(int airport_id, String iata, String icao, String airport_name, int airport_geo_id) {
         this.airport_id = airport_id;
         this.iata = iata;
         this.icao = icao;
         this.airport_name = airport_name;
-        this.airportGeo = airportGeo;
+        this.airport_geo_id = airport_geo_id;
     }
 }

@@ -41,4 +41,9 @@ public class AirportGeoService {
     public void deleteById(int airport_geo_id){
         repo.deleteById(airport_geo_id);
     }
+
+
+    public String getIdAirportGeo(String country) {
+        return repo.getIdAirportGeo(country);
+    }
 }
