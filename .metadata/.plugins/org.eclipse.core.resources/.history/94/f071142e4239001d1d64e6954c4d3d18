@@ -1,0 +1,7 @@
+package com.saraya.airportgeo.services.impl;
+
+import com.saraya.airportgeo.services.AirportService;
+
+public class ServiceImpl implements AirportService{
+
+}

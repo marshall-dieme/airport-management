@@ -1,0 +1,7 @@
+package com.saraya.airportgeo.services;
+
+import com.saraya.airportgeo.model.AirportGeo;
+
+public interface AirportService {
+	AirportGeo saveAirportGeo(AirportGeo airportGeo);
+}

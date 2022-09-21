@@ -1,0 +1,5 @@
+package com.saraya.airport.services.impl;
+
+public class AirportServiceImpl {
+
+}

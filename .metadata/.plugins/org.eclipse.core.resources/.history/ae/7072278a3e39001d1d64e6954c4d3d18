@@ -1,0 +1,9 @@
+package com.saraya.airportgeo.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.saraya.airportgeo.model.AirportGeo;
+
+public interface AirportGeoRepository extends JpaRepository<AirportGeo, Long>{
+
+}

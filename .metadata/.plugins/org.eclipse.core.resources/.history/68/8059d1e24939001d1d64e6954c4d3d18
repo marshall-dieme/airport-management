@@ -1,0 +1,19 @@
+package com.saraya.airportgeo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.saraya.airportgeo.services.AirportService;
+
+@RestController
+@RequestMapping("/airport-geo")
+public class AirportController {
+	@Autowired
+	private AirportService airportService;
+	@GetMapping("/Hello")
+	public String showHello() {
+		return "Hello world";
+	}
+}

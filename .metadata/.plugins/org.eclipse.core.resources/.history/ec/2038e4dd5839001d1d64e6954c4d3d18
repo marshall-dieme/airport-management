@@ -1,0 +1,16 @@
+package com.saraya.airport.dto;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class AiportDTO {
+	private Long airport_id;
+	
+	private String iata;
+	
+	private String icao;
+	
+	private String airport_name;
+}

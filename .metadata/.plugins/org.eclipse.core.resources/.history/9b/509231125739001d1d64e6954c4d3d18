@@ -1,0 +1,5 @@
+package com.saraya.airport.entity;
+
+public class AirportEntity {
+
+}

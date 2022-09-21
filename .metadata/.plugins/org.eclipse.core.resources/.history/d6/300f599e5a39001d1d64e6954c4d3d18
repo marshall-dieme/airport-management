@@ -1,0 +1,24 @@
+package com.saraya.airport.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.saraya.airport.dto.AiportDTO;
+import com.saraya.airport.entity.AirportEntity;
+import com.saraya.airport.repository.AirportRepo;
+import com.saraya.airport.services.AirportService;
+@Service
+public class AirportServiceImpl implements AirportService{
+	@Autowired
+	private AirportRepo airportRepo;
+	@Override
+	public AiportDTO createAirport(AiportDTO aiportDTO) {
+		AirportEntity ae = new AirportEntity();
+		ae.setIata(aiportDTO.getIata());
+		ae.setIcao(aiportDTO.getIcao());
+		ae.setAirport_name(aiportDTO.getAirport_name());
+		airportRepo.save(ae);
+		return null;
+	}
+
+}

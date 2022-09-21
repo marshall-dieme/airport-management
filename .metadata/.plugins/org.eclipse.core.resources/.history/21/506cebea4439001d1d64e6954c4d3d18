@@ -1,0 +1,52 @@
+package com.saraya.airportgeo.services.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.saraya.airportgeo.dto.AirportGeoDTO;
+import com.saraya.airportgeo.mapping.ConvertDtoTOEntity;
+import com.saraya.airportgeo.model.AirportGeo;
+import com.saraya.airportgeo.repository.AirportGeoRepository;
+import com.saraya.airportgeo.services.AirportService;
+@Service
+public class ServiceImpl implements AirportService{
+	@Autowired
+	private AirportGeoRepository airportGeoRepository;
+	@Autowired
+	private ConvertDtoTOEntity convertDtoTOEntity;
+	@Override
+	public AirportGeo saveAirportGeo(AirportGeoDTO airportGeoDTO) {
+		AirportGeo ag = convertDtoTOEntity.dtoToEntity(airportGeoDTO);
+		ag = airportGeoRepository.save(ag);
+		airportGeoDTO = convertDtoTOEntity.EntityTodto(ag);
+		return null;
+	}
+
+	@Override
+	public List<AirportGeo> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AirportGeoDTO getAiportGeoById(Long airportgeoId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AirportGeoDTO updateAirportGeo(AirportGeoDTO airportGeoDTO, Long airportgeoId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteAirportGeo(Long airportgeoId) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

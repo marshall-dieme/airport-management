@@ -1,0 +1,5 @@
+package com.saraya.airport.services;
+
+public interface AirportService {
+
+}

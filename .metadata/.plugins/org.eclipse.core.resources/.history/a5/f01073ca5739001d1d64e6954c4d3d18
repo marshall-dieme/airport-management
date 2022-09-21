@@ -1,0 +1,5 @@
+package com.saraya.airport.mapping;
+
+public class ConvertAirport {
+
+}
