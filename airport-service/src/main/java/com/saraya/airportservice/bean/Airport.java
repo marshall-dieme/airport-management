@@ -6,29 +6,43 @@ import javax.persistence.*;
 @Table(name = "airports")
 public class Airport {
 
-    @Transient
-    private static int cpt = 1000;
-
-   @Id
-    private String airport_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int airportId;
 
     private boolean iata;
 
     private boolean icao;
 
+    private int airportGeoId;
+
+
+
     @Column(unique = true)
     private String name;
 
-    public void generedId(){
-        this.airport_id = "AIPRT_" + ++cpt;
+    public int getAirportId() {
+        return airportId;
     }
 
-    public String getAirport_id() {
-        return airport_id;
+    public int getAirportGeoId() {
+        return airportGeoId;
     }
 
-    public void setAirport_id(String airport_id) {
-        this.airport_id = airport_id;
+    public void setAirportGeoId(int airportGeoId) {
+        this.airportGeoId = airportGeoId;
+    }
+
+    public void setAirportId(int airportId) {
+        this.airportId = airportId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public boolean isIata() {
