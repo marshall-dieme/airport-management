@@ -40,22 +40,28 @@ public class ServiceImpl implements AirportService{
 	@Override
 	public AirportGeoDTO getAiportGeoById(Long airportgeoId) {
 		Optional<AirportGeo> ag = airportGeoRepository.findById(airportgeoId);
-		
-			AirportGeoDTO agd = convertDtoTOEntity.EntityTodto(ag.get());
+		AirportGeoDTO agd = null;
+		if(ag.isPresent()) {
+			 agd = convertDtoTOEntity.EntityTodto(ag.get());
+		}
+		else {
+			throw new RuntimeException("Did not find AirportGeo id - " + airportgeoId);
+		}
 		return agd;
 	}
 
 	@Override
 	public AirportGeoDTO updateAirportGeo(AirportGeoDTO airportGeoDTO, Long airportgeoId) {
 		Optional<AirportGeo> ag = airportGeoRepository.findById(airportgeoId);
+		AirportGeoDTO dto =null;
 		if(ag.isPresent()) {
 			AirportGeo ap = ag.get();
 			ap.setCity(airportGeoDTO.getCity());
 			ap.setCountry(airportGeoDTO.getCountry());
-			airportGeoDTO = convertDtoTOEntity.EntityTodto(ap);
+			dto = convertDtoTOEntity.EntityTodto(ap);
 			airportGeoRepository.save(ap);
 		}
-		return airportGeoDTO;
+		return dto;
 	}
 
 	@Override

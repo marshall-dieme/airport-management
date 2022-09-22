@@ -17,6 +17,7 @@ public class ConvertAirport {
 	
 	public AiportDTO EntityTOdto(AirportEntity airportEntity) {
 		AiportDTO apdto = new AiportDTO();
+		apdto.setAirport_id(airportEntity.getAirport_id());
 		apdto.setIata(airportEntity.getIata());
 		apdto.setIcao(airportEntity.getIcao());
 		apdto.setAirport_name(airportEntity.getAirport_name());
