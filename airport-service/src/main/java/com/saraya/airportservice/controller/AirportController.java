@@ -40,6 +40,12 @@ public class AirportController {
    }
 
 
+
+    @GetMapping("/{city}/{country}/geo")
+    public Airport getAirportByAirportGeo(@PathVariable String city,@PathVariable String country) {
+        return service.getAirportByAirportGeo(city, country);
+    }
+
     @PostMapping
     public Airport create(@RequestBody AirportDto dto) {
         return service.create(dto);

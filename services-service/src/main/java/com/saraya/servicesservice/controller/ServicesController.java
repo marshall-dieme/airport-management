@@ -30,6 +30,12 @@ public class ServicesController {
 
 
 
+    @GetMapping("/{airport_name}/airports")
+    public List <Services>  getServicesByAirport(@PathVariable String airport_name) {
+        return service.getServicesByAirport(airport_name);
+    }
+
+
     @PostMapping("/")
     public Services create(@RequestBody ServicesDto dto) {
 

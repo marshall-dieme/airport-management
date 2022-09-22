@@ -40,6 +40,18 @@ public class AirportService {
     }
 
 
+    public Airport getAirportByAirportGeo(String city,String country) {
+        Map<String, String> values = new HashMap<>();
+        values.put("city", city);
+        values.put("country", country);
+        RestTemplate template = new RestTemplate();
+        Long idAirportGeo = template.getForEntity("http://localhost:8110/geo/city/country/{city}/{country}",
+                Long.class, values).getBody();
+
+        return repo.findByIdAirportGeo(idAirportGeo);
+    }
+
+
 
 
     public Airport create(AirportDto dto) {

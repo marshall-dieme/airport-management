@@ -52,11 +52,21 @@ public class AirlineService {
         return repo.save(airline);
     }
 
+
+    public List <Airline> getAirlinesByAirport(String airportName) {
+        Map<String, String> values = new HashMap<>();
+        values.put("airport_name", airportName);
+
+        RestTemplate template = new RestTemplate();
+        Long idAirport = template.getForEntity("http://localhost:8200/airports/airportName/{airport_name}",
+                Long.class, values).getBody();
+
+        return repo.findByIdAirport(idAirport);
+    }
+
     private static void changeToModel(AirlineDto dto, Airline airline) {
         airline.setAirline_name(dto.getAirline_name());
         airline.setIata(dto.getIata());
-
-
 
 
     }

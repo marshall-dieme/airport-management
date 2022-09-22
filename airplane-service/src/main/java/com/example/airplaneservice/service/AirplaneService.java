@@ -60,6 +60,17 @@ public class AirplaneService {
 
     }
 
+    public List <Airplane> getAirplanesByAirline(String airlineName) {
+        Map<String, String> values = new HashMap<>();
+        values.put("airline_name", airlineName);
+
+        RestTemplate template = new RestTemplate();
+        Long idAirline = template.getForEntity("http://localhost:8500/airlines/airlineName/{airline_name}",
+                Long.class, values).getBody();
+
+        return repo.findByIdAirline(idAirline);
+    }
+
     public Airplane update(AirplaneDto dto) {
         Airplane airplane = new Airplane();
         airplane.setAirplane_id(dto.getAirplane_id());

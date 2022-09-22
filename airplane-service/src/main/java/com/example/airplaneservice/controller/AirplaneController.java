@@ -31,6 +31,12 @@ public class AirplaneController {
         return service.getByAirplaneName(name);
     }*/
 
+   @GetMapping("/{airline_name}/airlines")
+   public List <Airplane>  getServicesByAirport(@PathVariable String airline_name) {
+       return service.getAirplanesByAirline(airline_name);
+   }
+
+
 
     @PostMapping
     public Airplane create(@RequestBody AirplaneDto dto) {

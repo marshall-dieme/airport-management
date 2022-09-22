@@ -11,4 +11,6 @@ public interface AirportRepo extends JpaRepository<Airport, Long> {
 
     @Query("select a.id from Airport a where a.airport_name=:airport_name")
     Long getIdAirport(String airport_name);
+
+   Airport findByIdAirportGeo(Long idAirportGeo);
 }
