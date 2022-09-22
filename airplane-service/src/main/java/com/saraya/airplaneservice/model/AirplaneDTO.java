@@ -1,15 +1,7 @@
 package com.saraya.airplaneservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class AirplaneDTO {
 
-@Entity
-public class Airplane {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int airplaneId;
 
     private String capacity;
@@ -28,23 +20,12 @@ public class Airplane {
         this.airplaneTypeIdentifier = airplaneTypeIdentifier;
     }
 
-    public Airplane() {
-    }
-
     public int getAirplaneId() {
         return airplaneId;
     }
 
     public void setAirplaneId(int airplaneId) {
         this.airplaneId = airplaneId;
-    }
-
-    public int getAirlineId() {
-        return airlineId;
-    }
-
-    public void setAirlineId(int airlineId) {
-        this.airlineId = airlineId;
     }
 
     public String getCapacity() {
@@ -55,7 +36,6 @@ public class Airplane {
         this.capacity = capacity;
     }
 
-
     public int getAirplaneTypeId() {
         return airplaneTypeId;
     }
@@ -64,7 +44,15 @@ public class Airplane {
         this.airplaneTypeId = airplaneTypeId;
     }
 
-    public Airplane(int airplaneId, String capacity, int airplaneTypeId, int airlineId) {
+    public int getAirlineId() {
+        return airlineId;
+    }
+
+    public void setAirlineId(int airlineId) {
+        this.airlineId = airlineId;
+    }
+
+    public AirplaneDTO(int airplaneId, String capacity, int airplaneTypeId, int airlineId) {
         this.airplaneId = airplaneId;
         this.capacity = capacity;
         this.airplaneTypeId = airplaneTypeId;

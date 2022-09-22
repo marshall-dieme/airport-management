@@ -16,9 +16,9 @@ public class Airport {
 
     private int airportGeoId;
 
-    private int airlineId;
+    //private int airlineId;
 
-    private int serviceId;
+    //private int serviceId;
 
     private String country;
 
@@ -68,21 +68,6 @@ public class Airport {
         this.airportGeoId = airportGeoId;
     }
 
-    public int getAirlineId() {
-        return airlineId;
-    }
-
-    public void setAirlineId(int airlineId) {
-        this.airlineId = airlineId;
-    }
-
-    public int getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(int serviceId) {
-        this.serviceId = serviceId;
-    }
 
     public String getCountry() {
         return country;
@@ -100,5 +85,13 @@ public class Airport {
         this.city = city;
     }
 
-
+    public Airport(int airportId, String iata, String icao, String airportName, int airportGeoId, String country, String city) {
+        this.airportId = airportId;
+        this.iata = iata;
+        this.icao = icao;
+        this.airportName = airportName;
+        this.airportGeoId = airportGeoId;
+        this.country = country;
+        this.city = city;
+    }
 }

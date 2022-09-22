@@ -1,6 +1,7 @@
 package com.saraya.airplaneservice.controller;
 
 import com.saraya.airplaneservice.model.Airplane;
+import com.saraya.airplaneservice.model.AirplaneDTO;
 import com.saraya.airplaneservice.service.AirplaneService;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class AirplaneController {
     }
 
     @PostMapping
-    public Airplane create(@RequestBody Airplane airplane){
+    public Airplane create(@RequestBody AirplaneDTO airplane){
         return service.create(airplane);
     }
 
