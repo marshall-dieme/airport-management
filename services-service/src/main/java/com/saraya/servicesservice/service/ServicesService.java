@@ -39,7 +39,7 @@ public class ServicesService {
                         Integer.class, UrlValues)
                 .getBody();
         changeToModel(dto, services);
-        services.setServiceId(services.getServiceId());
+        services.setAirportId(services.getAirportId());
         return repo.save(services);
     }
 
@@ -51,7 +51,7 @@ public class ServicesService {
     }
 
     public static void changeToModel(ServicesDTO dto , Services services){
-        services.setAirportId(dto.getAirportId());
+        //services.setAirportId(dto.getAirportId());
         services.setServicesName(dto.getServicesName());
     }
 
