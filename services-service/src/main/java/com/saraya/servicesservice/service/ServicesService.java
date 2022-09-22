@@ -39,7 +39,7 @@ public class ServicesService {
                         Integer.class, UrlValues)
                 .getBody();
         changeToModel(dto, services);
-        services.setAirportId(services.getAirportId());
+        services.setAirportId(airportId);
         return repo.save(services);
     }
 
