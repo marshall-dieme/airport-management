@@ -29,6 +29,7 @@ public class ServiceController {
 
     @GetMapping("/{name}")
     public int idServices(@PathVariable("name") String name){
+        System.out.println(service.getIdServiceByName(name));
         return service.getIdServiceByName(name);
     }
 }
