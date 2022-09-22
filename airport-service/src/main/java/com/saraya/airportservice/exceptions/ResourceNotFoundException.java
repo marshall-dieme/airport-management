@@ -1,4 +1,4 @@
-package com.saraya.employeeservice.exceptions;
+package com.saraya.airportservice.exceptions;
 
 public class ResourceNotFoundException extends Exception {
     public ResourceNotFoundException() {
