@@ -1,5 +1,5 @@
-package com.saraya.employeeservice.models;
 
+package com.saraya.airportservice.models;
 import org.springframework.http.HttpStatus;
 
 public class ErrorMessage {

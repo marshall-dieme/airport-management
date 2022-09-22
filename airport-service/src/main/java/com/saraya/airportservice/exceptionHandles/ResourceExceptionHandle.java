@@ -1,7 +1,7 @@
-package com.saraya.employeeservice.exceptionHandles;
+package com.saraya.airportservice.exceptionHandles;
 
-import com.saraya.employeeservice.exceptions.ResourceNotFoundException;
-import com.saraya.employeeservice.models.ErrorMessage;
+import com.saraya.airportservice.exceptions.ResourceNotFoundException;
+import com.saraya.airportservice.models.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
