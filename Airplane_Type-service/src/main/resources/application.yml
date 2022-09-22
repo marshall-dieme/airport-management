@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: airplane-type-service
+
+server:
+  port: 8086
