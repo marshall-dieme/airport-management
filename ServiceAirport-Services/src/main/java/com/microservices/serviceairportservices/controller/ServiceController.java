@@ -1,7 +1,9 @@
 package com.microservices.serviceairportservices.controller;
 
-import com.microservices.serviceairportservices.entity.Service;
+import com.microservices.serviceairportservices.entity.Services;
+import com.microservices.serviceairportservices.entity.ServiceDTO;
 import com.microservices.serviceairportservices.service.ServicesService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,33 +19,35 @@ public class ServiceController {
         this.service = service;
     }
     @GetMapping
-    public List<Service> getAll(){
+    public List<Services> getAll(){
         return service.getAll();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Service> getById(@PathVariable String servicesId) {
+    @GetMapping("/{servicesId}")
+    public Optional<Services> getById(@PathVariable Long servicesId) {
         return service.getById(servicesId);
     }
 
-    @PostMapping
-    public Service create(@RequestBody Service serv) {
-        return service.create(serv);
+    @PostMapping("/create")
+    public Services create(@RequestBody ServiceDTO dto) {
+        return service.create(dto);
     }
 
     @PutMapping
-    public Service update(@RequestBody Service serv) {
-        return service.update(serv);
+    public Services update(@RequestBody ServiceDTO dto) {
+        return service.update(dto);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable String servicesId) {
+    @DeleteMapping("/{servicesId}")
+    public void delete(@PathVariable Long servicesId) {
         service.delete(servicesId);
     }
 
-    @GetMapping("/servicesName/{servicesName}")
-    public String getidServices(@PathVariable String servicesName) {
-        return service.getidServices(servicesName);
+    @GetMapping("/{airportName}/serviceairport")
+    public Services findAirportByService(@PathVariable String airportName){
+        return service.findAirportByService(airportName);
     }
+
+
 }
 

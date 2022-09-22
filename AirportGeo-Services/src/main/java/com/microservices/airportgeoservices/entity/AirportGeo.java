@@ -19,6 +19,7 @@ public class AirportGeo {
 
     private String city;
 
+
     public AirportGeo() {
     }
 
@@ -53,4 +54,5 @@ public class AirportGeo {
     public void setCity(String city) {
         this.city = city;
     }
+
 }

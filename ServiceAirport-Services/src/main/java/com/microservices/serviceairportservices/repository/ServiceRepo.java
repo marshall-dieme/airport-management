@@ -1,14 +1,18 @@
 package com.microservices.serviceairportservices.repository;
 
-import com.microservices.serviceairportservices.entity.Service;
+import com.microservices.serviceairportservices.entity.Services;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
+
 @Repository
-public interface ServiceRepo extends JpaRepository<Service, String> {
+public interface ServiceRepo extends JpaRepository<Services, Long> {
+    @Override
+    Optional<Services> findById(Long servicesId);
 
-    @Query("select s.servicesId from Service s where s.servicesName=:servicesName")
 
-    String getidServices(String servicesName);
+    Services findByIdAirport(String idAirport);
+
 }

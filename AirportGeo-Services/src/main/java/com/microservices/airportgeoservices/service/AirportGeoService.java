@@ -25,7 +25,6 @@ public class AirportGeoService {
     }
 
     public AirportGeo create(AirportGeo airportgeo) {
-
         return repo.save(airportgeo);
     }
 
@@ -37,4 +36,7 @@ public class AirportGeoService {
         repo.deleteById(airport_geo_id);
     }
 
+    public String getIdGeo(String country, String city) {
+        return repo.getById(country, city);
+    }
 }

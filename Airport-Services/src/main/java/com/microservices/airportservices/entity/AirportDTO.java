@@ -1,13 +1,7 @@
 package com.microservices.airportservices.entity;
 
+public class AirportDTO {
 
-import javax.persistence.*;
-
-@Entity
-public class Airport {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long airport_id;
 
     private String iata;
@@ -16,17 +10,9 @@ public class Airport {
 
     private String airportName;
 
-    private String idGeo;
+    private String country;
 
-    public Airport() {
-    }
-
-    public Airport(Long airport_id, String iata, String icao, String airportName) {
-        this.airport_id = airport_id;
-        this.iata = iata;
-        this.icao = icao;
-        this.airportName = airportName;
-    }
+    private String city;
 
     public Long getAirport_id() {
         return airport_id;
@@ -60,11 +46,19 @@ public class Airport {
         this.airportName = airportName;
     }
 
-    public String getIdGeo() {
-        return idGeo;
+    public String getCountry() {
+        return country;
     }
 
-    public void setIdGeo(String idGeo) {
-        this.idGeo = idGeo;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }
