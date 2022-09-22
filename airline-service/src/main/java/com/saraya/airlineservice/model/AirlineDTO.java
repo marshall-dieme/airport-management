@@ -20,14 +20,6 @@ public class AirlineDTO {
         this.airlineId = airlineId;
     }
 
-    public int getAirportId() {
-        return airportId;
-    }
-
-    public void setAirportId(int airportId) {
-        this.airportId = airportId;
-    }
-
     public String getAirportName() {
         return airportName;
     }

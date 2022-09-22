@@ -24,8 +24,7 @@ public class AirportController {
     }
 
     @GetMapping("/{iata}")
-    public Airport getByIata(
-            @PathVariable String iata){
+    public Airport getByIata(@PathVariable String iata){
         return service.getByIata(iata);
     }
 

@@ -34,13 +34,13 @@ public class AirlineService {
         RestTemplate template = new RestTemplate();
         Map<String , String> UrlValues = new HashMap<>();
         UrlValues.put(("airportName"), dto.getAirportName());
-        Integer airport_id = template.getForEntity(
+        Integer airportId = template.getForEntity(
                         "http://localhost:8083/airport/{airportName}",
                         Integer.class, UrlValues)
                 .getBody();
         changeToModel(dto, airline);
        // assert airportId != null;
-        airline.setAirportId(airport_id);
+        airline.setAirportId(airportId);
         return repo.save(airline);
     }
 
@@ -55,7 +55,7 @@ public class AirlineService {
         //airline.setAirportId(dto.getAirportId());
         airline.setAirlineName(dto.getAirlineName());
         airline.setIata(dto.getIata());
-        airline.setAirportName(dto.getAirportName());
+        //airline.setAirportName(dto.getAirportName());
     }
 
     public void deleteByAirlineName(String airlineName){

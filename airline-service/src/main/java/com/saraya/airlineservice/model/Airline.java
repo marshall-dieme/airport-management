@@ -10,6 +10,7 @@ public class Airline {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int airlineId;
 
     private String airlineName;
@@ -63,10 +64,9 @@ public class Airline {
         this.airportId = airportId;
     }
 
-    public Airline(int airlineId, String airlineName, String iata, int airplaneId) {
+    public Airline(int airlineId, String airlineName, String iata) {
         this.airlineId = airlineId;
         this.airlineName = airlineName;
         this.iata = iata;
-        this.airportId = airportId;
     }
 }
