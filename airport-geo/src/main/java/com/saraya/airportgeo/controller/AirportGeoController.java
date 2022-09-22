@@ -21,7 +21,7 @@ public class AirportGeoController {
         return service.getAll();
     }
 
-    @GetMapping("/{country}/{city}")
+    @GetMapping("/recup/{country}/{city}")
     public AirportGeo getByCountryAndCity(
             @PathVariable String country , @PathVariable String city){
         return service.getByCountryAndCity(country, city);
@@ -49,8 +49,9 @@ public class AirportGeoController {
     }
 
 
-    @GetMapping("/{country}")
-    public String getIdAirportGeo(@PathVariable String country) {
-        return service.getIdAirportGeo(country);
+    @GetMapping("/{country}/{city}")
+    public Integer  findByCountryAndCity(
+            @PathVariable String country , @PathVariable String city) {
+        return  service.findByCountryAndCity(country , city).getAirport_geo_id();
     }
 }

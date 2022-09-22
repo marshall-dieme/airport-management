@@ -43,7 +43,7 @@ public class AirportGeoService {
     }
 
 
-    public String getIdAirportGeo(String country) {
-        return repo.getIdAirportGeo(country);
+    public AirportGeo findByCountryAndCity(String country , String city) {
+        return repo.findByCountryAndCity(country , city);
     }
 }

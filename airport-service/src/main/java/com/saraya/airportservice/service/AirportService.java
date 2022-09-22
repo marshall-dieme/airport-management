@@ -32,14 +32,15 @@ public class AirportService {
     public Airport create (AirportDTO dto){
         Airport airport = new Airport();
         RestTemplate template = new RestTemplate();
-            Map<String , Integer> UrlValues = new HashMap<>();
-        UrlValues.put(("country"), dto.getAirport_geo_id());
+            Map<String , String> UrlValues = new HashMap<>();
+        UrlValues.put(("country"),dto.getCountry());
+        UrlValues.put(("city"),dto.getCity());
         Integer airport_geo_id = template.getForEntity(
-                "http://localhost:8081/airport-geo/{country}",
+                "http://localhost:8081/airport-geo/{country}/{city}",
                 Integer.class, UrlValues)
                 .getBody();
         changeToModel(dto, airport);
-        airport.setAirport_geo_id(dto.getAirport_geo_id());
+        airport.setAirport_geo_id(airport_geo_id);
         return repo.save(airport);
     }
 

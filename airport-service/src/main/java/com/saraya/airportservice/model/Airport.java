@@ -19,6 +19,10 @@ public class Airport {
 
     private int service_id;
 
+    private String country;
+
+    private String city;
+
     public Airport() {
     }
 
@@ -76,6 +80,23 @@ public class Airport {
 
     public void setService_id(int service_id) {
         this.service_id = service_id;
+    }
+
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public Airport(int airport_id, String iata, String icao, String airport_name, int airport_geo_id, int airline_id, int service_id) {
