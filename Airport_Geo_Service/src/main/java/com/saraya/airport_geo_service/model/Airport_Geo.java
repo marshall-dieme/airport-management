@@ -10,7 +10,7 @@ public class Airport_Geo {
     private Long airport_geo_id;
 
     @Column (unique= true)
-    private String contry;
+    private String country;
 
     private String city;
 
@@ -21,9 +21,9 @@ public class Airport_Geo {
     public Airport_Geo() {
     }
 
-    public Airport_Geo(Long airport_geo_id, String contry, String city) {
+    public Airport_Geo(Long airport_geo_id, String country, String city) {
         this.airport_geo_id = airport_geo_id;
-        this.contry = contry;
+        this.country = country;
         this.city = city;
     }
 
@@ -36,12 +36,12 @@ public class Airport_Geo {
         this.airport_geo_id = airport_geo_id;
     }
 
-    public String getContry() {
-        return contry;
+    public String getCountry() {
+        return country;
     }
 
-    public void setContry(String contry) {
-        this.contry = contry;
+    public void setCountry(String contry) {
+        this.country = contry;
     }
 
     public String getCity() {

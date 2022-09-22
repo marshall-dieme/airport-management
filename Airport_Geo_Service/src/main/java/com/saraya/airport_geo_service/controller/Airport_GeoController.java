@@ -16,32 +16,39 @@ public class Airport_GeoController {
     }
 
     @GetMapping
-    public List<Airport_Geo> getAll() {
+    public List<Airport_Geo> getAll(){
         return service.getAll();
     }
 
-    @GetMapping("/{airport_geo_id}")
-    public Airport_Geo getByName(@PathVariable Long airport_geo_id) {
-        return service.getById(airport_geo_id);
+    @GetMapping("/country/city/{country}/{city}")
+    public Long getIdByCountryAndCity(
+            @PathVariable String country , @PathVariable String city){
+        return service.getIdByCountryAndCity(country, city);
     }
 
     @PostMapping
-    public Airport_Geo create(@RequestBody Airport_Geo ag) {
-        return service.create(ag);
+    public Airport_Geo create(@RequestBody Airport_Geo airportGeo){
+        return service.create(airportGeo);
     }
 
     @PutMapping
-    public Airport_Geo update(@RequestBody Airport_Geo ag) {
-        return service.update(ag);
+    public Airport_Geo update(@RequestBody Airport_Geo airportGeo){
+        return service.update(airportGeo);
     }
 
-    @DeleteMapping("delete/{airport_geo_id}")
-    public void deleteByName(@PathVariable Long airport_geo_id) {
-        service.deleteByName(airport_geo_id);
-    }
+//    @DeleteMapping("delete/{country}/{city}")
+//    public void deleteByCountryAndCity(
+//            @PathVariable String country , @PathVariable String city){
+//        service.deleteByCountryAndCity(country, city);
+//    }
 
     @DeleteMapping("/{airport_geo_id}")
-    public void delete(@PathVariable Long airport_geo_id) {
-        service.delete(airport_geo_id);
+    public void deleteById(@PathVariable Long airport_geo_id){
+        service.deleteById(airport_geo_id);
     }
+
+//    @GetMapping("/{country}/{city}")
+//    public Long findByCountryAndCity(@PathVariable String country, @PathVariable String city){
+//        return service.findByCountryAndCity(country,city).getAirport_geo_id();
+//    }
 }
