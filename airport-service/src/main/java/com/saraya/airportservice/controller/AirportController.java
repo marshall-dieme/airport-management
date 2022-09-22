@@ -49,7 +49,7 @@ public class AirportController {
         service.deleteById(airportId);
     }
 
-    @GetMapping("/{airportName}")
+    @GetMapping("/airportName/{airportName}")
     public Integer  findByAirportName(
             @PathVariable String airportName) {
         return  service.findByAirportName(airportName).getAirportId();

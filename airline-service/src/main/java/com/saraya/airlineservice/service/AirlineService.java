@@ -24,7 +24,7 @@ public class AirlineService {
     public List<Airline> getAll(){
         return repo.findAll();
     }
-    public  Airline getByAirlineName(
+    public Airline getByAirlineName(
             String airlineName){
         return repo.findByAirlineName(airlineName);
     }
@@ -35,7 +35,7 @@ public class AirlineService {
         Map<String , String> UrlValues = new HashMap<>();
         UrlValues.put(("airportName"), dto.getAirportName());
         Integer airportId = template.getForEntity(
-                        "http://localhost:8083/airport/{airportName}",
+                        "http://localhost:8083/airport/airportName/{airportName}",
                         Integer.class, UrlValues)
                 .getBody();
         changeToModel(dto, airline);

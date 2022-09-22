@@ -50,7 +50,7 @@ public class AirportGeoController {
 
 
     @GetMapping("/{country}/{city}")
-    public Integer  findByCountryAndCity(
+    public Integer findByCountryAndCity(
             @PathVariable String country , @PathVariable String city) {
         return  service.findByCountryAndCity(country , city).getAirportGeoId();
     }
