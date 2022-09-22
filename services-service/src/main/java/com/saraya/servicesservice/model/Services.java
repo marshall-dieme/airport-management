@@ -8,22 +8,24 @@ public class Services {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int service_id;
+    private int serviceId;
     private String servicesName;
 
-    private int airport_id;
+    private int airportId;
 
-    private int employee_id;
+    private int employeeId;
+
+    private String airportName;
 
     public Services() {
     }
 
-    public int getService_id() {
-        return service_id;
+    public int getServiceId() {
+        return serviceId;
     }
 
-    public void setService_id(int service_id) {
-        this.service_id = service_id;
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
     }
 
     public String getServicesName() {
@@ -34,26 +36,35 @@ public class Services {
         this.servicesName = servicesName;
     }
 
-    public int getAirport_id() {
-        return airport_id;
+    public int getAirportId() {
+        return airportId;
     }
 
-    public void setAirport_id(int airport_id) {
-        this.airport_id = airport_id;
+    public void setAirportId(int airportId) {
+        this.airportId = airportId;
     }
 
-    public int getEmployee_id() {
-        return employee_id;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public Services(int service_id, String servicesName, int airport_id, int employee_id) {
-        this.service_id = service_id;
+    public String getAirportName() {
+        return airportName;
+    }
+
+    public void setAirportName(String airportName) {
+        this.airportName = airportName;
+    }
+
+    public Services(int serviceId, String servicesName, int airportId, int employeeId, String airportName) {
+        this.serviceId = serviceId;
         this.servicesName = servicesName;
-        this.airport_id = airport_id;
-        this.employee_id = employee_id;
+        this.airportId = airportId;
+        this.employeeId = employeeId;
+        this.airportName = airportName;
     }
 }

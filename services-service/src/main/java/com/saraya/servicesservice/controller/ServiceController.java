@@ -1,6 +1,7 @@
 package com.saraya.servicesservice.controller;
 
 import com.saraya.servicesservice.model.Services;
+import com.saraya.servicesservice.model.ServicesDTO;
 import com.saraya.servicesservice.service.ServicesService;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +29,12 @@ public class ServiceController {
     }
 
     @PostMapping
-    public Services create(@RequestBody Services services){
+    public Services create(@RequestBody ServicesDTO services){
         return service.create(services);
     }
 
     @PutMapping
-    public Services update(@RequestBody Services services){
+    public Services update(@RequestBody ServicesDTO services){
         return service.update(services);
     }
 
