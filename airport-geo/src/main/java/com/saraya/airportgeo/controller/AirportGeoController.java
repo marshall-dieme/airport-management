@@ -44,14 +44,14 @@ public class AirportGeoController {
     }
 
     @DeleteMapping("/{airport_geo_id}")
-    public void deleteById(@PathVariable int airport_geo_id){
-        service.deleteById(airport_geo_id);
+    public void deleteById(@PathVariable int airportGeoId){
+        service.deleteById(airportGeoId);
     }
 
 
     @GetMapping("/{country}/{city}")
     public Integer  findByCountryAndCity(
             @PathVariable String country , @PathVariable String city) {
-        return  service.findByCountryAndCity(country , city).getAirport_geo_id();
+        return  service.findByCountryAndCity(country , city).getAirportGeoId();
     }
 }

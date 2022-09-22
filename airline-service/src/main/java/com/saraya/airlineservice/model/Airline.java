@@ -10,23 +10,25 @@ public class Airline {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int airline_id;
+    private int airlineId;
 
     private String airlineName;
 
     private String iata;
 
-    private int airplane_id;
+    private String airportName;
+
+    private int airportId;
 
     public Airline() {
     }
 
-    public int getAirline_id() {
-        return airline_id;
+    public int getAirlineId() {
+        return airlineId;
     }
 
-    public void setAirline_id(int airline_id) {
-        this.airline_id = airline_id;
+    public void setAirlineId(int airlineId) {
+        this.airlineId = airlineId;
     }
 
     public String getAirlineName() {
@@ -45,18 +47,26 @@ public class Airline {
         this.iata = iata;
     }
 
-    public int getAirplane_id() {
-        return airplane_id;
+    public String getAirportName() {
+        return airportName;
     }
 
-    public void setAirplane_id(int airplane_id) {
-        this.airplane_id = airplane_id;
+    public void setAirportName(String airportName) {
+        this.airportName = airportName;
     }
 
-    public Airline(int airline_id, String airlineName, String iata, int airplane_id) {
-        this.airline_id = airline_id;
+    public int getAirportId() {
+        return airportId;
+    }
+
+    public void setAirportId(int airportId) {
+        this.airportId = airportId;
+    }
+
+    public Airline(int airlineId, String airlineName, String iata, int airplaneId) {
+        this.airlineId = airlineId;
         this.airlineName = airlineName;
         this.iata = iata;
-        this.airplane_id = airplane_id;
+        this.airportId = airportId;
     }
 }

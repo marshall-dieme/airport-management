@@ -2,30 +2,30 @@ package com.saraya.airportservice.model;
 
 public class AirportDTO {
 
-    private int airport_id;
+    private int airportId;
 
     private String iata;
 
     private String icao;
 
-    private String airport_name;
+    private String airportName;
 
-    private int airport_geo_id;
+    //private int airportGeoId;
 
-    private int airline_id;
+   // private int airlineId;
 
-    private int service_id;
+    //private int serviceId;
 
     private String country;
 
     private String city;
 
-    public int getAirport_id() {
-        return airport_id;
+    public int getAirportId() {
+        return airportId;
     }
 
-    public void setAirport_id(int airport_id) {
-        this.airport_id = airport_id;
+    public void setAirportId(int airportId) {
+        this.airportId = airportId;
     }
 
     public String getIata() {
@@ -44,37 +44,23 @@ public class AirportDTO {
         this.icao = icao;
     }
 
-    public String getAirport_name() {
-        return airport_name;
+    public String getAirportName() {
+        return airportName;
     }
 
-    public void setAirport_name(String airport_name) {
-        this.airport_name = airport_name;
+    public void setAirportName(String airportName) {
+        this.airportName = airportName;
     }
 
-    public Integer getAirport_geo_id() {
-        return airport_geo_id;
+
+/*
+    public int getServiceId() {
+        return serviceId;
     }
 
-    public void setAirport_geo_id(int airport_geo_id) {
-        this.airport_geo_id = airport_geo_id;
-    }
-
-    public int getAirline_id() {
-        return airline_id;
-    }
-
-    public void setAirline_id(int airline_id) {
-        this.airline_id = airline_id;
-    }
-
-    public int getService_id() {
-        return service_id;
-    }
-
-    public void setService_id(int service_id) {
-        this.service_id = service_id;
-    }
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
+    } */
 
     public String getCountry() {
         return country;
@@ -92,13 +78,12 @@ public class AirportDTO {
         this.city = city;
     }
 
-    public AirportDTO(int airport_id, String iata, String icao, String airport_name, int airport_geo_id, int airline_id, int service_id) {
-        this.airport_id = airport_id;
+    public AirportDTO(int airportId, String iata, String icao, String airportName, String country, String city) {
+        this.airportId = airportId;
         this.iata = iata;
         this.icao = icao;
-        this.airport_name = airport_name;
-        this.airport_geo_id = airport_geo_id;
-        this.airline_id = airline_id;
-        this.service_id = service_id;
+        this.airportName = airportName;
+        this.country = country;
+        this.city = city;
     }
 }

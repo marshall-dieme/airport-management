@@ -2,20 +2,38 @@ package com.saraya.airlineservice.model;
 
 public class AirlineDTO {
 
-    private int airline_id;
+    private int airlineId;
 
     private String airlineName;
 
     private String iata;
 
-    private int airplane_id;
+    private int airportId;
 
-    public int getAirline_id() {
-        return airline_id;
+    private String airportName;
+
+    public int getAirlineId() {
+        return airlineId;
     }
 
-    public void setAirline_id(int airline_id) {
-        this.airline_id = airline_id;
+    public void setAirlineId(int airlineId) {
+        this.airlineId = airlineId;
+    }
+
+    public int getAirportId() {
+        return airportId;
+    }
+
+    public void setAirportId(int airportId) {
+        this.airportId = airportId;
+    }
+
+    public String getAirportName() {
+        return airportName;
+    }
+
+    public void setAirportName(String airportName) {
+        this.airportName = airportName;
     }
 
     public String getAirlineName() {
@@ -34,22 +52,14 @@ public class AirlineDTO {
         this.iata = iata;
     }
 
-    public int getAirplane_id() {
-        return airplane_id;
-    }
-
-    public void setAirplane_id(int airplane_id) {
-        this.airplane_id = airplane_id;
-    }
-
-    public AirlineDTO(int airline_id, String airlineName, String iata, int airplane_id) {
-        this.airline_id = airline_id;
+    public AirlineDTO(int airlineId, String airlineName, String iata) {
+        this.airlineId = airlineId;
         this.airlineName = airlineName;
         this.iata = iata;
-        this.airplane_id = airplane_id;
+        this.airportId = airportId();
     }
 
-    public Integer airplane_id() {
-        return airplane_id;
+    public Integer airportId() {
+        return airportId;
     }
 }

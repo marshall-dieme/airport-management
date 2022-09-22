@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class AirportGeo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int airport_geo_id;
+    private int airportGeoId;
 
     private String country;
 
@@ -18,12 +18,13 @@ public class AirportGeo {
     public AirportGeo() {
     }
 
-    public int getAirport_geo_id() {
-        return airport_geo_id;
+
+    public int getAirportGeoId() {
+        return airportGeoId;
     }
 
-    public void setAirport_geo_id(int airport_geo_id) {
-        this.airport_geo_id = airport_geo_id;
+    public void setAirportGeoId(int airportGeoId) {
+        this.airportGeoId = airportGeoId;
     }
 
     public String getCountry() {
@@ -42,8 +43,8 @@ public class AirportGeo {
         this.city = city;
     }
 
-    public AirportGeo(int airport_geo_id, String country, String city) {
-        this.airport_geo_id = airport_geo_id;
+    public AirportGeo(int airportGeoId, String country, String city) {
+        this.airportGeoId = airportGeoId;
         this.country = country;
         this.city = city;
     }

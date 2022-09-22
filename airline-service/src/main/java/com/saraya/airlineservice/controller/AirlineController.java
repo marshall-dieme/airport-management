@@ -45,8 +45,8 @@ public class AirlineController {
     }
 
     @DeleteMapping("/{airline_id}")
-    public void deleteById(@PathVariable int airline_id){
-        service.deleteById(airline_id);
+    public void deleteById(@PathVariable int airlineId){
+        service.deleteById(airlineId);
     }
 
 }

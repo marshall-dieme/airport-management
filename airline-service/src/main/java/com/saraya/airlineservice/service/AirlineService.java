@@ -32,29 +32,30 @@ public class AirlineService {
     public Airline create (AirlineDTO dto){
         Airline airline = new Airline();
         RestTemplate template = new RestTemplate();
-        Map<String , Integer> UrlValues = new HashMap<>();
-        UrlValues.put(("capacity"), dto.airplane_id());
-        Integer airplane_id = template.getForEntity(
-                        "http://localhost:8086/airplane/{capacity}",
+        Map<String , String> UrlValues = new HashMap<>();
+        UrlValues.put(("airportName"), dto.getAirportName());
+        Integer airport_id = template.getForEntity(
+                        "http://localhost:8083/airport/{airportName}",
                         Integer.class, UrlValues)
                 .getBody();
         changeToModel(dto, airline);
-        airline.setAirline_id(dto.getAirline_id());
+       // assert airportId != null;
+        airline.setAirportId(airport_id);
         return repo.save(airline);
     }
 
-
-
     public Airline update(AirlineDTO dto){
         Airline airline = new Airline();
-        airline.setAirline_id(dto.getAirline_id());
+        airline.setAirlineId(dto.getAirlineId());
         changeToModel(dto , airline);
         return repo.save(airline);
     }
 
     public static void changeToModel(AirlineDTO dto , Airline airline){
+        //airline.setAirportId(dto.getAirportId());
         airline.setAirlineName(dto.getAirlineName());
         airline.setIata(dto.getIata());
+        airline.setAirportName(dto.getAirportName());
     }
 
     public void deleteByAirlineName(String airlineName){
@@ -62,8 +63,8 @@ public class AirlineService {
         repo.delete(airline);
     }
 
-    public void deleteById(int airline_id){
-        repo.deleteById(airline_id);
+    public void deleteById(int airlineId){
+        repo.deleteById(airlineId);
     }
 
 }

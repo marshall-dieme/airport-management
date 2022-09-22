@@ -40,19 +40,19 @@ public class AirportService {
                 Integer.class, UrlValues)
                 .getBody();
         changeToModel(dto, airport);
-        airport.setAirport_geo_id(airport_geo_id);
+        airport.setAirportGeoId(airport_geo_id);
         return repo.save(airport);
     }
 
     public Airport update(AirportDTO dto){
         Airport airport = new Airport();
-        airport.setAirport_id(dto.getAirport_id());
+        airport.setAirportId(dto.getAirportId());
         changeToModel(dto , airport);
         return repo.save(airport);
     }
 
     public static void changeToModel(AirportDTO dto , Airport airport){
-        airport.setAirport_name(dto.getAirport_name());
+        airport.setAirportName(dto.getAirportName());
         airport.setIata(dto.getIata());
         airport.setIcao(dto.getIcao());
     }
@@ -63,5 +63,9 @@ public class AirportService {
     }
     public void deleteById(int airport_id){
         repo.deleteById(airport_id);
+    }
+
+    public Airport findByAirportName(String airportName) {
+        return repo.findByAirportName(airportName);
     }
 }

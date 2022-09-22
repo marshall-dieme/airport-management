@@ -38,8 +38,8 @@ public class AirportGeoService {
         AirportGeo airportGeo = repo.findByCountryAndCity(country , city);
         repo.delete(airportGeo);
     }
-    public void deleteById(int airport_geo_id){
-        repo.deleteById(airport_geo_id);
+    public void deleteById(int airportGeoId){
+        repo.deleteById(airportGeoId);
     }
 
 

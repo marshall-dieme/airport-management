@@ -6,32 +6,25 @@ import javax.persistence.*;
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int airport_id;
+    private int airportId;
 
     private String iata;
 
     private String icao;
 
-    private String airport_name;
-    private int airport_geo_id;
+    private String airportName;
 
-    private int airline_id;
+    private int airportGeoId;
 
-    private int service_id;
+    //private int airlineId;
+
+   // private int serviceId;
 
     private String country;
 
     private String city;
 
     public Airport() {
-    }
-
-    public int getAirport_id() {
-        return airport_id;
-    }
-
-    public void setAirport_id(int airport_id) {
-        this.airport_id = airport_id;
     }
 
     public String getIata() {
@@ -50,38 +43,47 @@ public class Airport {
         this.icao = icao;
     }
 
-    public String getAirport_name() {
-        return airport_name;
+
+    public int getAirportId() {
+        return airportId;
     }
 
-    public void setAirport_name(String airport_name) {
-        this.airport_name = airport_name;
+    public void setAirportId(int airportId) {
+        this.airportId = airportId;
     }
 
-    public int getAirport_geo_id() {
-        return airport_geo_id;
+    public String getAirportName() {
+        return airportName;
     }
 
-    public void setAirport_geo_id(int airport_geo_id) {
-        this.airport_geo_id = airport_geo_id;
+    public void setAirportName(String airportName) {
+        this.airportName = airportName;
     }
 
-    public int getAirline_id() {
-        return airline_id;
+    public int getAirportGeoId() {
+        return airportGeoId;
     }
 
-    public void setAirline_id(int airline_id) {
-        this.airline_id = airline_id;
+    public void setAirportGeoId(int airportGeoId) {
+        this.airportGeoId = airportGeoId;
     }
 
-    public int getService_id() {
-        return service_id;
+    /*
+    public int getAirlineId() {
+        return airlineId;
     }
 
-    public void setService_id(int service_id) {
-        this.service_id = service_id;
+    public void setAirlineId(int airlineId) {
+        this.airlineId = airlineId;
+    } */
+
+   /* public int getServiceId() {
+        return serviceId;
     }
 
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
+    }*/
 
     public String getCountry() {
         return country;
@@ -99,13 +101,13 @@ public class Airport {
         this.city = city;
     }
 
-    public Airport(int airport_id, String iata, String icao, String airport_name, int airport_geo_id, int airline_id, int service_id) {
-        this.airport_id = airport_id;
+    public Airport(int airportId, String iata, String icao, String airportName, int airportGeoId, String country, String city) {
+        this.airportId = airportId;
         this.iata = iata;
         this.icao = icao;
-        this.airport_name = airport_name;
-        this.airport_geo_id = airport_geo_id;
-        this.airline_id = airline_id;
-        this.service_id = service_id;
+        this.airportName = airportName;
+        this.airportGeoId = airportGeoId;
+        this.country = country;
+        this.city = city;
     }
 }
