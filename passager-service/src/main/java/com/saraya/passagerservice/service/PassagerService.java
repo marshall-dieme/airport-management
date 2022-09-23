@@ -1,6 +1,7 @@
 package com.saraya.passagerservice.service;
 
 import com.saraya.passagerservice.model.Passager;
+import com.saraya.passagerservice.model.PassagerDTO;
 import com.saraya.passagerservice.repository.PassagerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class PassagerService {
         return repo.findByFirstNameAndLastName(firstName, lastName);
     }
 
-    public Passager create (Passager dto){
+    public Passager create (PassagerDTO dto){
         Passager passager = mapper.map(dto , Passager.class);
         RestTemplate template = new RestTemplate();
         Map<String , String> UrlValues = new HashMap<>();

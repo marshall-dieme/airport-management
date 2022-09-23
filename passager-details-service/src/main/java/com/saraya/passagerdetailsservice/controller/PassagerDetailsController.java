@@ -59,7 +59,7 @@ public class PassagerDetailsController {
     @GetMapping("/{telephone}")
     public Integer findByTelephone(
             @PathVariable String telephone) {
-        return  service.findByTelephone(telephone).getPassagerId();
+        return  service.findByTelephone(telephone).getPassagerDetailsId();
     }
 
 }

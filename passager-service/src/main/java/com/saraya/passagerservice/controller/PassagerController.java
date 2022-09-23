@@ -1,6 +1,7 @@
 package com.saraya.passagerservice.controller;
 
 import com.saraya.passagerservice.model.Passager;
+import com.saraya.passagerservice.model.PassagerDTO;
 import com.saraya.passagerservice.service.PassagerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +33,7 @@ public class PassagerController {
     }
 
     @PostMapping
-    public Passager create(@RequestBody Passager passager){
+    public Passager create(@RequestBody PassagerDTO passager){
         LOGGER.info("CREATING a NEW PASSAGER...");
         return service.create(passager);
     }
