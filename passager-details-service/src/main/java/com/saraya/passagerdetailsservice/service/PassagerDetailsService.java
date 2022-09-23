@@ -6,9 +6,14 @@ import com.saraya.passagerdetailsservice.repository.PassagerDetailsRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -32,8 +37,7 @@ public class PassagerDetailsService {
         return repo.findByTelephone(telephone);
     }
 
-    public PassagerDetails create (PassagerDetails dto){
-            PassagerDetails passagerDetails = mapper.map(dto , PassagerDetails.class);
+    public PassagerDetails create (PassagerDetails passagerDetails){
         return repo.save(passagerDetails);
     }
 
@@ -48,6 +52,10 @@ public class PassagerDetailsService {
 
     public void deleteById(int passagerDetailsId){
         repo.deleteById(passagerDetailsId);
+    }
+
+    public PassagerDetails findByTelephone(String telephone) {
+        return repo.findByTelephone(telephone);
     }
 
 }

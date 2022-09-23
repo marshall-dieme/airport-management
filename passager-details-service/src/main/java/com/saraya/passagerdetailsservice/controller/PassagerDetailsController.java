@@ -1,6 +1,7 @@
 package com.saraya.passagerdetailsservice.controller;
 
 import com.saraya.passagerdetailsservice.model.PassagerDetails;
+import com.saraya.passagerdetailsservice.model.PassagerDetailsDTO;
 import com.saraya.passagerdetailsservice.service.PassagerDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +49,17 @@ public class PassagerDetailsController {
     public void deleteByTelephone(
             @PathVariable String telephone){
         service.deleteByTelephone(telephone);
+    }
+
+    @DeleteMapping("/{passagerDetailsId}")
+    public void deleteById(@PathVariable int passagerDetailsId){
+        service.deleteById(passagerDetailsId);
+    }
+
+    @GetMapping("/{telephone}")
+    public Integer findByTelephone(
+            @PathVariable String telephone) {
+        return  service.findByTelephone(telephone).getPassagerId();
     }
 
 }

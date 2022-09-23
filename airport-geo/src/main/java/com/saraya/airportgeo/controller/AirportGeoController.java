@@ -35,7 +35,7 @@ public class AirportGeoController {
 
     @PostMapping
     public AirportGeo create(@RequestBody AirportGeo airportGeo){
-        LOGGER.info("CREATING NEW AIRPORT GEO...");
+        LOGGER.info("CREATING A NEW AIRPORT GEO...");
         return service.create(airportGeo);
     }
 

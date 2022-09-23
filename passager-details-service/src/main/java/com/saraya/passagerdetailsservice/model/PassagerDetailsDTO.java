@@ -20,6 +20,8 @@ public class PassagerDetailsDTO {
 
     private String telephone;
 
+    private int passagerId;
+
     public int getPassagerDetailsId() {
         return passagerDetailsId;
     }
@@ -82,6 +84,14 @@ public class PassagerDetailsDTO {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public int getPassagerId() {
+        return passagerId;
+    }
+
+    public void setPassagerId(int passagerId) {
+        this.passagerId = passagerId;
     }
 
     public PassagerDetailsDTO(int passagerDetailsId, String birthdate, String sex, String street, String city, String country, String email, String telephone) {
