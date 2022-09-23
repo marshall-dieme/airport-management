@@ -13,7 +13,6 @@ import java.util.Map;
 @Service
 public class PassengerService {
 
-    private static int number = 1;
     private final PassengerRepository repository;
 
     public List<Passenger> getAllPassengers() {
@@ -25,7 +24,6 @@ public class PassengerService {
     }
 
     public Passenger savePassenger(Passenger passenger) {
-        passenger.setPassenger_no(generatePassengerNo());
         return repository.save(passenger);
     }
 
@@ -37,25 +35,11 @@ public class PassengerService {
         repository.deleteById(passenger_id);
     }
 
-    public Passenger getPassengerByPassenger_no(String passenger_no) {
-        return repository.findByPassenger_no(passenger_no);
+    public Passenger getPassengerByPassenger_no(String passport_no) {
+        return repository.findByPassport_no(passport_no);
     }
 
-
-    /******** Generate Passenger number****/
-    private String generatePassengerNo() {
-        return "EMP_NO-"+ number++;
-    }
-
-    /******** RestTemplate to communicate others services **********/
-    public void getDetailsByRestTemplate(){
-        Map<String, String> booking_value = new HashMap<>();
-
-
-        Map<String, String> parking_value = new HashMap<>();
-
-
-        Map<String, String> rentals_value = new HashMap<>();
-
+    public Passenger getPassengerByFirstnameAndLastname(String firstname, String lastname) {
+        return repository.findPassengerByFirstnameAndLastname(firstname, lastname);
     }
 }

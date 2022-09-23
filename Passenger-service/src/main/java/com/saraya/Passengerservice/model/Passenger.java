@@ -19,7 +19,7 @@ public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long passenger_id;
-    private String passenger_no;
+    private String passport_no;
     private String firstname;
     private String lastname;
 }

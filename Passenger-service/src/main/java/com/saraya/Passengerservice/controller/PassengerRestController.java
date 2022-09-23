@@ -42,8 +42,14 @@ public class PassengerRestController {
         return ResponseEntity.ok("Passenger "+passenger_id+" was deleted successfully");
     }
 
-    @GetMapping("/passenger-no/{passenger_no}")
-    public ResponseEntity<Passenger> getPassengerByPassenger_no(@PathVariable String passenger_no) {
-        return ResponseEntity.ok(service.getPassengerByPassenger_no(passenger_no));
+    @GetMapping("/passport-no/{passport_no}")
+    public ResponseEntity<Passenger> getPassengerByPassenger_no(@PathVariable String passport_no) {
+        return ResponseEntity.ok(service.getPassengerByPassenger_no(passport_no));
+    }
+    
+    @GetMapping("/{firstname}/{lastname}")
+    public ResponseEntity<Passenger> getPassengerByFirstnameAndLastname(@PathVariable String firstname,
+                                                                        @PathVariable String lastname) {
+        return ResponseEntity.ok(service.getPassengerByFirstnameAndLastname(firstname, lastname));
     }
 }
