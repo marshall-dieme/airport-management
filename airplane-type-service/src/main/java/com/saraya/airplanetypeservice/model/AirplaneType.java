@@ -1,9 +1,6 @@
 package com.saraya.airplanetypeservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class AirplaneType {
@@ -12,6 +9,7 @@ public class AirplaneType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int airplaneTypeId;
 
+    @Column(unique = true)
     private String airplaneTypeIdentifier;
 
     private String airplaneTypeDescription;

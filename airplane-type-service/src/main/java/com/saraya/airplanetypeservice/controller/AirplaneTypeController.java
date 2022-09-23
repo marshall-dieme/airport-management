@@ -52,7 +52,7 @@ public class AirplaneTypeController {
     @GetMapping("/{airplaneTypeIdentifier}")
     public Integer findByAirplaneTypeIdentifier(
             @PathVariable String airplaneTypeIdentifier) {
-        return  service.findByAirplaneTypeIdentifier(airplaneTypeIdentifier).getAirplaneId();
+        return  service.findByAirplaneTypeIdentifier(airplaneTypeIdentifier).getAirplaneTypeId();
     }
 
 }

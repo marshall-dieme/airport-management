@@ -3,6 +3,8 @@ package com.saraya.airplaneservice.service;
 import com.saraya.airplaneservice.model.Airplane;
 import com.saraya.airplaneservice.model.AirplaneDTO;
 import com.saraya.airplaneservice.repository.AirplaneRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,6 +17,7 @@ import java.util.Map;
 @Transactional
 public class AirplaneService {
 
+    private final Logger LOGGER = LoggerFactory.getLogger(AirplaneService.class);
     public final AirplaneRepository repo;
 
     public AirplaneService(AirplaneRepository repo) {
@@ -39,6 +42,8 @@ public class AirplaneService {
                 Integer.class, UrlValues)
                 .getBody();
         changeToModel(dto , airplane);
+        assert airplaneTypeId != null;
+        LOGGER.warn(airplaneTypeId.toString());
         airplane.setAirplaneTypeId(airplaneTypeId);
         return repo.save(airplane);
     }
@@ -46,12 +51,12 @@ public class AirplaneService {
     public Airplane update(Airplane dto){
         Airplane airplane = new Airplane();
         airplane.setCapacity(dto.getCapacity());
-        airplane.setAirplaneTypeIdentifier(dto.getAirplaneTypeIdentifier());
+        //airplane.setAirplaneTypeIdentifier(dto.getAirplaneTypeIdentifier());
         return repo.save(airplane);
     }
     public static void changeToModel(AirplaneDTO dto , Airplane airplane){
         airplane.setCapacity(dto.getCapacity());
-        airplane.setAirplaneTypeIdentifier(dto.getAirplaneTypeIdentifier());
+        //airplane.setAirplaneTypeIdentifier(dto.getAirplaneTypeIdentifier());
     }
 
 

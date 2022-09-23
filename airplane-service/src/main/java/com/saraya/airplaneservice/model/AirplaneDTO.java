@@ -4,7 +4,7 @@ public class AirplaneDTO {
 
     private int airplaneId;
 
-    private String capacity;
+    private int capacity;
 
     private int airplaneTypeId;
 
@@ -28,11 +28,11 @@ public class AirplaneDTO {
         this.airplaneId = airplaneId;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
@@ -52,10 +52,11 @@ public class AirplaneDTO {
         this.airlineId = airlineId;
     }
 
-    public AirplaneDTO(int airplaneId, String capacity, int airplaneTypeId, int airlineId) {
+    public AirplaneDTO(int airplaneId, int capacity, int airplaneTypeId, int airlineId, String airplaneTypeIdentifier) {
         this.airplaneId = airplaneId;
         this.capacity = capacity;
         this.airplaneTypeId = airplaneTypeId;
         this.airlineId = airlineId;
+        this.airplaneTypeIdentifier = airplaneTypeIdentifier;
     }
 }

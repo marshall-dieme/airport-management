@@ -12,21 +12,14 @@ public class Airplane {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int airplaneId;
 
-    private String capacity;
+    private int capacity;
 
     private int airplaneTypeId;
 
     private int airlineId;
 
-    private String airplaneTypeIdentifier;
+   // private String airplaneTypeIdentifier;
 
-    public String getAirplaneTypeIdentifier() {
-        return airplaneTypeIdentifier;
-    }
-
-    public void setAirplaneTypeIdentifier(String airplaneTypeIdentifier) {
-        this.airplaneTypeIdentifier = airplaneTypeIdentifier;
-    }
 
     public Airplane() {
     }
@@ -47,15 +40,6 @@ public class Airplane {
         this.airlineId = airlineId;
     }
 
-    public String getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(String capacity) {
-        this.capacity = capacity;
-    }
-
-
     public int getAirplaneTypeId() {
         return airplaneTypeId;
     }
@@ -64,7 +48,15 @@ public class Airplane {
         this.airplaneTypeId = airplaneTypeId;
     }
 
-    public Airplane(int airplaneId, String capacity, int airplaneTypeId, int airlineId) {
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public Airplane(int airplaneId, int capacity, int airplaneTypeId, int airlineId) {
         this.airplaneId = airplaneId;
         this.capacity = capacity;
         this.airplaneTypeId = airplaneTypeId;

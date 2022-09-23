@@ -3,6 +3,8 @@ package com.saraya.airportservice.service;
 import com.saraya.airportservice.model.Airport;
 import com.saraya.airportservice.model.AirportDTO;
 import com.saraya.airportservice.repository.AirportRepository;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,6 +16,9 @@ import java.util.Map;
 @Service
 @Transactional
 public class AirportService {
+
+    @Autowired
+    private ModelMapper mapper;
 
     private final AirportRepository repo;
 
@@ -30,7 +35,7 @@ public class AirportService {
     }
 
     public Airport create (AirportDTO dto){
-        Airport airport = new Airport();
+        Airport airport = mapper.map(dto , Airport.class);
         RestTemplate template = new RestTemplate();
             Map<String , String> UrlValues = new HashMap<>();
         UrlValues.put(("country"),dto.getCountry());
@@ -39,24 +44,14 @@ public class AirportService {
                 "http://localhost:8081/airport-geo/{country}/{city}",
                 Integer.class, UrlValues)
                 .getBody();
-        changeToModel(dto, airport);
+        //changeToModel(dto, airport);
         airport.setAirportGeoId(airport_geo_id);
         return repo.save(airport);
     }
 
-    public Airport update(AirportDTO dto){
-        Airport airport = new Airport();
-        airport.setAirportId(dto.getAirportId());
-        changeToModel(dto , airport);
+    public Airport update(Airport airport){
         return repo.save(airport);
     }
-
-    public static void changeToModel(AirportDTO dto , Airport airport){
-        airport.setAirportName(dto.getAirportName());
-        airport.setIata(dto.getIata());
-        airport.setIcao(dto.getIcao());
-    }
-
     public void deleteByIata(String iata){
         Airport airport = repo.findByIata(iata);
         repo.delete(airport);
