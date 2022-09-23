@@ -41,6 +41,7 @@ public class AirportGeoController {
 
     @PutMapping
     public AirportGeo update(@RequestBody AirportGeo airportGeo){
+        LOGGER.info("Update Airport Geo....");
         return service.update(airportGeo);
     }
 

@@ -6,7 +6,7 @@ public class PassagerDetailsDTO {
 
     private int passagerDetailsId;
 
-    private LocalDate birthdate;
+    private String birthdate;
 
     private String sex;
 
@@ -28,11 +28,11 @@ public class PassagerDetailsDTO {
         this.passagerDetailsId = passagerDetailsId;
     }
 
-    public LocalDate getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(LocalDate birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
@@ -84,7 +84,7 @@ public class PassagerDetailsDTO {
         this.telephone = telephone;
     }
 
-    public PassagerDetailsDTO(int passagerDetailsId, LocalDate birthdate, String sex, String street, String city, String country, String email, String telephone) {
+    public PassagerDetailsDTO(int passagerDetailsId, String birthdate, String sex, String street, String city, String country, String email, String telephone) {
         this.passagerDetailsId = passagerDetailsId;
         this.birthdate = birthdate;
         this.sex = sex;

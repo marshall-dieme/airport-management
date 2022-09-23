@@ -3,6 +3,8 @@ package com.saraya.airlineservice.service;
 import com.saraya.airlineservice.model.Airline;
 import com.saraya.airlineservice.model.AirlineDTO;
 import com.saraya.airlineservice.repository.AirlineRepository;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,6 +17,8 @@ import java.util.Map;
 @Transactional
 public class AirlineService {
 
+    @Autowired
+    private ModelMapper mapper;
     private final AirlineRepository repo;
 
     public AirlineService(AirlineRepository repo) {
@@ -30,7 +34,7 @@ public class AirlineService {
     }
 
     public Airline create (AirlineDTO dto){
-        Airline airline = new Airline();
+        Airline airline = mapper.map(dto , Airline.class);
         RestTemplate template = new RestTemplate();
         Map<String , String> UrlValues = new HashMap<>();
         UrlValues.put(("airportName"), dto.getAirportName());
@@ -38,7 +42,7 @@ public class AirlineService {
                         "http://localhost:8083/airport/airportName/{airportName}",
                         Integer.class, UrlValues)
                 .getBody();
-        changeToModel(dto, airline);
+        //changeToModel(dto, airline);
        // assert airportId != null;
         airline.setAirportId(airportId);
         return repo.save(airline);
@@ -47,15 +51,7 @@ public class AirlineService {
     public Airline update(AirlineDTO dto){
         Airline airline = new Airline();
         airline.setAirlineId(dto.getAirlineId());
-        changeToModel(dto , airline);
         return repo.save(airline);
-    }
-
-    public static void changeToModel(AirlineDTO dto , Airline airline){
-        //airline.setAirportId(dto.getAirportId());
-        airline.setAirlineName(dto.getAirlineName());
-        airline.setIata(dto.getIata());
-        //airline.setAirportName(dto.getAirportName());
     }
 
     public void deleteByAirlineName(String airlineName){
