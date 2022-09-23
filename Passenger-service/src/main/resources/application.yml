@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: passenger-service
+
+
+  #spring.cloud.config.import-check.enabled=false
+  cloud:
+    config:
+      enabled: false
+
+server:
+  port: 8089
+
