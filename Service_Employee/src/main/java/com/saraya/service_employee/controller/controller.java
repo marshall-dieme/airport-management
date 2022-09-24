@@ -18,8 +18,8 @@ public class controller {
         this.repository = repository;
 
     }
-    @GetMapping("/{service_id}/{employee_id")
-    public void create (@PathVariable("id") long service_id, @PathVariable("id") long employee_id){
+    @GetMapping("/{service_id}/{employee_id}")
+    public void create (@PathVariable("id") long service_id, @PathVariable long employee_id){
         ServiceEmployeeRelation relation = new ServiceEmployeeRelation();
         relation.setService_id(service_id);
         relation.setEmployee_id(employee_id);
