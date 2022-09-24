@@ -1,9 +1,6 @@
 package com.saraya.Parkingservice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -28,13 +25,13 @@ public class Parking {
     private double amount;
 
     @Column(columnDefinition = "date")
-    private LocalDate entry_date;
+    private LocalDate entry_date = LocalDate.now();
 
     @Column(columnDefinition = "date")
     private LocalDate exit_date;
 
     @Column(columnDefinition = "time")
-    private LocalTime entry_time;
+    private LocalTime entry_time = LocalTime.now();
 
     @Column(columnDefinition = "time")
     private LocalTime exit_time;

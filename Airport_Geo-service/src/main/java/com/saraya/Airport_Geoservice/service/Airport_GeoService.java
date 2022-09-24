@@ -39,4 +39,7 @@ public class Airport_GeoService {
         repository.deleteById(airport_geo_id);
     }
 
+    public Airport_Geo getAirport_Geo(String country, String city) {
+        return repository.findAirport_GeoByCountryAndCity(country, city);
+    }
 }

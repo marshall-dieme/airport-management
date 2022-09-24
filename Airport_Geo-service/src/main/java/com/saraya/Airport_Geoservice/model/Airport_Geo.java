@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +16,10 @@ public class Airport_Geo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long airport_geo_id;
+
+    @Column(unique = true)
     private String country;
+
+    @Column(unique = true)
     private String city;
 }

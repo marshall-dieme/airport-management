@@ -22,6 +22,8 @@ public class Airport {
     private String iata;
     private String icao;
     private String airport_name;
-    private String airport_geo_country;
-    private String service_name;
+    private Long airport_geo_id;
+    private Long service_id;
+    private Long airline_id;
+
 }

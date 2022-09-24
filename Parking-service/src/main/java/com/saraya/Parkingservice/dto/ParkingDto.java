@@ -16,10 +16,10 @@ import java.time.LocalTime;
 @Setter
 public class ParkingDto implements Serializable {
     private Long parking_id;
-    private String passport_no;
     private String name;
     private String passenger_firstname;
     private String passenger_lastname;
+    private String passenger_passport_no;
     private String email;
     private String country;
     private String car_no;

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: airline-service
+
+server:
+  port: 8084

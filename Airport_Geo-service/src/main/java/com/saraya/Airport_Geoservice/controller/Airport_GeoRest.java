@@ -41,4 +41,11 @@ public class Airport_GeoRest {
         service.deleteAirport_Geo(airport_geo_id);
         return ResponseEntity.ok("Airport_Geo "+airport_geo_id+" has been deleted");
     }
+
+
+    @GetMapping("/{country}/{city}")
+    public ResponseEntity<Airport_Geo> getAirport_GeoByCountryAndCity(
+            @PathVariable String country, @PathVariable String city) {
+        return ResponseEntity.ok(service.getAirport_Geo(country, city));
+    }
 }
