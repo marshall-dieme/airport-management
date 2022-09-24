@@ -11,6 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Entity
 public class Airport_Geo {
     @Id
@@ -19,7 +23,7 @@ public class Airport_Geo {
     private String country;
     private String city;
 
-    public Airport_Geo() {
+   /* public Airport_Geo() {
 
     }
     public Airport_Geo(long airport_geo_id, String country, String city) {
@@ -52,5 +56,5 @@ public class Airport_Geo {
 
     public void setCity(String city) {
         this.city = city;
-    }
+    }*/
 }

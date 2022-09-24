@@ -17,6 +17,7 @@ public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long airportgeoId;
     private String iata;
     private String icao;
     private String airportName;

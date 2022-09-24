@@ -1,11 +1,10 @@
-package com.saraya.airport.model;
+package com.saraya.airport.Dto;
 
 import lombok.Data;
 
 @Data
 public class AirportDto {
     private Long id;
-    private Long airportgeoId;
     private String iata;
     private String icao;
     private String airportName;

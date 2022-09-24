@@ -17,7 +17,7 @@ public class Airport_GeoService {
         return repo.findAll();
     }
     public Airport_Geo getById(Long id) {
-        return (Airport_Geo) repo.findById(id).get();
+        return repo.findById(id).orElse(new Airport_Geo());
     }
     public Airport_Geo create(Airport_Geo airport_Geo) {
         return repo.save(airport_Geo);
@@ -27,5 +27,8 @@ public class Airport_GeoService {
     }
     public void delete(Long id) {
         repo.deleteById(id);
+    }
+    public Airport_Geo getByCountryAndCity(String Country,String city){
+        return repo.findAirport_GeosByCountryAndCity(Country, city);
     }
 }

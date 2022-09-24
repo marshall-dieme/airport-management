@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface Airport_GeoRepository extends JpaRepository<Airport_Geo,Long> {
+    Airport_Geo findAirport_GeosByCountryAndCity(String country, String city);
 }
