@@ -3,6 +3,9 @@ package com.saraya.airportservice.controller;
 import com.saraya.airportservice.model.Airport;
 import com.saraya.airportservice.model.AirportDTO;
 import com.saraya.airportservice.service.AirportService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/airport")
 public class AirportController {
+
+	 private final Logger LOGGER = LoggerFactory.getLogger(AirportController.class);
 
     public final AirportService service;
 
@@ -30,6 +35,7 @@ public class AirportController {
 
     @PostMapping
     public Airport create(@RequestBody AirportDTO airport){
+    	LOGGER.info("*********CREATING NEW AIRPORT*****");
         return service.create(airport);
     }
 
@@ -52,7 +58,7 @@ public class AirportController {
     @GetMapping("/airportName/{airportName}")
     public Integer  findByAirportName(
             @PathVariable String airportName) {
-        return  service.findByAirportName(airportName).getAirportId();
+        return  service.findByAirportName(airportName).getAirportGeoId();
     }
 
 }

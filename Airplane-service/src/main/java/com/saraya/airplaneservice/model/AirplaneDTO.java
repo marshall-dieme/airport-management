@@ -3,7 +3,7 @@ package com.saraya.airplaneservice.model;
 public class AirplaneDTO {
 
     private int airplaneId;
-    private String capacity;
+    private int capacity;
     private int airplaneTypeId;
     private int airlineId;
     private String airplaneTypeIdentifier;
@@ -13,7 +13,7 @@ public class AirplaneDTO {
     public AirplaneDTO() {
 	}
     
-    public AirplaneDTO(int airplaneId, String capacity, int airplaneTypeId, int airlineId) {
+    public AirplaneDTO(int airplaneId, int capacity, int airplaneTypeId, int airlineId) {
         this.airplaneId = airplaneId;
         this.capacity = capacity;
         this.airplaneTypeId = airplaneTypeId;
@@ -36,11 +36,11 @@ public class AirplaneDTO {
         this.airplaneId = airplaneId;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 

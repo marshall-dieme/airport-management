@@ -1,18 +1,12 @@
 package com.saraya.employeeservice.model;
 
-import javax.persistence.*;
-import java.time.LocalDate;
 
-@Entity
-public class Employee {
+public class EmployeeDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
     private String firstname;
     private String lastname;
-    @Column(columnDefinition = "date")
-    private LocalDate hiredate;
+    private String hiredate;
     private String sex;
     private String street;
     private String city;
@@ -24,11 +18,11 @@ public class Employee {
     private String username;
     private String password;
 
-    public Employee() {
+    public EmployeeDto() {
     }
 
     
-	public Employee(int employeeId, String firstname, String lastname, LocalDate hiredate, String sex, String street,
+	public EmployeeDto(int employeeId, String firstname, String lastname, String hiredate, String sex, String street,
 			String city, String zip, String country, String email, String telephone, Double salary, String username,
 			String password) {
 		this.employeeId = employeeId;
@@ -72,11 +66,11 @@ public class Employee {
 		this.lastname = lastname;
 	}
 
-	public LocalDate getHiredate() {
+	public String getHiredate() {
 		return hiredate;
 	}
 
-	public void setHiredate(LocalDate hiredate) {
+	public void setHiredate(String hiredate) {
 		this.hiredate = hiredate;
 	}
 

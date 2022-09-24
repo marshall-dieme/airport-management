@@ -1,6 +1,7 @@
 package com.saraya.employeeservice.controller;
 
 import com.saraya.employeeservice.model.Employee;
+import com.saraya.employeeservice.model.EmployeeDto;
 import com.saraya.employeeservice.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,14 +22,14 @@ public class EmployeeController {
         return service.getAll();
     }
 
-    @GetMapping("/{firstName}")
-    public Employee getByFirstName(
-            @PathVariable String firstName){
-        return service.getByFirstName(firstName);
+    @GetMapping("/{username}")
+    public Employee getByUsername(
+            @PathVariable String username){
+        return service.getByUsername(username);
     }
 
     @PostMapping
-    public Employee create(@RequestBody Employee employee){
+    public Employee create(@RequestBody EmployeeDto employee){
         return service.create(employee);
     }
 
@@ -37,10 +38,10 @@ public class EmployeeController {
         return service.update(employee);
     }
 
-    @DeleteMapping("delete/{firstName}")
-    public void deleteByFirstName(
-            @PathVariable String firstName){
-        service.deleteByFirstName(firstName);
+    @DeleteMapping("delete/{username}")
+    public void deleteByUsername(
+            @PathVariable String username){
+        service.deleteByUsername(username);
     }
 
     @DeleteMapping("/{employeeId}")

@@ -10,16 +10,14 @@ public class Services {
     private int serviceId;
     private String servicesName;
     private int airportId;
-    private int employeeId;
     private String airportName;
 
     public Services() {
     }
-    public Services(int serviceId, String servicesName, int airportId, int employeeId, String airportName) {
+    public Services(int serviceId, String servicesName, int airportId, String airportName) {
         this.serviceId = serviceId;
         this.servicesName = servicesName;
         this.airportId = airportId;
-        this.employeeId = employeeId;
         this.airportName = airportName;
     }
     public int getServiceId() {
@@ -44,14 +42,6 @@ public class Services {
 
     public void setAirportId(int airportId) {
         this.airportId = airportId;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
     }
 
     public String getAirportName() {
