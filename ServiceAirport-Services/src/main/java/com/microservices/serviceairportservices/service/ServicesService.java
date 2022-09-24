@@ -59,7 +59,7 @@ public class ServicesService {
         repo.deleteById(servicesId);
     }
 
-    public Services findAirportByService(String airportName){
+    public List<Services> findAirportByService(String airportName){
         RestTemplate template = new RestTemplate();
         Map<String, String> urlValues = new HashMap<>();
         urlValues.put("airportName", airportName);
@@ -69,7 +69,12 @@ public class ServicesService {
                         urlValues)
                 .getBody();
 
-        return repo.findByIdAirport(idAirport);
+        return (List<Services>)
+                repo.findByIdAirport(idAirport);
+    }
+
+    public String getIdServ(String servicesName) {
+        return repo.getIdServ(servicesName);
     }
 
 }

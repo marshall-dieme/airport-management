@@ -13,6 +13,9 @@ public class Services {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long servicesId;
 
+    @Id
+    private String servId;
+
     private String servicesName;
 
     private String idAirport;
@@ -47,5 +50,13 @@ public class Services {
 
     public void setIdAirport(String idAirport) {
         this.idAirport = idAirport;
+    }
+
+    public String getServId() {
+        return servId;
+    }
+
+    public void setServId(String servId) {
+        this.servId = servId;
     }
 }

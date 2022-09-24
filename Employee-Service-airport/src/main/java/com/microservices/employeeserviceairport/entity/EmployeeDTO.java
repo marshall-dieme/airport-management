@@ -1,4 +1,4 @@
-package com.microservices.employeeserviceairport.dto;
+package com.microservices.employeeserviceairport.entity;
 
 
 public class EmployeeDTO {
@@ -31,12 +31,12 @@ public class EmployeeDTO {
 
     private String password;
 
-    private String idServices;
+    private String serv;
 
     public EmployeeDTO() {
     }
 
-    public EmployeeDTO(Long id_employee, String firstname, String lastname, String birthDate, String sexe, String street, String city, String zip, String country, String email, String telephone, Double salary, String username, String password, String idServices) {
+    public EmployeeDTO(Long id_employee, String firstname, String lastname, String birthDate, String sexe, String street, String city, String zip, String country, String email, String telephone, Double salary, String username, String password, String serv) {
         this.id_employee = id_employee;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -51,7 +51,7 @@ public class EmployeeDTO {
         this.salary = salary;
         this.username = username;
         this.password = password;
-        this.idServices = idServices;
+        this.serv = serv;
     }
 
     public Long getId_employee() {
@@ -166,11 +166,11 @@ public class EmployeeDTO {
         this.password = password;
     }
 
-    public String getIdServices() {
-        return idServices;
+    public String getServ() {
+        return serv;
     }
 
-    public void setIdServices(String idServices) {
-        this.idServices = idServices;
+    public void setServ(String serv) {
+        this.serv = serv;
     }
 }

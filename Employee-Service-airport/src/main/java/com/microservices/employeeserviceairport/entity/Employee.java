@@ -38,12 +38,12 @@ public class Employee {
 
     private String password;
 
-    private String idServices;
+    private String idServ;
 
     public Employee() {
     }
 
-    public Employee(Long id_employee, String firstname, String lastname, LocalDate birthDate, String sexe, String street, String city, String zip, String country, String email, String telephone, Double salary, String username, String password, String idServices) {
+    public Employee(Long id_employee, String firstname, String lastname, LocalDate birthDate, String sexe, String street, String city, String zip, String country, String email, String telephone, Double salary, String username, String password, String idServ) {
         this.id_employee = id_employee;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -58,7 +58,7 @@ public class Employee {
         this.salary = salary;
         this.username = username;
         this.password = password;
-        this.idServices = idServices;
+        this.idServ = idServ;
     }
 
     public Long getId_employee() {
@@ -173,11 +173,11 @@ public class Employee {
         this.password = password;
     }
 
-    public String getIdServices() {
-        return idServices;
+    public String getIdServ() {
+        return idServ;
     }
 
-    public void setIdServices(String idServices) {
-        this.idServices = idServices;
+    public void setIdServ(String idServ) {
+        this.idServ = idServ;
     }
 }

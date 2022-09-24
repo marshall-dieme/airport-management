@@ -1,7 +1,7 @@
 package com.microservices.employeeserviceairport.service;
 
 
-import com.microservices.employeeserviceairport.dto.EmployeeDTO;
+import com.microservices.employeeserviceairport.entity.EmployeeDTO;
 import com.microservices.employeeserviceairport.entity.Employee;
 import com.microservices.employeeserviceairport.repository.EmployeeRepo;
 import org.springframework.stereotype.Service;
@@ -35,15 +35,16 @@ public class EmployeeService {
         Employee employee = new Employee();
         RestTemplate template = new RestTemplate();
         Map<String, String> urlValues = new HashMap<>();
-        urlValues.put("servicesName", employee.getIdServices());
-        String idServices  = template.getForEntity("http://localhost:8002/depts/name/{name}",
+        urlValues.put("name", dto.getServ());
+        String idServ  = template.getForEntity(
+                "http://localhost:8002/services/name/{name}",
                 String.class).getBody();
-        changetoModel(dto, employee);
-        employee.setIdServices(idServices);
+        changeToModel(dto, employee);
+        employee.setIdServ(idServ);
         return repo.save(employee);
     }
 
-    private void changetoModel(EmployeeDTO dto, Employee employee) {
+    private void changeToModel(EmployeeDTO dto, Employee employee) {
         employee.setFirstname(dto.getFirstname());
         employee.setLastname(dto.getLastname());
         employee.setSexe(dto.getSexe());
@@ -65,11 +66,40 @@ public class EmployeeService {
     public Employee update(EmployeeDTO dto){
         Employee employee = new Employee();
         employee.setId_employee(dto.getId_employee());
-        changetoModel(dto, employee);
+        changeToModel(dto, employee);
         return repo.save(employee);
     }
 
     public void delete (Long id_employee){
         repo.deleteById(id_employee);
     }
+
+    public List<Employee> getByServ(String servicesName) {
+        Map<String, String> values = new HashMap<>();
+        values.put("name", servicesName);
+        RestTemplate template = new RestTemplate();
+        String idServ = template.getForEntity(
+                "http://localhost:8002/services/name/{name}",
+                String.class, values).getBody();
+
+        return repo.findByIdServ(idServ);
+    }
+
+    public Employee CreateWithRelation(EmployeeDTO dto) {
+        Employee employee = new Employee();
+        changeToModel(dto, employee);
+        String idServ = new RestTemplate().getForEntity(
+                "http://localhost:8002/services/name/"+dto.getServ(),
+                String.class).getBody();
+        employee = repo.save(employee);
+        Map<String, String> values = new HashMap<>();
+        values.put("idDept", idServ);
+        values.put("idEmp", String.valueOf(employee.getId_employee()));
+        new RestTemplate().getForEntity(
+                "http://localhost:8800/relation/{idServ}/{idEmp}",
+                Void.class, values);
+
+        return employee;
+    }
+
 }
