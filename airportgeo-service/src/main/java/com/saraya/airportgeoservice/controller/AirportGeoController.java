@@ -28,14 +28,14 @@ public class AirportGeoController {
     }
 
     @GetMapping("/{id}")
-    public Optional<AirportGeo> getById(@PathVariable("id") int id){
+    public AirportGeo getById(@PathVariable("id") int id){
         return service.getById(id);
     }
 
     @GetMapping("/{country}/{city}")
-    public Optional<AirportGeo> getById(@PathVariable("country") String country,
+    public int getById(@PathVariable("country") String country,
                                         @PathVariable("city") String city){
-       return service.getByCountryAndCity(country, city);
+        return service.getIdByCountryAndCity(country, city);
     }
 
     @GetMapping("/{name}")
@@ -57,4 +57,11 @@ public class AirportGeoController {
     public void delete(@PathVariable("id") int id){
         service.delete(id);
     }
+
+    @GetMapping("/put/{airportId}/{airportGeoid}")
+    public void putAirportIdForAirportGeo(@PathVariable("airportId") int airportId,
+                                          @PathVariable("airportGeoid") int airportGeoid){
+      service.putAirportIdforAirportGeoId(airportId, airportGeoid);
+    }
+
 }

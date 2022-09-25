@@ -25,8 +25,8 @@ public class AirportGeoService {
         return repo.findAll();
     }
 
-    public Optional<AirportGeo> getById(int id){
-        return repo.findById(id);
+    public AirportGeo getById(int id){
+        return repo.findById(id).get();
     }
 
     public AirportGeo create(AirportGeoDto dto){
@@ -42,8 +42,8 @@ public class AirportGeoService {
         repo.deleteById(id);
     }
 
-    public Optional<AirportGeo> getByCountryAndCity(String country, String city) {
-        return  repo.findByCountryAndCity(country, city);
+    public int getIdByCountryAndCity(String country, String city) {
+        return  repo.findByCountryAndCity(country, city).get().getAirportGeoId();
     }
 
     public Airport getAirportByName(String name){
@@ -62,5 +62,11 @@ public class AirportGeoService {
         airportGeo.setCity(dto.getCity());
         airportGeo.setCountry(dto.getCountry());
         return airportGeo;
+    }
+
+    public void putAirportIdforAirportGeoId(int airportId, int airportGeoid) {
+        AirportGeo airportGeo = getById(airportGeoid);
+        airportGeo.setAirportId(airportId);
+        repo.save(airportGeo);
     }
 }
