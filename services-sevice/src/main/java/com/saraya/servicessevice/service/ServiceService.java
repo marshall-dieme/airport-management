@@ -1,6 +1,6 @@
 package com.saraya.servicessevice.service;
 
-import com.saraya.servicessevice.bean.ServiceDto;
+import com.saraya.servicessevice.dto.ServiceDto;
 import com.saraya.servicessevice.bean.Services;
 import com.saraya.servicessevice.repo.ServiceRepo;
 import org.springframework.stereotype.Service;
@@ -24,16 +24,6 @@ public class ServiceService {
     }
 
     public Services creat(ServiceDto dto){
-
-        RestTemplate restTemplate = new RestTemplate();
-
-        Map<String, String> urlValues = new HashMap<>();
-        urlValues.put("airportName", dto.getAirportName());
-
-        int airportId = restTemplate.getForEntity("http://localhost:8004/Airport/{airportName}",
-                Integer.class, urlValues).getBody();
-        dto.setAirportId(airportId);
-
         return repo.save(toEntity(dto));
     }
 
@@ -45,7 +35,35 @@ public class ServiceService {
         Services service = new Services();
         service.setServiceId(dto.getServiceId());
         service.setName(dto.getName());
-        service.setAirportId(dto.getAirportId());
         return service;
+    }
+
+    public Services putAirportForService(int serviceId, String airportName) {
+        Services services = repo.findById(serviceId).get();
+
+        RestTemplate restTemplate = new RestTemplate();
+        int airportId = restTemplate.getForEntity("http://localhost:8004/Airport/"+airportName,
+                Integer.class).getBody();
+
+        services.setAirportId(airportId);
+        return repo.save(services);
+    }
+
+    public String putEmployeeForService(int serviceId, String employeeUsername) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        int employeeId = restTemplate.getForEntity("http://localhost:8008/Employee/"+employeeUsername,
+                Integer.class).getBody();
+
+        Map<String, Integer> urlValues = new HashMap<>();
+        urlValues.put("employeeId", employeeId);
+        urlValues.put("serviceId", serviceId);
+        new RestTemplate().getForEntity("http://localhost:8024/Relation/{employeeId}/{serviceId}", void.class, urlValues).getBody();
+
+        return "add succefull";
+    }
+
+    public List<Integer> getListEmployee() {
+        return new RestTemplate().getForEntity("http://localhost:8024/Relation/employeeId", List.class).getBody();
     }
 }

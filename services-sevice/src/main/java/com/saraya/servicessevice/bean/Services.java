@@ -1,6 +1,7 @@
 package com.saraya.servicessevice.bean;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "services")
@@ -38,4 +39,6 @@ public class Services {
     public void setAirportId(int airportId) {
         this.airportId = airportId;
     }
+
+
 }
