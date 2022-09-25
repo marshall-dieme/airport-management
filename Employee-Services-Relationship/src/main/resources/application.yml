@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: employee-services-relationship-service
+
+server:
+  port: 8093
