@@ -31,4 +31,14 @@ public class EmployeeServiceController {
     public List<EmployeeService> getAll(){
         return service.getAll();
     }
+
+    @GetMapping("/serviceId")
+    public List<Integer> getServiceId(){
+        return service.getServiceId();
+    }
+
+    @GetMapping("/employeeId")
+    public List<Integer> getEmployeeId(){
+        return service.getEmployeeId();
+    }
 }
