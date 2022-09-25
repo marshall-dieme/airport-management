@@ -24,6 +24,8 @@ public class Flight {
     @ElementCollection
     private List<Integer> airplaneId;
 
+    private int bookingId;
+
     public int getId() {
         return id;
     }
@@ -78,5 +80,13 @@ public class Flight {
 
     public void setAirplaneId(List<Integer> airplaneId) {
         this.airplaneId = airplaneId;
+    }
+
+    public int getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(int bookingId) {
+        this.bookingId = bookingId;
     }
 }

@@ -22,6 +22,11 @@ public class FlightController {
         return service.getAll();
     }
 
+    @GetMapping("/{flightNo}")
+    public int idAirline(@PathVariable("flightNo") String flightNo){
+        return service.getId(flightNo);
+    }
+
     @PostMapping
     public Flight create(@RequestBody FlightDto dto){
         return service.create(dto);
@@ -30,5 +35,10 @@ public class FlightController {
     @PostMapping("/airplane/{flightId}/{airplaneCapacity}")
     public Flight putAirplaneForAirline(@PathVariable("flightId") int flightId, @PathVariable("airplaneCapacity") int airplaneCapacity){
         return service.putAirplaneForFlight(flightId, airplaneCapacity);
+    }
+
+    @PostMapping("/booking/{flightId}/{priceBooking}")
+    public Flight putbookingForFlight(@PathVariable("flightId") int flightId, @PathVariable("priceBooking") int priceBooking){
+        return service.putbookingForFlight(flightId, priceBooking);
     }
 }
