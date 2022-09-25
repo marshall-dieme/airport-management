@@ -59,6 +59,11 @@ public class AirportController {
 		ResponseEntity<Void> responseEntity = new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
 		return responseEntity;
 	}
+	
+	@GetMapping("/{country}/{city}")
+	public Long findByCountryAndCity(@PathVariable String country, @PathVariable String city) {
+		return airportService.findByCountryAndCity(country, city).getAirport_geo_id();
+	}
 }
 
 

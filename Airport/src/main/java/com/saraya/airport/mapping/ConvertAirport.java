@@ -12,11 +12,13 @@ public class ConvertAirport {
 		ae.setIata(aiportDTO.getIata());
 		ae.setIcao(aiportDTO.getIcao());
 		ae.setAirport_name(aiportDTO.getAirport_name());
+		
 		return ae;
 	}
 	
 	public AiportDTO EntityTOdto(AirportEntity airportEntity) {
 		AiportDTO apdto = new AiportDTO();
+		apdto.setAirport_geo_id(airportEntity.getAirport_geo_id());
 		apdto.setAirport_id(airportEntity.getAirport_id());
 		apdto.setIata(airportEntity.getIata());
 		apdto.setIcao(airportEntity.getIcao());

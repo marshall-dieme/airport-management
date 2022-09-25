@@ -69,6 +69,12 @@ public class ServiceImpl implements AirportService{
 		airportGeoRepository.deleteById(airportgeoId);
 		
 	}
+
+	@Override
+	public AirportGeoDTO findByCountryAndCity(String country, String city) {
+		AirportGeo airportGeo = airportGeoRepository.findByCountryAndCity(country, city);
+		return convertDtoTOEntity.EntityTodto(airportGeo);
+	}
 	
 
 }

@@ -25,7 +25,7 @@ public class AirportController {
 	
 	@PostMapping("/createAirport")
 	public ResponseEntity<AiportDTO> createAirport(@RequestBody AiportDTO aiportDTO) {
-		aiportDTO = airportService.createAirport(aiportDTO);
+		aiportDTO = airportService.create(aiportDTO);
 		ResponseEntity<AiportDTO> responseEntity = new ResponseEntity<AiportDTO>(aiportDTO, HttpStatus.CREATED);
 		return responseEntity;
 	}
