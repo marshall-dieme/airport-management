@@ -76,10 +76,10 @@ public class EmployeeService {
 
     public List<Employee> getByServ(String servicesName) {
         Map<String, String> values = new HashMap<>();
-        values.put("name", servicesName);
+        values.put("servicesName", servicesName);
         RestTemplate template = new RestTemplate();
         String idServ = template.getForEntity(
-                "http://localhost:8002/services/name/{name}",
+                "http://localhost:8002/services/servicesName/{servicesName}",
                 String.class, values).getBody();
 
         return repo.findByIdServ(idServ);
@@ -89,7 +89,7 @@ public class EmployeeService {
         Employee employee = new Employee();
         changeToModel(dto, employee);
         String idServ = new RestTemplate().getForEntity(
-                "http://localhost:8002/services/name/"+dto.getServ(),
+                "http://localhost:8002/services/servicesName/"+dto.getServ(),
                 String.class).getBody();
         employee = repo.save(employee);
         Map<String, String> values = new HashMap<>();

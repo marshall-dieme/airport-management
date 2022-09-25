@@ -13,7 +13,6 @@ public class Services {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long servicesId;
 
-    @Id
     private String servId;
 
     private String servicesName;

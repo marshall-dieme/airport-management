@@ -48,7 +48,7 @@ public class ServiceController {
         return service.findAirportByService(airportName);
     }
 
-    @GetMapping("/name/{name}")
+    @GetMapping("/servicesName/{servicesName}")
     public String getIdServ(@PathVariable String servicesName) {
         return service.getIdServ(servicesName);
     }

@@ -20,5 +20,5 @@ public interface ServiceRepo extends JpaRepository<Services, Long> {
     @Query("select s.servId from Services s where s.servicesName =:servicesName")
     String getIdServ(String servicesName);
 
-    Services findByName(String servicesName);
+    Services findByservicesName(String servicesName);
 }

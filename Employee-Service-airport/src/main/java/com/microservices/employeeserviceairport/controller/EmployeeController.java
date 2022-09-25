@@ -25,7 +25,7 @@ public class EmployeeController {
         return service.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id_employee}")
     public Optional<Employee> getById(@PathVariable Long id_employee) {
         return service.getById(id_employee);
     }
@@ -40,7 +40,7 @@ public class EmployeeController {
         return service.update(dto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id_employee}")
     public void delete(@PathVariable Long id_employee) {
         service.delete(id_employee);
     }
@@ -49,7 +49,7 @@ public class EmployeeController {
     public Employee CreateWithRelation(@RequestBody EmployeeDTO employee) {
         return service.CreateWithRelation(employee);
     }
-    @GetMapping("/{name}/employees")
+    @GetMapping("/{servicesName}/employees")
     public List<Employee> getEmpByServ(@PathVariable String servicesName) {
         return service.getByServ(servicesName);
     }
