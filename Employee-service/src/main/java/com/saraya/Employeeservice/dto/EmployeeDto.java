@@ -1,6 +1,5 @@
-package com.saraya.Employeeservice;
+package com.saraya.Employeeservice.dto;
 
-import com.saraya.Employeeservice.model.Gender;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,14 +10,14 @@ public class EmployeeDto implements Serializable {
     private String firstname;
     private String lastname;
     private String birthdate;
-    private Gender sex;
+    private String sex;
     private String email;
     private String telephone;
     private double salary;
     private String street;
     private String city;
     private String country;
-    private String zip;
+    private int zip;
     private String username;
     private String password;
 }

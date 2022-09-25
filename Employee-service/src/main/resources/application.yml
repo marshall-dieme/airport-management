@@ -1,1 +1,6 @@
+spring:
+  application:
+    name: employee-service
 
+server:
+  port: 8083

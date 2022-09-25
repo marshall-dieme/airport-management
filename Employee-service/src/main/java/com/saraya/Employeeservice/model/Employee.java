@@ -22,14 +22,19 @@ public class Employee {
 
     @Column(columnDefinition = "date")
     private LocalDate birthdate;
-    private Gender sex;
+
+    @Column(unique = true)
     private String email;
-    private String telephone;
+
+    private String sex;
     private double salary;
     private String street;
     private String city;
     private String country;
-    private String zip;
+    private int zip;
+
+    @Column(unique = true)
+    private String telephone;
 
     @Column(unique = true)
     private String username;
