@@ -18,6 +18,9 @@ public class Booking {
     @ElementCollection
     private List<Integer> flightId;
 
+    @ElementCollection
+    private List<Integer> passengerId;
+
     public int getId() {
         return id;
     }
@@ -48,5 +51,13 @@ public class Booking {
 
     public void setFlightId(List<Integer> flightId) {
         this.flightId = flightId;
+    }
+
+    public List<Integer> getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(List<Integer> passengerId) {
+        this.passengerId = passengerId;
     }
 }

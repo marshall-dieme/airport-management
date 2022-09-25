@@ -46,4 +46,15 @@ public class BookingService {
 
         return repo.save(booking);
     }
+
+    public Booking putPassengerForBooking(int bookingId, int passportNo) {
+
+        Booking booking = repo.findById(bookingId).get();
+
+        RestTemplate restTemplate = new RestTemplate();
+        int passengerId = restTemplate.getForEntity("http://localhost:8010/Passenger/"+passportNo, Integer.class).getBody();
+        booking.getPassengerId().add(passengerId);
+
+        return repo.save(booking);
+    }
 }

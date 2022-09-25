@@ -36,4 +36,9 @@ public class BookingController {
     public Booking putFlightForBooking(@PathVariable("bookingId") int bookingId, @PathVariable("flightNo") int flightNo){
         return service.putFlightForBooking(bookingId, flightNo);
     }
+
+    @PostMapping("/passenger/{bookingId}/{passportNo}")
+    public Booking putPassengerForBooking(@PathVariable("bookingId") int bookingId, @PathVariable("passportNo") int passportNo){
+        return service.putPassengerForBooking(bookingId, passportNo);
+    }
 }
