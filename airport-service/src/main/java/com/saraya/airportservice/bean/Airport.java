@@ -1,6 +1,8 @@
 package com.saraya.airportservice.bean;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "airports")
@@ -16,7 +18,11 @@ public class Airport {
 
     private int airportGeoId;
 
+    @ElementCollection
+    private List<Integer> serviceId;
 
+    @ElementCollection
+    private List<Integer> airlineId;
 
     @Column(unique = true)
     private String name;
@@ -60,4 +66,21 @@ public class Airport {
     public void setIcao(boolean icao) {
         this.icao = icao;
     }
+
+    public List<Integer> getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(List<Integer> serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public List<Integer> getAirlineId() {
+        return airlineId;
+    }
+
+    public void setAirlineId(List<Integer> airlineId) {
+        this.airlineId = airlineId;
+    }
+
 }
