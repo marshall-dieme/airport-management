@@ -42,4 +42,13 @@ public class PassengerController {
         return service.putparckingForPassenger(passengerId, parkingName);
     }
 
+    @PostMapping("/rentals/{passengerId}/{rentalsName}")
+    public Passenger putRentalsForPassenger(@PathVariable("passengerId") int passengerId, @PathVariable("rentalsName") String rentalsName){
+        return service.putRentalsForPassenger(passengerId, rentalsName);
+    }
+
+    @PostMapping("/passengerDetails/{passengerId}/{emailPassengerDetail}")
+    public Passenger putPassengerDetailsForPassenger(@PathVariable("passengerId") int passengerId, @PathVariable("rentalsName") String emailPassengerDetail){
+        return service.putPassengerDetailsForPassenger(passengerId, emailPassengerDetail);
+    }
 }

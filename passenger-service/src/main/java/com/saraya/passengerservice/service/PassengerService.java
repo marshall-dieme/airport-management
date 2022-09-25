@@ -57,4 +57,26 @@ public class PassengerService {
 
         return repo.save(passenger);
     }
+
+    public Passenger putRentalsForPassenger(int passengerId, String rentalsName) {
+
+        Passenger passenger = repo.findById(passengerId).get();
+
+        RestTemplate restTemplate = new RestTemplate();
+        int rentalsId = restTemplate.getForEntity("http://localhost:8011/Parking/"+rentalsName, Integer.class).getBody();
+        passenger.setParckingId(rentalsId);
+
+        return repo.save(passenger);
+    }
+
+    public Passenger putPassengerDetailsForPassenger(int passengerId, String emailPassengerDetail) {
+
+        Passenger passenger = repo.findById(passengerId).get();
+
+        RestTemplate restTemplate = new RestTemplate();
+        int passengerDetailsId = restTemplate.getForEntity("http://localhost:8011/PassengerDetail/"+emailPassengerDetail, Integer.class).getBody();
+        passenger.setPassengerDetailsId(passengerDetailsId);
+
+        return repo.save(passenger);
+    }
 }

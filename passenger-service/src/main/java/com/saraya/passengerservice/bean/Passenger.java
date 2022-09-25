@@ -21,6 +21,10 @@ public class Passenger {
 
     private int parckingId;
 
+    private int rentalsId;
+
+    private int passengerDetailsId;
+
     public int getId() {
         return id;
     }
@@ -67,5 +71,21 @@ public class Passenger {
 
     public void setParckingId(int parckingId) {
         this.parckingId = parckingId;
+    }
+
+    public int getRentalsId() {
+        return rentalsId;
+    }
+
+    public void setRentalsId(int rentalsId) {
+        this.rentalsId = rentalsId;
+    }
+
+    public int getPassengerDetailsId() {
+        return passengerDetailsId;
+    }
+
+    public void setPassengerDetailsId(int passengerDetailsId) {
+        this.passengerDetailsId = passengerDetailsId;
     }
 }
