@@ -45,11 +45,22 @@ public class AirplaneService {
         RestTemplate template = new RestTemplate();
         Map<String, String> urlValues = new HashMap<>();
         urlValues.put("airline_name", dto.getAirline_name());
+        urlValues.put("flightNo",dto.getFlightNo());
+        urlValues.put("airplaneTypeIdentifier",dto.getAirplaneTypeIdentifier());
 
         Long idAirline = template.getForEntity("http://localhost:8500/airlines/airlineName/{airline_name}",
                 Long.class, urlValues).getBody();
+
+        Long flightId=  template.getForEntity("http://localhost:8903/flights/{flightNo}",
+                Long.class, urlValues).getBody();
+
+                Long typeId= template.getForEntity("http://localhost:8907/type/{airplaneTypeIdentifier}",
+                Long.class, urlValues).getBody();
+
         changeToModel(dto, airplane);
         airplane.setIdAirline(idAirline);
+        airplane.setFlightId(flightId);
+        airplane.setTypeId(typeId);
         return repo.save(airplane);
     }
 
@@ -71,9 +82,31 @@ public class AirplaneService {
         return repo.findByIdAirline(idAirline);
     }
 
+    public List <Airplane> getAirplanesByType(String airplaneTypeIdentifier ) {
+        Map<String, String> values = new HashMap<>();
+        values.put("airplaneTypeIdentifier", airplaneTypeIdentifier);
+
+        RestTemplate template = new RestTemplate();
+        Long typeId = template.getForEntity("http://localhost:8907/type/{airplaneTypeIdentifier}",
+                Long.class, values).getBody();
+
+        return repo.findByTypeId(typeId);
+    }
+
+    public List <Airplane> getAirplanesByFlight(String flightNo) {
+        Map<String, String> values = new HashMap<>();
+        values.put("flightNo", flightNo);
+
+        RestTemplate template = new RestTemplate();
+        Long flightId = template.getForEntity("http://localhost:8903/flights/{flightNo}",
+                Long.class, values).getBody();
+
+        return repo.findByFlightId(flightId);
+    }
+
     public Airplane update(AirplaneDto dto) {
         Airplane airplane = new Airplane();
-        airplane.setAirplane_id(dto.getAirplane_id());
+        airplane.setAirplaneId(dto.getAirplaneId());
         changeToModel(dto, airplane);
         return repo.save(airplane);
     }

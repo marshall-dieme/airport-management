@@ -6,11 +6,16 @@ import javax.persistence.*;
 public class Airplane {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long airplane_id;
+    private Long airplaneId;
 
     private Long capacity;
 
     private Long idAirline;
+
+    private Long typeId;
+    private Long flightId;
+
+
 
     public Long getCapacity() {
         return capacity;
@@ -20,12 +25,12 @@ public class Airplane {
         this.capacity = capacity;
     }
 
-    public Long getAirplane_id() {
-        return airplane_id;
+    public Long getAirplaneId() {
+        return airplaneId;
     }
 
-    public void setAirplane_id(Long airplane_id) {
-        this.airplane_id = airplane_id;
+    public void setAirplaneId(Long airplaneId) {
+        this.airplaneId = airplaneId;
     }
 
     public Long getIdAirline() {
@@ -34,5 +39,22 @@ public class Airplane {
 
     public void setIdAirline(Long idAirline) {
         this.idAirline = idAirline;
+    }
+
+
+    public Long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Long typeId) {
+        this.typeId = typeId;
+    }
+
+    public Long getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(Long flightId) {
+        this.flightId = flightId;
     }
 }

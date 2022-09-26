@@ -1,18 +1,21 @@
 package com.example.airplaneservice.model;
 
 public class AirplaneDto {
-    private Long airplane_id;
+    private Long airplaneId;
 
     private Long capacity;
 
     private String airline_name;
 
-    public Long getAirplane_id() {
-        return airplane_id;
+    private String flightNo;
+    private String airplaneTypeIdentifier;
+
+    public Long getAirplaneId() {
+        return airplaneId;
     }
 
-    public void setAirplane_id(Long airplane_id) {
-        this.airplane_id = airplane_id;
+    public void setAirplaneId(Long airplaneId) {
+        this.airplaneId = airplaneId;
     }
 
     public Long getCapacity() {
@@ -30,4 +33,22 @@ public class AirplaneDto {
     public void setAirline_name(String airline_name) {
         this.airline_name = airline_name;
     }
+
+    public String getFlightNo() {
+        return flightNo;
+    }
+
+    public void setFlightNo(String flightNo) {
+        this.flightNo = flightNo;
+    }
+
+    public String getAirplaneTypeIdentifier() {
+        return airplaneTypeIdentifier;
+    }
+
+    public void setAirplaneTypeIdentifier(String airplaneTypeIdentifier) {
+        this.airplaneTypeIdentifier = airplaneTypeIdentifier;
+    }
 }
+
+

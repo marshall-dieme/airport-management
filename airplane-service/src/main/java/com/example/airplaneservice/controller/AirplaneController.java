@@ -32,9 +32,18 @@ public class AirplaneController {
     }*/
 
    @GetMapping("/{airline_name}/airlines")
-   public List <Airplane>  getServicesByAirport(@PathVariable String airline_name) {
+   public List <Airplane>  getAirplaneByAirline(@PathVariable String airline_name) {
        return service.getAirplanesByAirline(airline_name);
    }
+
+    @GetMapping("/{flightNo}/flight")
+    public List <Airplane>  getAirplaneByFlight(@PathVariable String flightNo) {
+        return service.getAirplanesByFlight(flightNo);
+    }
+    @GetMapping("/{airplaneTypeIdentifier}/type")
+    public List <Airplane>  getAirplaneByType(@PathVariable String airplaneTypeIdentifier) {
+        return service.getAirplanesByType(airplaneTypeIdentifier);
+    }
 
 
 
