@@ -44,7 +44,7 @@ public class ServicesServices {
                 urlvalues).getBody();
         services.setId(dto.getId());
         changeToModel(services,dto);
-        services.setId(airportId);
+        services.setAirportId(airportId);
         return repo.save(services);
     }
 
