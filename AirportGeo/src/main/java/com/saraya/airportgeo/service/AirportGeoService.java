@@ -1,13 +1,11 @@
 package com.saraya.airportgeo.service;
 
-
-import com.saraya.airportgeo.entity.AirportGeo;
+import com.saraya.airportgeo.model.AirportGeo;
 import com.saraya.airportgeo.repository.AirportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 
 @Service
 public class AirportGeoService {
@@ -24,9 +22,9 @@ public class AirportGeoService {
 //        return airportRepository.findById(airport_geo_id);
 //    }
 
-       public AirportGeo findById(long id){
+    public AirportGeo findById(long id){
         return airportRepository.findById(id);
-       }
+    }
 
     public List<AirportGeo> findAll() {
         return airportRepository.findAll();
@@ -50,11 +48,4 @@ public class AirportGeoService {
 //        public String deleteById(long id){
 //            airportRepository.deleteById(id);
 //       return ""+id ;
-//    }
-
-
-
-
-
-
-}
+   }

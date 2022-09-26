@@ -1,7 +1,7 @@
-package com.saraya.airportgeo.controler;
+package com.saraya.airportgeo.controller;
 
 
-import com.saraya.airportgeo.entity.AirportGeo;
+import com.saraya.airportgeo.model.AirportGeo;
 import com.saraya.airportgeo.service.AirportGeoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -48,10 +48,9 @@ public class AirportGeoController {
 //    @DeleteMapping("/delete/{airport_geo_id}")
 //    public String deleteById(@PathVariable Long airport_geo_id){
 //        return airportGeoService.deleteById(airport_geo_id);
-//    }
+   }
 
 
 
 
 
-}
