@@ -39,9 +39,9 @@ public class Services {
         return vo;
     }
 
-    public ModelService findById(long service_id){
-        return repository.findById(service_id);
-    }
+//    //public ModelService findById(long service_id){
+//        return repository.findById(service_id);
+//    }
 
     public ModelService update(ModelService modelService){
         return repository.save(modelService);

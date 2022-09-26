@@ -35,7 +35,6 @@ public class AirplaneService {
         return vo;
 
     }
-
     public List<Airplane> findAll(){
         return repository.findAll();
     }

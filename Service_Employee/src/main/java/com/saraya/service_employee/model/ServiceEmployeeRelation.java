@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import javax.persistence.Id;
-import javax.persistence.GenerationType;
+
+import javax.persistence.*;
 import javax.persistence.GenerationType;
 
 
@@ -19,7 +19,7 @@ public class ServiceEmployeeRelation {
 
 
     @Id
-    @GeneratedValue(value = ValueGenerationType.IDENTIFY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private long service_id;
     private long employee_id;

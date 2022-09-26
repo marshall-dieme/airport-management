@@ -20,7 +20,6 @@ public class AirlineService {
     @Autowired
     private RestTemplate restTemplate;
 
-
     public Airline create(Airline airline){
         return repository.save(airline);
     }

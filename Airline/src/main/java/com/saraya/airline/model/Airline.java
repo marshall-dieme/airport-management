@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 
 @Entity
 @AllArgsConstructor
@@ -20,7 +20,5 @@ public class Airline {
     private String airline_name;
     private String iata;
     private long airport_id;
-
-
 
 }
