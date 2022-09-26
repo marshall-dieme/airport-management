@@ -4,6 +4,7 @@ import com.saraya.airportgeo.model.AirportGeo;
 import com.saraya.airportgeo.service.AirportGeoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +24,9 @@ public class AirportGeoController {
     }
 
     @GetMapping
-    public List<AirportGeo> getAll(){
-        return service.getAll();
+    public Page<AirportGeo> getAll(@RequestParam(defaultValue = "10") int page,
+                                   @RequestParam(defaultValue = "20") int nbre){
+        return service.getAllPaginated(page, nbre);
     }
 
     @GetMapping("/recup/{country}/{city}")

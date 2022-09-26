@@ -2,20 +2,16 @@ package com.saraya.employeeservice.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
-@Entity
-public class Employee {
+public class EmployeeDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int employee_id;
 
     private String firstName;
 
     private String lastName;
 
-    @Column(columnDefinition = "date")
     private LocalDate hireDate;
 
     private String sex;
@@ -40,7 +36,7 @@ public class Employee {
 
    // private int service_id;
 
-    public Employee() {
+    public EmployeeDTO() {
     }
 
     public int getEmployee_id() {
@@ -156,7 +152,7 @@ public class Employee {
     }
 
 
-    public Employee(int employee_id, String firstName, String lastName, LocalDate hireDate, String sex, String street, String city, String zip, String country, String email, String telephone, Double salary, String username, String password, int service_id) {
+    public EmployeeDTO(int employee_id, String firstName, String lastName, LocalDate hireDate, String sex, String street, String city, String zip, String country, String email, String telephone, Double salary, String username, String password, int service_id) {
         this.employee_id = employee_id;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -2,6 +2,9 @@ package com.saraya.airportgeo.service;
 
 import com.saraya.airportgeo.model.AirportGeo;
 import com.saraya.airportgeo.repository.AirportGeoRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -45,5 +48,11 @@ public class AirportGeoService {
 
     public AirportGeo findByCountryAndCity(String country , String city) {
         return repo.findByCountryAndCity(country , city);
+    }
+
+    public Page<AirportGeo> getAllPaginated(int page, int nbre) {
+        PageRequest pageable = PageRequest.of(page, nbre);
+        Page<AirportGeo> airportGeoPage = repo.findAll(pageable);
+        return airportGeoPage;
     }
 }

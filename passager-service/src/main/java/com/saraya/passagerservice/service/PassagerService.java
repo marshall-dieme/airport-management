@@ -40,6 +40,12 @@ public class PassagerService {
         RestTemplate template = new RestTemplate();
         Map<String , String> UrlValues = new HashMap<>();
         UrlValues.put(("telephone") , dto.getTelephone());
+        UrlValues.put(("birthdate") , dto.getBirthdate());
+        UrlValues.put(("sex") , dto.getSex());
+        UrlValues.put(("street") , dto.getStreet());
+        UrlValues.put(("city") , dto.getCity());
+        UrlValues.put(("country") , dto.getCountry());
+        UrlValues.put(("email") , dto.getEmail());
         Integer passagerDetailsId = template.getForEntity(
         "http://localhost:8088/passagers-details/{telephone}",
                 Integer.class, UrlValues)

@@ -34,7 +34,7 @@ public class PassagerDetailsController {
     }
 
     @PostMapping
-    public PassagerDetails create(@RequestBody PassagerDetails passagerDetails){
+    public PassagerDetails create(@RequestBody PassagerDetailsDTO passagerDetails){
         LOGGER.info("CREATING NEW Passagers Details...");
         return service.create(passagerDetails);
     }

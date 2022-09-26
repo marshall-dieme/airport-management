@@ -1,2 +1,4 @@
-package com.saraya.rentalsservice.controller;public class RentalsController {
+package com.saraya.rentalsservice.controller;
+
+public interface RentalsController {
 }

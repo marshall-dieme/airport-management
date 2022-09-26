@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,12 +39,14 @@ public class PassagerDetailsService {
         return repo.findByTelephone(telephone);
     }
 
-    public PassagerDetails create (PassagerDetails passagerDetails){
-        return repo.save(passagerDetails);
+    public PassagerDetails create (PassagerDetailsDTO passagerDetails){
+        PassagerDetails details = mapper.map(passagerDetails, PassagerDetails.class);
+        //details.setBirthdate(LocalDate.parse(passagerDetails.getBirthdate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        return repo.save(details);
     }
 
     public PassagerDetails update(PassagerDetails passagerDetails){
-        return repo.save(passagerDetails);
+        return repo.save(mapper.map(passagerDetails , PassagerDetails.class));
     }
 
     public void deleteByTelephone(String telephone){
