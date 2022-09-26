@@ -23,8 +23,8 @@ public class BookingController {
     }
 
 
-    @GetMapping("/{bookingNo}")
-    public Long getIdBooking(@PathVariable String seat,Double price){
+    @GetMapping("/seat/price/{seat}/{price}")
+    public Long getIdBooking(@PathVariable String seat, @PathVariable Double price){
         return service.getBookingId(seat, price);
     }
 
