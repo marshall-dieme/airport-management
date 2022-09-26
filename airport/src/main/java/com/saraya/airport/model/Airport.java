@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private  long id;
 
     private String iata;
     private String icao;
@@ -44,4 +44,11 @@ public class Airport {
     public void setName(String name) {
         this.name = name;
     }
+
+   /* public Airport(long id, String iata, String icao, String name) {
+        this.id = id;
+        this.iata = iata;
+        this.icao = icao;
+        this.name = name;
+    }*/
 }
