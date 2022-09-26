@@ -1,13 +1,14 @@
 package com.saraya.servicesservice.controller;
 
-import com.saraya.servicesservice.model.Services;
+import com.saraya.servicesservice.model.Service;
+import com.saraya.servicesservice.model.ServiceDto;
 import com.saraya.servicesservice.service.ServiceServices;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("service")
+@RequestMapping("/service")
 public class ServicesController {
     private final ServiceServices service;
 
@@ -15,39 +16,39 @@ public class ServicesController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<Services> getAll() {
+    @GetMapping("/")
+    public List<Service> getAll(){
         return service.getAll();
     }
 
-    @GetMapping("/{services_id}")
-    public Services getById(@PathVariable Long services_id) {
-        return service.getById(services_id);
+
+    @GetMapping("/serviceName/{serviceName}")
+    public Long getIdService(@PathVariable String serviceName){
+        return service.getIdService(serviceName);
     }
 
-    @PostMapping
-    public Services create(@RequestBody Services s) {
-        return service.create(s);
-    }
-
-    @PutMapping
-    public Services update(@RequestBody Services s) {
-        return service.update(s);
-    }
-
-//    @DeleteMapping("delete/{services_id}")
-//    public void deleteByName(@PathVariable Long services_id) {
-//        service.deleteByName(services_id);
-//    }
-
-    @DeleteMapping("/{services_id}")
-    public void delete(@PathVariable Long services_id) {
-        service.delete(services_id);
+    @GetMapping("/{airportName}/airport")
+    public List <Service>  getServiceByAirport(@PathVariable String airportName) {
+        return service.getServiceByAirport(airportName);
     }
 
 
-    @GetMapping("/services_name/{services_name}")
-    public Long getIdService(@PathVariable String services_name) {
-        return service.getIdService(services_name);
+    @PostMapping("/")
+    public Service create(@RequestBody ServiceDto dto) {
+
+        return service.create(dto);
     }
+
+    @PutMapping("/")
+    public Service update (@RequestBody ServiceDto dto){
+        return service.update(dto);
+    }
+
+
+
+    @DeleteMapping("/{service_id}")
+    public void deleteById(@PathVariable Long service_id){
+        service.deleteById(service_id);
+    }
+
 }

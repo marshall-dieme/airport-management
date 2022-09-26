@@ -24,20 +24,20 @@ public class AirportService {
 
     public List<Airport> getAll(){ return  repo.findAll();}
 
-    public Airport getById(Long airport_id){
-        return repo.findById(airport_id).get();
-    }
+//    public Airport getById(Long airport_id){
+//        return repo.findById(airport_id).get();
+//    }
 
-    public Airport getIdAirport(String airport_name){
+    public Long getIdAirport(String airport_name){
         return repo.getIdAirport(airport_name);
     }
     public Airport getAirportByAirportGeo(String city, String Country){
-        Map<String,String> values= new HashMap<>();
-        values.put("city", city);
-        values.put("Country", Country);
+        Map<String,String> Values= new HashMap<>();
+        Values.put("city", city);
+        Values.put("Country", Country);
         RestTemplate template = new RestTemplate();
-        Long idAirportGeo= template.getForEntity("http://localhost:8300/airport_geo//country/city/{country}/{city}",
-                Long.class,values).getBody();
+        Long idAirportGeo= template.getForEntity("http://localhost:8300/airport_geo/country/city/{country}/{city}",
+                Long.class,Values).getBody();
         return  repo.findByIdAirportGeo(idAirportGeo);
 
     }

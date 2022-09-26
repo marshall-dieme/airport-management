@@ -1,6 +1,7 @@
 package com.saraya.airline.controller;
 
 import com.saraya.airline.model.Airline;
+import com.saraya.airline.model.AirlineDto;
 import com.saraya.airline.service.AirlineService;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,32 +11,45 @@ import java.util.List;
 @RequestMapping("airline")
 public class AirlineController {
 
-    private  final AirlineService service;
+    private final AirlineService service;
 
     public AirlineController(AirlineService service) {
         this.service = service;
     }
+
     @GetMapping
     public List<Airline> getAll(){
         return service.getAll();
     }
 
-    @GetMapping("/{airline_name}")
-        public Long getIdAirline(@PathVariable String airline_name ){
-        return service.getIdAirline(airline_name);
-        }
 
-        @PostMapping
-    public Airline create(@RequestBody Airline airline){
-        return service.create(airline);
-        }
+    @GetMapping("airlineName/{airlineName}")
+    public Long getIdAirportGeo(@PathVariable String airlineName){
+        return service.getIdAirline(airlineName);
+    }
 
-        @PutMapping
-    public Airline update(@RequestBody Airline airline){
-        return service.update(airline);
-        }
-        @DeleteMapping("/delete/{airline_id}")
-    public  void deleteBYId(@PathVariable Long airline_id){
+    @GetMapping("{airportName}/airport")
+    public List <Airline>  getAirlinesByAirport(@PathVariable String airportName) {
+        return service.getAirlinesByAirport(airportName);
+    }
+
+
+    @PostMapping
+    public Airline create(@RequestBody AirlineDto dto) {
+
+        return service.create(dto);
+    }
+
+    @PutMapping
+    public Airline update (@RequestBody AirlineDto dto){
+        return service.update(dto);
+    }
+
+
+
+    @DeleteMapping("{airline_id}")
+    public void deleteById(@PathVariable Long airline_id){
         service.deleteById(airline_id);
-        }
+    }
+
 }

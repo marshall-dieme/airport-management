@@ -6,28 +6,30 @@ import javax.persistence.*;
 public class Airline {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "airline_id", nullable = false)
     private Long airline_id;
 
-    private String airline_name;
+    private String airlineName;
 
     private String iata;
+
+    private Long airportId;
 
     public Long getAirline_id() {
         return airline_id;
     }
 
-    public void setAirline_id(Long airline_id) {
+    public void setAirline_id(Long airlineId) {
         this.airline_id = airline_id;
     }
 
-    public String getAirline_name() {
-        return airline_name;
+    public String getAirlineName() {
+        return airlineName;
     }
 
-    public void setAirline_name(String airline_name) {
-        this.airline_name = airline_name;
+    public void setAirlineName(String airlineName) {
+        this.airlineName = airlineName;
     }
 
     public String getIata() {
@@ -36,5 +38,13 @@ public class Airline {
 
     public void setIata(String iata) {
         this.iata = iata;
+    }
+
+    public Long getAirportId() {
+        return airportId;
+    }
+
+    public void setAirportId(Long airportId) {
+        this.airportId = airportId;
     }
 }

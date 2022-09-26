@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
+
 @Repository
 public interface AirlineRepo  extends JpaRepository<Airline,Long> {
 
-    @Query("SELECT ai.airline_id from Airline  ai WHERE ai.airline_name=:airline_name ")
-    Long getIdAirline(String airline_name);
+    @Query("select air.airline_id from Airline air where air.airlineName=:airlineName")
+    Long getIdAirline(String airlineName);
 
-
+    List<Airline> findByAirportId(Long idAirport);
 }

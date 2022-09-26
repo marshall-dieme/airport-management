@@ -23,8 +23,8 @@ public class AirportController {
         return service.getAll();
     }
 
-    @GetMapping("/{airport_name}")
-    public Airport getByName(@PathVariable String airport_name) {
+    @GetMapping("airportName/{airport_name}")
+    public Long getByName(@PathVariable String airport_name) {
         return service.getIdAirport(airport_name);
     }
 
@@ -42,12 +42,12 @@ public class AirportController {
         service.deleteByName(airport_id);
     }
 
-    @DeleteMapping("/{airport_id}")
+    @DeleteMapping("{airport_id}")
     public void delete(@PathVariable Long airport_id) {
         service.delete(airport_id);
     }
 
-    @GetMapping("/{country}/{city}/airport_Geo")
+    @GetMapping("{country}/{city}/airport_Geo")
     public Airport getAirportByAirportGeo(@PathVariable String country, @PathVariable String city){
         return service.getAirportByAirportGeo(country, city);
     }

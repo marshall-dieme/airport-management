@@ -1,13 +1,16 @@
 package com.saraya.servicesservice.service;
 
-import com.saraya.servicesservice.model.Services;
+import com.saraya.servicesservice.model.Service;
+import com.saraya.servicesservice.model.ServiceDto;
 import com.saraya.servicesservice.repos.Service_Repo;
-import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Service
+@org.springframework.stereotype.Service
 @Transactional
 public class ServiceServices {
 
@@ -18,26 +21,58 @@ public class ServiceServices {
     }
 
 
-    public List<Services> getAll(){ return  repo.findAll();}
+    public List<Service> getAll(){
+        return repo.findAll();
 
-    public Services getById(Long services_id){
-        return repo.findById(services_id).get();
+    }
+
+    public Long getIdService(String serviceName) {
+        return repo.getIdServices(serviceName);
+
     }
 
 
-    public Services create(Services serv){ return  repo.save(serv);}
 
-    public Services update(Services serv){ return  repo.save (serv);}
+    public Service create(ServiceDto dto){
+        Service service = new Service();
+        RestTemplate template = new RestTemplate();
+        Map<String, String> value = new HashMap<>();
+        value.put("airportName", dto.getAirportName());
 
+        Long airportId = template.getForEntity("http://localhost:8100/airport/airportName/{airportName}",
+                Long.class, value).getBody();
 
-    public void deleteByName(Long services_id) {
-        repo.deleteById(services_id);
+        changeToModel(dto, service);
+        service.setAirportId(airportId);
+        return repo.save(service);
     }
-    public void delete(Long services_id){
-        repo.deleteById(services_id);
+
+    public Service update(ServiceDto dto){
+        Service service = new Service();
+        service.setService_id(dto.getServiceId());
+        changeToModel(dto, service);
+        return repo.save(service);
     }
 
-    public Long getIdService(String services_name) {
-        return (repo.getIdServices(services_name));
+
+    public List <Service> getServiceByAirport(String airportName) {
+        Map<String, String> values = new HashMap<>();
+        values.put("airportName", airportName);
+
+        RestTemplate template = new RestTemplate();
+        Long airportId = template.getForEntity("http://localhost:8100/airport/airportName/{airportName}",
+                Long.class, values).getBody();
+
+        return repo.findByAirportId(airportId);
     }
+    private static void changeToModel(ServiceDto dto, Service service) {
+        service.setServiceName(dto.getServiceName());
+
+
+    }
+
+    public void deleteById(Long service_id ){
+        repo.deleteById(service_id);
+    }
+
 }

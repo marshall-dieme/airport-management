@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("airport_geo")
+@RequestMapping("/airport_geo")
 public class Airport_GeoController {
     private final Airport_GeoService service;
 
@@ -15,7 +15,7 @@ public class Airport_GeoController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<Airport_Geo> getAll(){
         return service.getAll();
     }
@@ -26,12 +26,12 @@ public class Airport_GeoController {
         return service.getIdByCountryAndCity(country, city);
     }
 
-    @PostMapping
+    @PostMapping("/")
     public Airport_Geo create(@RequestBody Airport_Geo airportGeo){
         return service.create(airportGeo);
     }
 
-    @PutMapping
+    @PutMapping("/")
     public Airport_Geo update(@RequestBody Airport_Geo airportGeo){
         return service.update(airportGeo);
     }
