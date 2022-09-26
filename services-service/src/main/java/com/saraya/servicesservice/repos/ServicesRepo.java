@@ -11,6 +11,8 @@ import java.util.List;
 public interface ServicesRepo extends JpaRepository<Services, Long> {
 
    // Services findByName(String name);
+   @Query("select s.serviceId from Services s where s.serviceName=:serviceName")
+   Long getServiceId(String serviceName);
 
   List<Services> findByIdAirport(Long idAirport);
 

@@ -35,6 +35,11 @@ public class ServicesController {
         return service.getServicesByAirport(airport_name);
     }
 
+    @GetMapping("/serviceName/{serviceName}")
+    public Long getIdServices(@PathVariable String serviceName){
+        return service.getIdServices(serviceName);
+    }
+
 
     @PostMapping("/")
     public Services create(@RequestBody ServicesDto dto) {

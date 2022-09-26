@@ -6,27 +6,31 @@ import javax.persistence.*;
 public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long services_id;
+    private Long serviceId;
 
     @Column(unique = true)
-    private String services_name;
+    private String serviceName;
 
     private Long idAirport;
 
-    public Long getServices_id() {
-        return services_id;
+    public Long getServiceId() {
+        return serviceId;
     }
 
-    public void setServices_id(Long services_id) {
-        this.services_id = services_id;
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
     }
 
-    public String getServices_name() {
-        return services_name;
+    public String getServiceName() {
+        return serviceName;
     }
 
-    public void setServices_name(String services_name) {
-        this.services_name = services_name;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public Long getIdAirport() {
+        return idAirport;
     }
 
     public void setIdAirport(Long idAirport) {

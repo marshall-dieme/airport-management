@@ -29,6 +29,10 @@ public class ServicesService {
 
     }*/
 
+    public Long getIdServices(String serviceName) {
+        return repo.getServiceId(serviceName);
+    }
+
 
 
     public Services create(ServicesDto dto){
@@ -50,7 +54,7 @@ public class ServicesService {
 
     public Services update(ServicesDto dto){
         Services services = new Services();
-        services.setServices_id(dto.getServices_id());
+        services.setServiceId(dto.getServiceId());
         changeToModel(dto, services);
         return repo.save(services);
     }
@@ -69,7 +73,7 @@ public class ServicesService {
     }
 
     private static void changeToModel(ServicesDto dto, Services services) {
-        services.setServices_name(dto.getServices_name());
+        services.setServiceName(dto.getServiceName());
 
 
     }
