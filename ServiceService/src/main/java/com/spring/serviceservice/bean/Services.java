@@ -13,16 +13,8 @@ public class Services{
 
     private int airportId;
 
-    private String iata;
-
-    private String iacao;
-
     @Column(unique = true)
     private  String airportName;
-
-
-
-
 
     public Services() {
     }
@@ -47,4 +39,13 @@ public class Services{
     public void setName(String name) {
         this.name = name;
     }
+    
+    public int getAirportId(){
+        return airportId;
+    }
+    
+    public void setAirportId(int airportId) {
+        this.airportId = airportId;
+    }
+    
 }
