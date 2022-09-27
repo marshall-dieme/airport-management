@@ -37,11 +37,12 @@ public class ServiceRestController {
 
     @DeleteMapping("/{service_id}")
     public ResponseEntity<String> deleteService(@PathVariable Long service_id) {
+        service.deleteService(service_id);
         return ResponseEntity.ok("Service "+service_id+" was deleted Successfully");
     }
 
-    @GetMapping("/service-name/{name}")
-    public ResponseEntity<Services> getServiceByName(@PathVariable String name) {
-        return ResponseEntity.ok(service.getServicesByName(name));
+    @GetMapping("/service-name/{service_name}")
+    public ResponseEntity<Services> getServiceByName(@PathVariable String service_name) {
+        return ResponseEntity.ok(service.getServicesByName(service_name));
     }
 }

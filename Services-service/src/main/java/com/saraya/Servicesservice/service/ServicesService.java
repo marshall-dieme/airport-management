@@ -18,7 +18,7 @@ public class ServicesService {
     }
 
     public Services getServices(Long services_id) {
-        return repository.findById(services_id).orElse(new Services());
+        return repository.findById(services_id).orElse(null);
     }
 
     public Services getServicesByName(String service_name) {
