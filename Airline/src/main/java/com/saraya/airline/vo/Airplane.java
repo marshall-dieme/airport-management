@@ -1,7 +1,5 @@
 package com.saraya.airline.vo;
 
-
-import com.saraya.airline.model.Airline;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,10 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ResponseTemplateVo {
-
-    private Airport airport;
-    private Airline airline;
-    private Airplane airplane;
-
+public class Airplane {
+    private long airplane_id;
+    private String airplane_capacity;
 }

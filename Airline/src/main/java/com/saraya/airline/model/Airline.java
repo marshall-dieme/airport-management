@@ -20,5 +20,6 @@ public class Airline {
     private String airline_name;
     private String iata;
     private long airport_id;
+    private long airplane_id;
 
 }

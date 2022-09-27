@@ -25,10 +25,22 @@ public class AirportController {
         return service.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseTemplateVo getAirportWithAirportGeo(@PathVariable("id") long airport_id ){
-        return service.getAirportWithAirportGeo(airport_id);
+//    @GetMapping("/{id}")
+//    public ResponseTemplateVo getAirportWithAirportGeo(@PathVariable("id") long airport_id ){
+//        return service.getAirportWithAirportGeo(airport_id);
+//    }
+//
+//    @GetMapping("/service/{service_id}")
+//    public ResponseTemplateVo getAirportWithService(@PathVariable("service_id") long service_id ){
+//        return service.getAirportWithService(service_id);
+//    }
+
+    @GetMapping("/services/{id}")
+    public ResponseTemplateVo getAirportWithAirportGeoWithService(@PathVariable("id") long service_id ){
+        return service.findAirportAirportGeoServiceAirline(service_id);
     }
+
+
 
 //    @GetMapping("/{airport_name}")
 //    public Airport getByName(@PathVariable String airport_name){

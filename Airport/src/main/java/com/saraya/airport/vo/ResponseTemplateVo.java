@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,5 +14,7 @@ public class ResponseTemplateVo {
 
     private AirportGeo airportGeo;
     private Airport airport;
+    private Services services;
+    private Airline airline;
 }
 

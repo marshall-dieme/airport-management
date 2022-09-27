@@ -30,5 +30,5 @@ public class Employee {
     private Double salary;
     private String username;
     private String password;
-    private long service_id;
+
 }

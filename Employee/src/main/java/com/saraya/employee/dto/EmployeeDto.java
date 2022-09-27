@@ -1,12 +1,17 @@
 package com.saraya.employee.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
-public class EmployeeDto extends AbstractDto<Long> {
+@AllArgsConstructor
+@NoArgsConstructor
+public class EmployeeDto {
 
+    private long employee_id;
     private String firstname;
     private String lastname;
     private LocalDate birthdate;
