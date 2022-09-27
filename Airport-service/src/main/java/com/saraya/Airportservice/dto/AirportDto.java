@@ -9,6 +9,6 @@ public class AirportDto {
     private String icao;
     private String airport_name;
     private Long airport_geo_id;
-    private Long service_id;
+    private Long services_id;
     private Long airline_id;
 }

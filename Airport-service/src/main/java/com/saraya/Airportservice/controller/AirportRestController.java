@@ -1,7 +1,7 @@
 package com.saraya.Airportservice.controller;
 
 import com.saraya.Airportservice.dto.AirportDto;
-import com.saraya.Airportservice.dto.ResponseTemplateValueObject;
+import com.saraya.Airportservice.bean.ResponseAirportAndDetails;
 import com.saraya.Airportservice.model.Airport;
 import com.saraya.Airportservice.service.AirportService;
 import lombok.AllArgsConstructor;
@@ -35,7 +35,7 @@ public class AirportRestController {
 
     @PutMapping
     public ResponseEntity<Airport> updateAirport(@RequestBody AirportDto airportDto) {
-        return new ResponseEntity<>(service.saveAirport(airportDto), HttpStatus.OK);
+        return new ResponseEntity<>(service.updateAirport(airportDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{airport_id}")
@@ -44,9 +44,13 @@ public class AirportRestController {
         return ResponseEntity.ok("Airport "+airport_id+" was deleted");
     }
 
+    @GetMapping("/airport-details/all")
+    public List<ResponseAirportAndDetails> getAllAirportsWithDetails() {
+        return service.getAllAirportsWithDetails();
+    }
 
     @GetMapping("/airport-details/{airport_id}")
-    public ResponseTemplateValueObject getAirportWithAllDetails(@PathVariable Long airport_id) {
+    public ResponseAirportAndDetails getAirportWithAllDetails(@PathVariable Long airport_id) {
         return service.getAirportWithAllDetails(airport_id);
     }
 

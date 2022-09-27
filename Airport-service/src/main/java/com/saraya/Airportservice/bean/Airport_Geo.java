@@ -1,4 +1,4 @@
-package com.saraya.Airportservice.dto;
+package com.saraya.Airportservice.bean;
 
 import lombok.Data;
 

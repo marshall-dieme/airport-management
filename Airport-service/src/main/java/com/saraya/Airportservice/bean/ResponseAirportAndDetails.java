@@ -1,8 +1,5 @@
-package com.saraya.Airportservice.consumer;
+package com.saraya.Airportservice.bean;
 
-import com.saraya.Airportservice.bean.Airline;
-import com.saraya.Airportservice.bean.Airport_Geo;
-import com.saraya.Airportservice.bean.Services;
 import com.saraya.Airportservice.model.Airport;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,5 +12,5 @@ public class ResponseAirportAndDetails {
     private Airport airport;
     private Airline airline;
     private Airport_Geo airport_geo;
-    private Services services;
+   private Services services;
 }

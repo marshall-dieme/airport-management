@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AirportRepository extends JpaRepository<Airport, Long> {
 
-    @Query("select a from Airport a where a.airline_id = ?1")
-    Airport findByAirline_id(Long airport_id);
+    @Query("select a from Airport a where a.airport_id = ?1")
+    Airport findByAirport_id(Long airport_id);
 }
