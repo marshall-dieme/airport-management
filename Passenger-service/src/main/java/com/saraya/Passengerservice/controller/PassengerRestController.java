@@ -47,9 +47,10 @@ public class PassengerRestController {
         return ResponseEntity.ok(service.getPassengerByPassenger_no(passport_no));
     }
     
-    @GetMapping("/{firstname}/{lastname}")
+    @GetMapping("/{firstname}/{lastname}/{passport_no}")
     public ResponseEntity<Passenger> getPassengerByFirstnameAndLastname(@PathVariable String firstname,
-                                                                        @PathVariable String lastname) {
-        return ResponseEntity.ok(service.getPassengerByFirstnameAndLastname(firstname, lastname));
+                                                                        @PathVariable String lastname,
+                                                                        @PathVariable String passport_no) {
+        return ResponseEntity.ok(service.getPassengerByFirstnameAndLastname(firstname, lastname, passport_no));
     }
 }

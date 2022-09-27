@@ -5,9 +5,7 @@ import com.saraya.Passengerservice.repository.PassengerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
@@ -39,7 +37,7 @@ public class PassengerService {
         return repository.findByPassport_no(passport_no);
     }
 
-    public Passenger getPassengerByFirstnameAndLastname(String firstname, String lastname) {
-        return repository.findPassengerByFirstnameAndLastname(firstname, lastname);
+    public Passenger getPassengerByFirstnameAndLastname(String firstname, String lastname, String passport_no) {
+        return repository.getPassengerByFirstnameAndLastnameAndAndPassport_no(firstname, lastname, passport_no);
     }
 }

@@ -10,5 +10,7 @@ public interface PassengerRepository extends JpaRepository<Passenger, Long> {
     @Query("select p from Passenger p where p.passport_no = ?1")
     Passenger findByPassport_no(String passport_no);
 
-    Passenger findPassengerByFirstnameAndLastname(String firstname, String lastname);
+    @Query("select p from Passenger p where p.firstname = ?1 and p.lastname = ?2 and p.passport_no = ?3")
+    Passenger getPassengerByFirstnameAndLastnameAndAndPassport_no(
+            String firstname, String lastname, String passport_no);
 }
