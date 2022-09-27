@@ -1,9 +1,9 @@
-package com.saraya.Airplane_Typeservice.dto;
+package com.saraya.Airplane_Typeservice.bean;
 
 import lombok.Data;
 
 @Data
-public class AirplaneDto {
+public class Airplane {
     private Long airplane_id;
     private int capacity;
 }
