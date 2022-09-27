@@ -2,6 +2,7 @@ package com.saraya.airplaneservice.service;
 
 import com.saraya.airplaneservice.bean.Airplane;
 import com.saraya.airplaneservice.dto.AirplaneDto;
+import com.saraya.airplaneservice.mapper.AirplaneMapper;
 import com.saraya.airplaneservice.repository.AirplaneRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,18 +17,10 @@ public class AirplaneService {
         this.repo = repo;
     }
 
-    public List<Airplane> getAll() {
-        return repo.findAll();
-    }
+    AirplaneMapper mapper = new AirplaneMapper();
 
-    public Airplane create(AirplaneDto dto) {
-        return repo.save(toEntity(dto));
-    }
-
-    private Airplane toEntity(AirplaneDto dto) {
-        Airplane airplane = new Airplane();
-        airplane.setCapacity(dto.getCapacity());
-        return airplane;
+    public int getIdByCapacity(int capacity) {
+        return repo.getByCapacity(capacity).getId();
     }
 
     public Airplane putAirlineForAirplane(int airplaneId, String airlineName) {
@@ -42,10 +35,6 @@ public class AirplaneService {
         return repo.save(airplane);
     }
 
-    public int getIdByCapacity(int capacity) {
-        return repo.getByCapacity(capacity).getId();
-    }
-
     public Airplane putAirPlaneTypeForAirplane(int airplaneId, String identifierAirplaneType) {
 
         Airplane airplane = repo.findById(airplaneId).get();
@@ -56,5 +45,33 @@ public class AirplaneService {
 
         airplane.setAirplaneTypeId(airplaneTypeId);
         return repo.save(airplane);
+    }
+
+    public Airplane putFlightForAirplane(int airplaneId, String flightNo) {
+        Airplane airplane = repo.findById(airplaneId).get();
+
+        RestTemplate restTemplate = new RestTemplate();
+        int flightId = restTemplate.getForEntity("http://localhost:8009/Flight/"+flightNo,
+                Integer.class).getBody();
+
+        airplane.setFlightId(flightId);
+        return repo.save(airplane);
+    }
+
+    public List<Airplane> getAll() {
+        return repo.findAll();
+    }
+
+    public Airplane create(AirplaneDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+
+    public Airplane update(AirplaneDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public void delete(AirplaneDto dto) {
+        repo.delete(mapper.toEntity(dto));
     }
 }

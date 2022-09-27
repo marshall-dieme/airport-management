@@ -14,6 +14,8 @@ public class Airplane {
 
     private int airlineId;
 
+    private int flightId;
+
     private int airplaneTypeId;
 
     public int getId() {
@@ -46,5 +48,13 @@ public class Airplane {
 
     public void setAirplaneTypeId(int airplaneTypeId) {
         this.airplaneTypeId = airplaneTypeId;
+    }
+
+    public int getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(int flightId) {
+        this.flightId = flightId;
     }
 }

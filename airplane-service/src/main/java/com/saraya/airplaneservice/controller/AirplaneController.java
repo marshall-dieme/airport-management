@@ -11,6 +11,27 @@ import java.util.List;
 @RequestMapping("/Airplane")
 public class AirplaneController {
 
+    @PostMapping("/airline/{airplaneId}/{airlineName}")
+    public Airplane putAirlineForAirplane(@PathVariable("airplaneId") int airplaneId, @PathVariable("airlineName") String airlineName){
+        return service.putAirlineForAirplane(airplaneId, airlineName);
+    }
+
+    @PostMapping("/flight/{airplaneId}/{flightNo}")
+    public Airplane putFlightForAirplane(@PathVariable("airplaneId") int airplaneId, @PathVariable("flightNo") String flightNo){
+        return service.putFlightForAirplane(airplaneId, flightNo);
+    }
+
+    @PostMapping("/airplaneType/{airplaneId}/{identifierAirplaneType}")
+    public Airplane putAirPlaneTypeForAirplane(@PathVariable("airplaneId") int airplaneId,
+                                               @PathVariable("identifierAirplaneType") String identifierAirplaneType){
+        return service.putAirPlaneTypeForAirplane(airplaneId, identifierAirplaneType);
+    }
+
+    @GetMapping("/{capacity}")
+    public int getIdByCapacity(@PathVariable("capacity") int capacity){
+        return service.getIdByCapacity(capacity);
+    }
+
     private final AirplaneService service;
 
     public AirplaneController(AirplaneService service) {
@@ -27,19 +48,14 @@ public class AirplaneController {
         return service.create(dto);
     }
 
-    @PostMapping("/airline/{airplaneId}/{airlineName}")
-    public Airplane putAirlineForAirplane(@PathVariable("airplaneId") int airplaneId, @PathVariable("airlineName") String airlineName){
-        return service.putAirlineForAirplane(airplaneId, airlineName);
+    @PutMapping
+    public Airplane update(@RequestBody AirplaneDto dto){
+        return service.update(dto);
     }
 
-    @PostMapping("/airplaneType/{airplaneId}/{identifierAirplaneType}")
-    public Airplane putAirPlaneTypeForAirplane(@PathVariable("airplaneId") int airplaneId, @PathVariable("identifierAirplaneType") String identifierAirplaneType){
-        return service.putAirPlaneTypeForAirplane(airplaneId, identifierAirplaneType);
-    }
-
-    @GetMapping("/{capacity}")
-    public int getIdByCapacity(@PathVariable("capacity") int capacity){
-        return service.getIdByCapacity(capacity);
+    @DeleteMapping
+    public void delete(@RequestBody AirplaneDto dto){
+        service.delete(dto);
     }
 
 }
