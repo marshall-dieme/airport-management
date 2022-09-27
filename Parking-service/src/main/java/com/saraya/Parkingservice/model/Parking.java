@@ -3,7 +3,6 @@ package com.saraya.Parkingservice.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -35,5 +34,8 @@ public class Parking {
 
     @Column(columnDefinition = "time")
     private LocalTime exit_time;
+
+
+
 
 }

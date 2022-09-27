@@ -1,1 +1,12 @@
+spring:
+  application:
+    name: parking-service
 
+#  profiles:
+#    active: dev
+#
+#  config:
+#    import:optional:config-server: http://localhost:8888
+
+server:
+  port: 8090

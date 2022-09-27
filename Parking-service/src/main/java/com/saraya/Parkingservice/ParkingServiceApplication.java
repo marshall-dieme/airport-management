@@ -6,6 +6,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,18 +20,19 @@ public class ParkingServiceApplication {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 
-		Converter<String, LocalDate> converter = mappingContext -> {
-			return LocalDate.parse(mappingContext.getSource(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-		};
+		Converter<String, LocalDate> converter = mappingContext -> LocalDate.parse(mappingContext.getSource(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 		modelMapper.addConverter(converter);
 
-		Converter<String, LocalTime> localTimeConverter = mappingContext -> {
-			return LocalTime.parse(mappingContext.getSource(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-		};
+		Converter<String, LocalTime> localTimeConverter = mappingContext -> LocalTime.parse(mappingContext.getSource(), DateTimeFormatter.ofPattern("HH:mm:ss"));
 		modelMapper.addConverter(localTimeConverter);
 		return modelMapper;
 	}
 
+
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(ParkingServiceApplication.class, args);
 	}

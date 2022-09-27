@@ -1,6 +1,7 @@
 package com.saraya.Parkingservice.controller;
 
 import com.saraya.Parkingservice.dto.ParkingDto;
+import com.saraya.Parkingservice.dto.ResponseTemplateValueObject;
 import com.saraya.Parkingservice.model.Parking;
 import com.saraya.Parkingservice.service.ParkingService;
 import lombok.AllArgsConstructor;
@@ -37,8 +38,9 @@ public class ParkingRestController {
         return ResponseEntity.ok(service.updateParking(parking));
     }
 
-    @DeleteMapping("/{parking_id}")
-    public ResponseEntity<String> deleteParking(@PathVariable Long parking_id) {
-        return ResponseEntity.ok("Parking "+parking_id+" was deleted successfully");
+
+    @GetMapping("/parking-passenger/{parking_id}")
+    public ResponseTemplateValueObject getParkingwithPassenger(@PathVariable Long parking_id) {
+        return service.getParkingPassenger(parking_id);
     }
 }

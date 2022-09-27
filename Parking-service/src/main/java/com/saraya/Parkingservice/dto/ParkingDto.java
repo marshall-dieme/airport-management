@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,10 +14,8 @@ import java.time.LocalTime;
 @Setter
 public class ParkingDto implements Serializable {
     private Long parking_id;
+    private Long passenger_id;
     private String name;
-    private String passenger_firstname;
-    private String passenger_lastname;
-    private String passenger_passport_no;
     private String email;
     private String country;
     private String car_no;

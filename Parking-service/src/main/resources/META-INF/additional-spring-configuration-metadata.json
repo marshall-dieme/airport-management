@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.config.import.optional:configserver",
+      "type": "java.lang.String",
+      "description": "Description for spring.config.import.optional:configserver."
+  }
+] }
