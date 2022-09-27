@@ -1,6 +1,7 @@
 package com.saraya.Employeeservice.mapper;
 
 import com.saraya.Employeeservice.dto.EmployeeDto;
+import com.saraya.Employeeservice.enums.Gender;
 import com.saraya.Employeeservice.model.Employee;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class Mapper {
         employee.setCity(dto.getCity());
         employee.setCountry(dto.getCountry());
         employee.setEmail(dto.getEmail());
-        employee.setSex(dto.getSex());
+        employee.setSex(Gender.valueOf(dto.getSex()));
         employee.setStreet(dto.getStreet());
         employee.setTelephone(dto.getTelephone());
         employee.setZip(dto.getZip());
@@ -37,7 +38,7 @@ public class Mapper {
         dto.setCity(employee.getCity());
         dto.setCountry(employee.getCountry());
         dto.setEmail(employee.getEmail());
-        dto.setSex(employee.getSex());
+        dto.setSex(employee.getSex().toString());
         dto.setStreet(employee.getStreet());
         dto.setTelephone(employee.getTelephone());
         dto.setZip(employee.getZip());

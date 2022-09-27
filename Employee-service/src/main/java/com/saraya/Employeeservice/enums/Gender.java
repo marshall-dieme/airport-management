@@ -1,2 +1,5 @@
-package com.saraya.Employeeservice.enums;public class Gender {
+package com.saraya.Employeeservice.enums;
+
+public enum Gender {
+    MASCULINE, FEMININE
 }

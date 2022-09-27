@@ -1,5 +1,6 @@
 package com.saraya.Employeeservice.model;
 
+import com.saraya.Employeeservice.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,8 @@ public class Employee {
     @Column(unique = true)
     private String email;
 
-    private String sex;
+    @Enumerated(EnumType.STRING)
+    private Gender sex;
     private double salary;
     private String street;
     private String city;
