@@ -10,4 +10,7 @@ public interface AirlineRepository extends JpaRepository<Airline, Long> {
 
     @Query("select a from Airline a where a.airline_name = ?1")
     Airline getAirlineByAirline_name(String airline_name);
+
+    @Query("select a from Airline a where a.airline_id = ?1")
+    Airline findAirlineByAirline_id(Long airline_id);
 }
