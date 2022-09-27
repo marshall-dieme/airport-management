@@ -6,6 +6,9 @@ spring:
         git:
           uri: https://github.com/diallocodes/config-files.git
           clone-on-start: true
+          search-paths: development
+          default-label: master
+
 
   application:
     name: config-server

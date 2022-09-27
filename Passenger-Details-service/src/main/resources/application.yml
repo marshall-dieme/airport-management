@@ -1,9 +1,11 @@
 spring:
   application:
-    name: airplane-service
+    name: passenger-details-service
+  jpa:
+    show-sql: true
 
 server:
-  port: 8085
+  port: 8092
 
 eureka:
   client:
