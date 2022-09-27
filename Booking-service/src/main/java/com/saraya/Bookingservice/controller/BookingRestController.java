@@ -1,5 +1,6 @@
 package com.saraya.Bookingservice.controller;
 
+import com.saraya.Bookingservice.dto.BookingDto;
 import com.saraya.Bookingservice.model.Booking;
 import com.saraya.Bookingservice.service.BookingServiceImpl;
 import lombok.AllArgsConstructor;
@@ -27,12 +28,12 @@ public class BookingRestController {
     }
 
     @PostMapping
-    public ResponseEntity<Booking> saveBooking(@RequestBody Booking booking) {
+    public ResponseEntity<Booking> saveBooking(@RequestBody BookingDto booking) {
         return new ResponseEntity<>(bookingService.saveBooking(booking), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<Booking> updateBooking(@RequestBody Booking booking) {
+    public ResponseEntity<Booking> updateBooking(@RequestBody BookingDto booking) {
         return  ResponseEntity.ok(bookingService.updateBooking(booking));
     }
 

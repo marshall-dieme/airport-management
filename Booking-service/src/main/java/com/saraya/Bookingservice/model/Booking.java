@@ -17,6 +17,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long booking_id;
+    private Long passenger_id;
     private int seats;
     private double price;
 }
