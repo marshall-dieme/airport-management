@@ -3,7 +3,6 @@ package com.saraya.Airplaneservice.controller;
 import com.saraya.Airplaneservice.model.Airplane;
 import com.saraya.Airplaneservice.service.AirplaneService;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
