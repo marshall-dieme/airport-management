@@ -17,16 +17,6 @@ public class AirlineController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<Airline> getAll(){
-        return service.getAll();
-    }
-
-    @PostMapping
-    public Airline create(@RequestBody AirlineDto dto){
-        return service.create(dto);
-    }
-
     @GetMapping("/{nameAirline}")
     public int idAirline(@PathVariable("nameAirline") String nameAirline){
         return service.getIdAirlineByName(nameAirline);
@@ -40,5 +30,25 @@ public class AirlineController {
     @PostMapping("/airplane/{airlineId}/{airplaneCapacity}")
     public Airline putAirplaneForAirline(@PathVariable("airlineId") int airlineId, @PathVariable("airplaneCapacity") int airplaneCapacity){
         return service.putAirplaneForAirline(airlineId, airplaneCapacity);
+    }
+
+    @GetMapping
+    public List<Airline> getAll(){
+        return service.getAll();
+    }
+
+    @PostMapping
+    public Airline create(@RequestBody AirlineDto dto){
+        return service.create(dto);
+    }
+
+    @PutMapping
+    public Airline update(@RequestBody AirlineDto dto){
+        return service.update(dto);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody AirlineDto dto){
+        service.delete(dto);
     }
 }

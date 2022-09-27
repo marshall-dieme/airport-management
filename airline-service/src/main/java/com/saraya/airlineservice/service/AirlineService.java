@@ -2,6 +2,7 @@ package com.saraya.airlineservice.service;
 
 import com.saraya.airlineservice.bean.Airline;
 import com.saraya.airlineservice.dto.AirlineDto;
+import com.saraya.airlineservice.mapper.AirlineMapper;
 import com.saraya.airlineservice.reository.AirlineRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -17,8 +18,10 @@ public class AirlineService {
         this.repo = repo;
     }
 
+    AirlineMapper mapper = new AirlineMapper();
+
     public Airline create(AirlineDto dto){
-        return repo.save(toEntity(dto));
+        return repo.save(mapper.toEntity(dto));
     }
 
     public List<Airline> getAll(){
@@ -36,13 +39,6 @@ public class AirlineService {
         return repo.save(airline);
     }
 
-    private Airline toEntity(AirlineDto dto) {
-        Airline airline = new Airline();
-        airline.setAirlineName(dto.getAirlineName());
-        airline.setIata(dto.isIata());
-        return airline;
-    }
-
     public int getIdAirlineByName(String nameAirline) {
         return repo.getAirlineByAirlineName(nameAirline).getId();
     }
@@ -57,4 +53,13 @@ public class AirlineService {
 
         return repo.save(airline);
     }
+
+    public Airline update(AirlineDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public void delete(AirlineDto dto) {
+        repo.delete(mapper.toEntity(dto));
+    }
+
 }
