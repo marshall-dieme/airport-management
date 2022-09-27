@@ -35,8 +35,8 @@ public class PassagerDetailsService {
     }
 
     public  PassagerDetails getByTelephone(
-            String telephone){
-        return repo.findByTelephone(telephone);
+            String email){
+        return repo.findByEmail(email);
     }
 
     public PassagerDetails create (PassagerDetailsDTO passagerDetails){
@@ -49,8 +49,8 @@ public class PassagerDetailsService {
         return repo.save(mapper.map(passagerDetails , PassagerDetails.class));
     }
 
-    public void deleteByTelephone(String telephone){
-        PassagerDetails passagerDetails = repo.findByTelephone(telephone);
+    public void deleteByTelephone(String email){
+        PassagerDetails passagerDetails = repo.findByEmail(email);
         repo.delete(passagerDetails);
     }
 
@@ -58,8 +58,8 @@ public class PassagerDetailsService {
         repo.deleteById(passagerDetailsId);
     }
 
-    public PassagerDetails findByTelephone(String telephone) {
-        return repo.findByTelephone(telephone);
+    public PassagerDetails findByEmail(String email) {
+        return repo.findByEmail(email);
     }
 
 }

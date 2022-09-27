@@ -47,7 +47,7 @@ public class PassagerService {
         UrlValues.put(("country") , dto.getCountry());
         UrlValues.put(("email") , dto.getEmail());
         Integer passagerDetailsId = template.getForEntity(
-        "http://localhost:8088/passagers-details/{telephone}",
+        "http://localhost:8088/passagers-details/{email}",
                 Integer.class, UrlValues)
         .getBody();
         passager.setPassagerDetailsId(passagerDetailsId);

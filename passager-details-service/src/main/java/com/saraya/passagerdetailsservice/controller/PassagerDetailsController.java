@@ -56,10 +56,10 @@ public class PassagerDetailsController {
         service.deleteById(passagerDetailsId);
     }
 
-    @GetMapping("/{telephone}")
-    public Integer findByTelephone(
-            @PathVariable String telephone) {
-        return  service.findByTelephone(telephone).getPassagerDetailsId();
+    @GetMapping("/{email}")
+    public Integer findByEmail(
+            @PathVariable String email) {
+        return  service.findByEmail(email).getPassagerDetailsId();
     }
 
 }
