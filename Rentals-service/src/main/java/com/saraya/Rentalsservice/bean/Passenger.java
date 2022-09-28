@@ -1,9 +1,9 @@
-package com.saraya.Parkingservice.dto;
+package com.saraya.Rentalsservice.bean;
 
 import lombok.Data;
 
 @Data
-public class PassengerDto {
+public class Passenger {
     private Long passenger_id;
     private String passport_no;
     private String firstname;
