@@ -7,7 +7,8 @@ import java.io.Serializable;
 @Data
 public class PassengerDetailsDto implements Serializable {
     private Long passenger_details_id;
-  /*  private String birthdate;*/
+    private String passport_no;
+    private String birthdate;
     private String sex;
     private String street;
     private String city;

@@ -1,5 +1,6 @@
 package com.saraya.PassengerDetailsservice.controller;
 
+import com.saraya.PassengerDetailsservice.bean.ResponsePassengerWithDetails;
 import com.saraya.PassengerDetailsservice.dto.PassengerDetailsDto;
 import com.saraya.PassengerDetailsservice.model.PassengerDetails;
 import com.saraya.PassengerDetailsservice.service.PassengerDetailService;
@@ -31,14 +32,19 @@ public class PassengerDetailsRestController {
         return ResponseEntity.ok(service.getPassengerDetails(passenger_details_id));
     }
 
+    @GetMapping("/passengers-details/{passenger_details_id}")
+    public ResponsePassengerWithDetails getPassengerWithAllDetails(@PathVariable Long passenger_details_id) {
+        return service.getPassengerWithAllDetails(passenger_details_id);
+    }
+
     @PostMapping
-    public ResponseEntity<PassengerDetails> savePassengerDetails(PassengerDetailsDto dto) {
+    public ResponseEntity<PassengerDetails> savePassengerDetails(@RequestBody PassengerDetailsDto dto) {
         log.debug(dto.toString());
         return new ResponseEntity<>(service.savePassengerDetails(dto), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<PassengerDetails> updatePassengerDetails(PassengerDetailsDto passengerDetails) {
+    public ResponseEntity<PassengerDetails> updatePassengerDetails(@RequestBody PassengerDetailsDto passengerDetails) {
         return ResponseEntity.ok(service.updatePassengerDetails(passengerDetails));
     }
 

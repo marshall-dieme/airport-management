@@ -1,6 +1,5 @@
 package com.saraya.PassengerDetailsservice.model;
 
-import com.saraya.PassengerDetailsservice.enums.Gender;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,9 +14,10 @@ public class PassengerDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long passenger_details_id;
+    private Long passenger_id;
 
     @Column(columnDefinition = "date")
-    private LocalDate birthdate = LocalDate.now();
+    private LocalDate birthdate;
     private String sex;
     private String street;
     private String city;
