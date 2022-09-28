@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.saraya.dao6.Dao6;
 import com.saraya.entit.Airlin;
 import com.saraya.exception6.ResourceNotFoundException;
-
+@RestController
+@RequestMapping(value="/api/pu")
 public class Controller6 {
 	@Autowired
     private Dao6 chico;
