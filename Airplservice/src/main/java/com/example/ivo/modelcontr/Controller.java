@@ -47,10 +47,10 @@ public class Controller {
     }
 
     @PutMapping("/services/{id}")
-    public ResponseEntity<Service> updateEmployee(@PathVariable(value = "id") Long serciceid,
+    public ResponseEntity<Service> updatedService(@PathVariable(value = "id") Long serciceid,
     		@Validated @RequestBody Service serviceDetails) throws ResourceNotFoundException {
         Service service = chico.findById(serciceid)
-        .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + serciceid));
+        .orElseThrow(() -> new ResourceNotFoundException("Service not found for this id :: " + serciceid));
          
         service.setService_name(serviceDetails.getService_name());
         
@@ -63,7 +63,7 @@ public class Controller {
     public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long serviceid)
          throws ResourceNotFoundException {
         Service service = chico.findById(serviceid)
-       .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + serviceid));
+       .orElseThrow(() -> new ResourceNotFoundException("Service not found for this id :: " + serviceid));
 
         chico.delete(service);
         Map<String, Boolean> response = new HashMap<>();
