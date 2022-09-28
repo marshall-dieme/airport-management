@@ -34,7 +34,7 @@ public class PassagerDetailsService {
         return repo.findAll();
     }
 
-    public  PassagerDetails getByTelephone(
+    public  PassagerDetails getByEmail(
             String email){
         return repo.findByEmail(email);
     }

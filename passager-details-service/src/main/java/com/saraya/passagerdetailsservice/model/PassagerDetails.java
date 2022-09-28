@@ -1,9 +1,6 @@
 package com.saraya.passagerdetailsservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -22,7 +19,7 @@ public class PassagerDetails {
     private String city;
 
     private String country;
-
+    @Column(unique = true)
     private String email;
 
     private String telephone;

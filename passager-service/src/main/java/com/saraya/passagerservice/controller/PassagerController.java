@@ -55,6 +55,4 @@ public class PassagerController {
         service.deleteById(passagerId);
     }
 
-
-
 }

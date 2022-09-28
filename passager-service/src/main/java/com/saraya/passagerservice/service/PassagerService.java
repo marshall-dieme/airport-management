@@ -39,17 +39,9 @@ public class PassagerService {
         Passager passager = mapper.map(dto , Passager.class);
         RestTemplate template = new RestTemplate();
         Map<String , String> UrlValues = new HashMap<>();
-        UrlValues.put(("telephone") , dto.getTelephone());
-        UrlValues.put(("birthdate") , dto.getBirthdate());
-        UrlValues.put(("sex") , dto.getSex());
-        UrlValues.put(("street") , dto.getStreet());
-        UrlValues.put(("city") , dto.getCity());
-        UrlValues.put(("country") , dto.getCountry());
         UrlValues.put(("email") , dto.getEmail());
         Integer passagerDetailsId = template.getForEntity(
-        "http://localhost:8088/passagers-details/{email}",
-                Integer.class, UrlValues)
-        .getBody();
+        "http://localhost:8088/passagers-details/{email}",Integer.class, UrlValues).getBody();
         passager.setPassagerDetailsId(passagerDetailsId);
         return repo.save(passager);
     }

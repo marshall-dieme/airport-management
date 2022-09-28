@@ -27,10 +27,10 @@ public class PassagerDetailsController {
         return service.getAll();
     }
 
-    @GetMapping("/recup/{telephone}")
-    public PassagerDetails getByTelephone(
-            @PathVariable String telephone){
-        return service.getByTelephone(telephone);
+    @GetMapping("/recup/{email}")
+    public PassagerDetails getByEmail(
+            @PathVariable String email){
+        return service.getByEmail(email);
     }
 
     @PostMapping
