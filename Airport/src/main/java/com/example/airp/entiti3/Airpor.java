@@ -19,7 +19,7 @@ import lombok.ToString;
  @ToString
 public class Airpor {
 	
-	/*public class Service {*/
+	
 		@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 
 		@Column(name="airport_id")
