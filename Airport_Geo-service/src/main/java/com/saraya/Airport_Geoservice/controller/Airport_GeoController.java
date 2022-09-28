@@ -17,6 +17,10 @@ public class Airport_GeoController {
     public List<Airport_Geo> getAllAirport_GeoControl() {
         return service.getAllAirport_GeoServices();
     }
+    /*@GetMapping
+    public List<Airport_Geo> getAllAirport_GeoControl(@) {
+        return service.getAllAirport_GeoServices();
+    }*/
 
     @GetMapping("/{id}")
     public Airport_Geo getById(@PathVariable Long id) {

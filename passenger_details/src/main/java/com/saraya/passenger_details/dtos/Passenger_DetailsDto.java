@@ -1,12 +1,13 @@
 package com.saraya.passenger_details.dtos;
 
-import java.time.LocalDate;
+import lombok.Data;
 
+@Data
 public class Passenger_DetailsDto {
     private Long passengerdetails_id;
 
     private String sex;
-    private LocalDate birthdate;
+    private String birthdate;
 
     private String street;
 
@@ -19,7 +20,6 @@ public class Passenger_DetailsDto {
 
     private String telephone;
 
-    public Long getPassengerdetails_id() {
-        return null;
-    }
+    private String passport_no;
+
 }

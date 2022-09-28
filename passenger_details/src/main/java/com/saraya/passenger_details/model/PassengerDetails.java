@@ -19,7 +19,8 @@ import java.time.LocalDate;
 public class PassengerDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int passengerdetails_id;
+    private Long passengerdetails_id;
+    private Long passenger_id;
 
     private String sex;
     private LocalDate birthdate;

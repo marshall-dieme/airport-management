@@ -1,5 +1,6 @@
 package com.saraya.passenger_details.controller;
 
+import com.saraya.passenger_details.dtos.Passenger_DetailsDto;
 import com.saraya.passenger_details.model.PassengerDetails;
 import com.saraya.passenger_details.service.Passenger_DetailsService;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class Passenger_DetailsControl {
     }
 
     @PostMapping
-    public PassengerDetails create(@RequestBody PassengerDetails passengerDetails) {
+    public PassengerDetails create(@RequestBody Passenger_DetailsDto passengerDetails) {
         return service.create(passengerDetails);
     }
 
