@@ -1,8 +1,6 @@
 package com.saraya.passagerdetailsservice.model;
 
-import java.time.LocalDate;
-
-public class PassagerDetailsDTO {
+public class PassagerDTO {
 
     private int passagerDetailsId;
 
@@ -20,7 +18,7 @@ public class PassagerDetailsDTO {
 
     private String telephone;
 
-    private int passagerId;
+
 
     public int getPassagerDetailsId() {
         return passagerDetailsId;
@@ -86,15 +84,8 @@ public class PassagerDetailsDTO {
         this.telephone = telephone;
     }
 
-    public int getPassagerId() {
-        return passagerId;
-    }
 
-    public void setPassagerId(int passagerId) {
-        this.passagerId = passagerId;
-    }
-
-    public PassagerDetailsDTO(int passagerDetailsId, String birthdate, String sex, String street, String city, String country, String email, String telephone) {
+    public PassagerDTO(int passagerDetailsId, String birthdate, String sex, String street, String city, String country, String email, String telephone) {
         this.passagerDetailsId = passagerDetailsId;
         this.birthdate = birthdate;
         this.sex = sex;

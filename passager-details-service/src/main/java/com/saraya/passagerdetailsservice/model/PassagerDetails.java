@@ -24,18 +24,6 @@ public class PassagerDetails {
 
     private String telephone;
 
-    private int passagerId;
-
-
-
-    public int getPassagerId() {
-        return passagerId;
-    }
-
-    public void setPassagerId(int passagerId) {
-        this.passagerId = passagerId;
-    }
-
     public PassagerDetails() {
     }
 

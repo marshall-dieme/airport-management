@@ -24,10 +24,10 @@ public class AirportGeoController {
     }
 
     @GetMapping
-    public Page<AirportGeo> getAll(@RequestParam(defaultValue = "10") int page,
-                                   @RequestParam(defaultValue = "20") int nbre){
-        return service.getAllPaginated(page, nbre);
+    public List<AirportGeo> getAll(){
+        return service.getAll();
     }
+
 
     @GetMapping("/recup/{country}/{city}")
     public AirportGeo getByCountryAndCity(
