@@ -16,10 +16,16 @@ public class Airplane {
 
     private int airline_id;
 
-    public Airplane(int airplane_id, int capacity, int airline_id) {
+    private int airplaneType_id;
+
+    private int flight_id;
+
+    public Airplane(int airplane_id, int capacity, int airline_id, int airplaneType_id, int flight_id) {
         this.airplane_id = airplane_id;
         this.capacity = capacity;
         this.airline_id = airline_id;
+        this.airplaneType_id = airplaneType_id;
+        this.flight_id = flight_id;
     }
 
     public Airplane() {
@@ -47,5 +53,21 @@ public class Airplane {
 
     public void setAirline_id(int airline_id) {
         this.airline_id = airline_id;
+    }
+
+    public int getAirplaneType_id() {
+        return airplaneType_id;
+    }
+
+    public void setAirplaneType_id(int airplaneType_id) {
+        this.airplaneType_id = airplaneType_id;
+    }
+
+    public int getFlight_id() {
+        return flight_id;
+    }
+
+    public void setFlight_id(int flight_id) {
+        this.flight_id = flight_id;
     }
 }
