@@ -1,14 +1,15 @@
 package com.saraya.airport.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "airport")
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long id;
+    private long id;
 
+    @Column(unique = true)
     private String iata;
     private String icao;
     private String name;
@@ -44,11 +45,4 @@ public class Airport {
     public void setName(String name) {
         this.name = name;
     }
-
-   /* public Airport(long id, String iata, String icao, String name) {
-        this.id = id;
-        this.iata = iata;
-        this.icao = icao;
-        this.name = name;
-    }*/
 }

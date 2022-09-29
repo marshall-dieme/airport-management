@@ -1,47 +1,45 @@
 package com.saraya.airport.controller;
 
 import com.saraya.airport.model.Airport;
-import com.saraya.airport.service.ServiceAirport;
+import com.saraya.airport.service.AirportService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/airport")
 public class AirportController {
-    private final ServiceAirport serviceAirport;
+    private final AirportService service;
 
-    public AirportController(ServiceAirport serviceAirport) {
-        this.serviceAirport = serviceAirport;
+    public AirportController(AirportService service) {
+        this.service = service;
     }
 
     @GetMapping
     public List<Airport> getAll() {
-        return serviceAirport.findAirport();
+        return service.getAll();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Airport> AirportRepositoryById(@PathVariable Long id) {
-        return serviceAirport.getById(id);
+    @GetMapping("/iata/icao/name/{iata}/{icao}/{name}")
+    public Long getIdAirport(@PathVariable String iata, @PathVariable String icao, @PathVariable String name) {
+        return service.getIdAirport(iata, icao, name);
     }
 
-    @GetMapping("/iata/icao/name")
-    public List<Airport> getListAirport(@PathVariable String iata, @PathVariable String icao, @PathVariable String name) {
-        return serviceAirport.findAirport();
+    @PostMapping
+    public Airport create(@RequestBody Airport airport) {
+        return service.create(airport);
     }
 
     @PutMapping
-    public Airport createAirport(@RequestBody Airport airport) {
-        return serviceAirport.createAirport(airport);
+    public Airport update(@RequestBody Airport airport) {
+        return service.update(airport);
     }
-    @PutMapping
-    public Airport updateAirport(@RequestBody Airport airport){
-        return serviceAirport.updateAirport(airport);
+    @DeleteMapping("delete/{iata}/{icao}/{name}")
+    public  void deleteByName(@PathVariable String iata, @PathVariable String icao, @PathVariable String name){
+        service.deleteByiataandicaoandname(iata, icao, name);
+    }
+    public void deleteById(@PathVariable Long id){
+        service.delete(id);
+    }
 
-    }
-    @DeleteMapping("/{id}")
-    public void deleteAirport(@PathVariable Long id){
-        serviceAirport.deleteAirport(id);
-    }
 }

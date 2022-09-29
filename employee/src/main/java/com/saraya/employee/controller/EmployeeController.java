@@ -1,4 +1,15 @@
 package com.saraya.employee.controller;
 
-public class EmployeeController {
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/emp")
+public class EmployeeController<AirportService> {
+
+    private final AirportService service;
+
+    public EmployeeController(AirportService service) {
+        this.service = service;
+    }
 }

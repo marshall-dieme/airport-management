@@ -1,15 +1,14 @@
 package com.saraya.airportgeo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="airportgeo")
 public class AirportGeo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     public Long getId() {
         return id;
@@ -35,6 +34,7 @@ public class AirportGeo {
         this.city = city;
     }
 
+    @Column(unique = true)
     private String country;
     private String city;
 
