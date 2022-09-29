@@ -18,8 +18,11 @@ public class Parking {
     private Long parking_id;
     private Long passenger_id;
     private String name;
+
+    @Column(unique = true)
     private String email;
     private String country;
+
     private String car_no;
     private double amount;
 

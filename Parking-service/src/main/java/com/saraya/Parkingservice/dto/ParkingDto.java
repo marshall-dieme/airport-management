@@ -14,12 +14,12 @@ import java.io.Serializable;
 @Setter
 public class ParkingDto implements Serializable {
     private Long parking_id;
-    private Long passenger_id;
+    private String passport_no;
     private String name;
     private String email;
     private String country;
-    private String car_no;
     private double amount;
+    private String car_no;
     private String exit_date;
     private String exit_time;
 }

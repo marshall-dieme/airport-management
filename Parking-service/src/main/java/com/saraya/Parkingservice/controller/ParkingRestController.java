@@ -1,7 +1,6 @@
 package com.saraya.Parkingservice.controller;
 
 import com.saraya.Parkingservice.dto.ParkingDto;
-import com.saraya.Parkingservice.dto.ResponseTemplateValueObject;
 import com.saraya.Parkingservice.model.Parking;
 import com.saraya.Parkingservice.service.ParkingService;
 import lombok.AllArgsConstructor;
@@ -24,7 +23,7 @@ public class ParkingRestController {
     }
 
     @GetMapping("/{parking_id}")
-    public ResponseEntity<Parking> getParking(@PathVariable Long parking_id) {
+    public ResponseEntity<ParkingDto> getParking(@PathVariable Long parking_id) {
         return ResponseEntity.ok(service.getParking(parking_id));
     }
 
@@ -38,9 +37,4 @@ public class ParkingRestController {
         return ResponseEntity.ok(service.updateParking(parking));
     }
 
-
-    @GetMapping("/parking-passenger/{parking_id}")
-    public ResponseTemplateValueObject getParkingwithPassenger(@PathVariable Long parking_id) {
-        return service.getParkingPassenger(parking_id);
-    }
 }
