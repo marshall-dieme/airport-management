@@ -11,10 +11,9 @@ import com.geo.airporgeo.Airport_Geo;
 
 
 
-@FeignClient(url = "${airport.service.url}", value = "airportgeo-feign-client",
-path = "/api/airports_geo")
+@FeignClient(name= "Airport_Geo")
 public interface airportgeo_feignclient {
-	@GetMapping("/airport_geo/{airportgeoid}")
+	@GetMapping("/airports_geo/{airportgeoid}")
 	List<Airport_Geo> findByAirportGeo(@PathVariable("airportgeoid") Long airportgeoid);
 	
 	
