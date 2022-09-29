@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: api-gateway
+
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: http://localhost:4200
+            allowed-headers:
+              - content-type
+              - allowed-method
+                  - GET
+                  - POST
+                  - PUT
+                  - DELETE
+                  - OPTIONS
+      
+      routes:
+        ## Booking-service
+        - id: booking
+          uri: lb://booking-service
+          predicates:
+              - Path= /booking-service/**
+              - Method= GET, POST, PUT, DELETE
+
+        ## Booking-service
+        - id: timetable
+          uri: lb://time-table-service/**
+          predicates:
+              - Path= /time-table-service/**
+              - Method= GET, POST, PUT, DELETE
+
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8765
