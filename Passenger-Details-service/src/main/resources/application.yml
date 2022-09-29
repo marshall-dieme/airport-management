@@ -2,20 +2,9 @@ spring:
   application:
     name: passenger-details-service
 
-  config:
-    import: optional:configserver:http://localhost:8888
-
-  profiles:
-    active: dev
-
 
 server:
   port: 8092
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+
 
