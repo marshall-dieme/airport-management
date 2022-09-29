@@ -1,26 +1,26 @@
-package com.regulus.airplanetypeservice.services;
+package com.regulus.bookingservice.services;
 
-import com.regulus.airplanetypeservice.dtos.AirplaneTypeDto;
-import com.regulus.airplanetypeservice.models.AirplaneType;
+import com.regulus.bookingservice.dtos.BookingDto;
+import com.regulus.bookingservice.models.Booking;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Mapper {
 
-    public AirplaneTypeDto toDto(AirplaneType airplaneType){
-        AirplaneTypeDto dto = new AirplaneTypeDto();
-        dto.setAirplane_type_id(airplaneType.getAirplane_type_id());
-        dto.setAirplane_type_identifier(airplaneType.getAirplane_type_identifier());
-        dto.setDescription(airplaneType.getDescription());
+    public BookingDto toDto(Booking booking){
+        BookingDto dto = new BookingDto();
+        dto.setBooking_id(booking.getBooking_id());
+        dto.setSeat(booking.getSeat());
+        dto.setPrice(booking.getPrice());
         return dto;
     }
 
-    public AirplaneType toEntity(AirplaneTypeDto dto){
-        AirplaneType airplaneType = new AirplaneType();
-        airplaneType.setAirplane_type_id(dto.getAirplane_type_id());
-        airplaneType.setAirplane_type_identifier(dto.getAirplane_type_identifier());
-        airplaneType.setDescription(dto.getDescription());
-        return airplaneType;
+    public Booking toEntity(BookingDto dto){
+        Booking booking = new Booking();
+        booking.setBooking_id(dto.getBooking_id());
+        booking.setSeat(dto.getSeat());
+        booking.setPrice(dto.getPrice());
+        return booking;
     }
 
 }

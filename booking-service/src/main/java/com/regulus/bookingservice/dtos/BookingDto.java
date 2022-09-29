@@ -1,28 +1,20 @@
-package com.regulus.bookingservice.models;
+package com.regulus.bookingservice.dtos;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class BookingDto {
 
-@Entity
-public class Booking {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int booking_id;
 
     private int seat;
 
     private double price;
 
-    public Booking(int booking_id, int seat, double price) {
+    public BookingDto(int booking_id, int seat, double price) {
         this.booking_id = booking_id;
         this.seat = seat;
         this.price = price;
     }
 
-    public Booking() {
+    public BookingDto() {
     }
 
     public int getBooking_id() {
