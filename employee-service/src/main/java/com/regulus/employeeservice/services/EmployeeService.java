@@ -19,15 +19,15 @@ import java.util.Map;
 @Transactional
 public class EmployeeService {
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
     private final EmployeeRepository repository;
 
     private final Mapper mapper;
 
-    public EmployeeService(EmployeeRepository repository, Mapper mapper) {
+    public EmployeeService(EmployeeRepository repository, Mapper mapper, RestTemplate restTemplate) {
         this.repository = repository;
         this.mapper = mapper;
+        this.restTemplate = restTemplate;
     }
 
     public List<Employee> getEmployee(){
@@ -74,7 +74,7 @@ public class EmployeeService {
 
     public EmployeeDto createWithRelation(EmployeeDto employeeDto){
         Employee employee = mapper.toEntity(employeeDto);
-        Integer serviceId = restTemplate.getForEntity("http://service-service/services/name/" + employeeDto.getService_name(),
+        Integer serviceId = restTemplate.getForEntity("http://service-service/service/name/" + employeeDto.getService_name(),
                 Integer.class)
                 .getBody();
         employee = repository.save(employee);
@@ -84,8 +84,7 @@ public class EmployeeService {
         restTemplate.getForEntity("http://emp-service-relation-service/empServiceRelation/{empId}/{serviceId}",
                 Void.class,
                 values);
-        EmployeeDto employeeDto1 = mapper.toDto(employee);
-        return employeeDto1;
+        return mapper.toDto(employee);
 
     }
 }
