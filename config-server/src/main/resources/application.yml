@@ -4,7 +4,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/diallocodes/config-files.git
+          uri: https://github.com/diallocodes/config-files
           clone-on-start: true
           search-paths: development
           default-label: master
@@ -15,6 +15,14 @@ spring:
 
 server:
   port: 8888
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
 
 
 
