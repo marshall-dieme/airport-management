@@ -2,7 +2,7 @@ package com.saraya.Bookingservice.controller;
 
 import com.saraya.Bookingservice.dto.BookingDto;
 import com.saraya.Bookingservice.model.Booking;
-import com.saraya.Bookingservice.service.BookingServiceImpl;
+import com.saraya.Bookingservice.service.BookingService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,15 +15,15 @@ import java.util.List;
 @RestController
 public class BookingRestController {
 
-    private final BookingServiceImpl bookingService;
+    private final BookingService bookingService;
 
     @GetMapping
-    public ResponseEntity<List<Booking>> getAllBookings() {
+    public ResponseEntity<List<BookingDto>> getAllBookings() {
         return ResponseEntity.ok(bookingService.getAllBookings());
     }
 
     @GetMapping("/{booking_id}")
-    public ResponseEntity<Booking> getBooking(@PathVariable Long booking_id) {
+    public ResponseEntity<BookingDto> getBooking(@PathVariable Long booking_id) {
         return ResponseEntity.ok(bookingService.getBooking(booking_id));
     }
 
