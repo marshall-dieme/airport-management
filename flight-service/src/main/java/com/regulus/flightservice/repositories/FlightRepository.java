@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
-    @Query("select a.flight_id from Flight a where a.flight_no=:flightNo")
+    @Query("select f.flight_id from Flight f where f.flight_no=:flightNo")
     Integer findByFlight_no(String flightNo);
 }

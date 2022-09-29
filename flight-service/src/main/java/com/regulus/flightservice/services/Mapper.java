@@ -18,6 +18,7 @@ public class Mapper {
         dto.setDeparture_date(flight.getDeparture_date().format(formatter));
         dto.setArrival_date(flight.getArrival_date().format(formatter));
         dto.setFrom_to(flight.getFrom_to());
+        dto.setBooking_id(flight.getBooking_id());
         return dto;
     }
 
@@ -29,6 +30,7 @@ public class Mapper {
         flight.setDeparture_date(LocalDate.parse(dto.getDeparture_date(), formatter));
         flight.setArrival_date(LocalDate.parse(dto.getArrival_date(),formatter));
         flight.setFrom_to(dto.getFrom_to());
+        flight.setBooking_id(dto.getBooking_id());
         return flight;
     }
 
