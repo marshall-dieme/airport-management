@@ -12,6 +12,6 @@ import com.example.airp.entiti3.Airpor;
 path = "/api/airports")
 public interface airport_feignclient {
 	@GetMapping("/airports/{airporid}")
-	List<Airpor> findByAirportGeo(@PathVariable("airporid") Long airportgeoid);
+	List<Airpor> findByAirportGeo(@PathVariable("airporid") Long airporid);
 	
 }
