@@ -36,7 +36,6 @@ public class TimeTableController {
     public TimeTableDto getTimeTable(@PathVariable("id") int id ){
         return timeTableService.getTimeTable(id);
     }
-    
 
     @DeleteMapping("/{id}")
     public void deleteTimeTable(@PathVariable("id") int id){
