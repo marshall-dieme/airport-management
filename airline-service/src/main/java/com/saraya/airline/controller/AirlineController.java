@@ -1,6 +1,7 @@
 package com.saraya.airline.controller;
 
 import com.saraya.airline.model.Airline;
+import com.saraya.airline.model.AirlineDto;
 import com.saraya.airline.service.AirlineService;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,14 +26,15 @@ public class AirlineController {
     }
 
     @PostMapping
-    public Airline create(@RequestBody Airline airline){
-        return service.createAirline(airline);
+    public Airline create(@RequestBody AirlineDto dto){
+
+        return service.createAirline(dto);
     }
 
 
      @PutMapping
-    public Airline edit (@RequestBody Airline airline){
-        return service.updateAirline(airline);
+    public Airline edit (@RequestBody AirlineDto dto){
+        return service.updateAirline(dto);
      }
 
      @DeleteMapping("/{airline_id}")

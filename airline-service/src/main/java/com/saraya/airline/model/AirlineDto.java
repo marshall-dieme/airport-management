@@ -1,28 +1,19 @@
 package com.saraya.airline.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Airline {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AirlineDto {
     private Long airline_id;
-
-    private Long airport_id;
     private String airline_name;
     private String iata;
+    private String airport_name;
 
-    public Airline() {
+    public AirlineDto() {
     }
 
-    public Airline(Long airline_id, Long airport_id, String airline_name, String iata) {
+    public AirlineDto(Long airline_id, String airline_name, String iata, String airport_name) {
         this.airline_id = airline_id;
-        this.airport_id=airport_id;
         this.airline_name = airline_name;
         this.iata = iata;
+        this.airport_name = airport_name;
     }
 
     public Long getAirline_id() {
@@ -49,11 +40,11 @@ public class Airline {
         this.iata = iata;
     }
 
-    public Long getAirport_id() {
-        return airport_id;
+    public String getAirport_name() {
+        return airport_name;
     }
 
-    public void setAirport_id(Long airport_id) {
-        this.airport_id = airport_id;
+    public void setAirport_name(String airport_name) {
+        this.airport_name = airport_name;
     }
 }
