@@ -38,6 +38,15 @@ public class AirportService {
     }
 
     public AirportDto createAirport(AirportDto airportDto){
+        Map<String, String> values = new HashMap<>();
+        values.put("city", airportDto.getAirportGeo_city());
+        values.put("country", airportDto.getAirportGeo_country());
+        Integer airportGeo_id = restTemplate.getForEntity("http://airport-geo-service/airportgeo/city/country/{city}/{country}",
+                        Integer.class,
+                        values)
+                .getBody();
+        assert airportGeo_id != null;
+        airportDto.setAirportGeo_id(airportGeo_id);
         Airport airport = mapper.toEntity(airportDto);
          airport =  repository.save(airport);
          return mapper.toDto(airport);
@@ -58,5 +67,9 @@ public class AirportService {
         AirportDto airportDto = getAirport(id);
         Airport airport = mapper.toEntity(airportDto);
         repository.delete(airport);
+    }
+
+    public Integer getAirportID(String name) {
+        return repository.findByAirport_name(name);
     }
 }

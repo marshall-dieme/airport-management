@@ -12,6 +12,7 @@ public class Mapper {
         dto.setIata(airport.getIata());
         dto.setIcao(airport.getIcao());
         dto.setAirport_name(airport.getAirport_name());
+        dto.setAirportGeo_id(airport.getAirportGeo_id());
         return dto;
     }
 
@@ -21,6 +22,7 @@ public class Mapper {
         airport.setIata(airportDto.getIata());
         airport.setIcao(airportDto.getIcao());
         airport.setAirport_name(airportDto.getAirport_name());
+        airport.setAirportGeo_id(airportDto.getAirportGeo_id());
         return airport;
     }
 

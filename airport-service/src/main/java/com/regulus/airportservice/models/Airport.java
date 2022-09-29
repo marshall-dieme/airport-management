@@ -15,14 +15,17 @@ public class Airport {
     private String icao;
     private String airport_name;
 
+    private int airportGeo_id;
+
     public Airport() {
     }
 
-    public Airport(int airport_id, String iata, String icao, String airport_name) {
+    public Airport(int airport_id, String iata, String icao, String airport_name, int airportGeo_id) {
         this.airport_id = airport_id;
         this.iata = iata;
         this.icao = icao;
         this.airport_name = airport_name;
+        this.airportGeo_id = airportGeo_id;
     }
 
     public int getAirport_id() {
@@ -57,4 +60,11 @@ public class Airport {
         this.airport_name = airport_name;
     }
 
+    public int getAirportGeo_id() {
+        return airportGeo_id;
+    }
+
+    public void setAirportGeo_id(int airportGeo_id) {
+        this.airportGeo_id = airportGeo_id;
+    }
 }

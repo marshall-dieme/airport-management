@@ -22,6 +22,11 @@ public class AirportController {
         return airportService.getAirport();
     }
 
+    @GetMapping("/name/{name}")
+    public Integer getAirportIDByName(@PathVariable("name") String name){
+        return airportService.getAirportID(name);
+    }
+
     @PostMapping
     public AirportDto create(@RequestBody AirportDto airportDto){
         return airportService.createAirport(airportDto);
@@ -41,8 +46,5 @@ public class AirportController {
     public void deleteAirport(@PathVariable("id") int id){
         airportService.deleteAirport(id);
     }
-
-
-
 
 }
