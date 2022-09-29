@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 public interface Airport_GeoRepository extends JpaRepository<Airport_Geo, Long> {
 
     //@Query(value = "select dept_id from departments where name=?1", nativeQuery = true)
-    @Query("select airport.airport_geo_id from Airport_Geo airport where airport.country=:country and airport.city=:city")
-    String getIdAirport_Geo(String country, String city);
+    @Query("select a.airport_geo_id from Airport_Geo a where a.country=:country and a.city=:city")
+    Long getIdAirport_Geo(String country, String city);
 
-    Airport_Geo findAirport_GeoByCountryAndCity(String country, String city);
+    //Long findAirport_GeoByCountryAndCity(String country, String city);
 
 
 

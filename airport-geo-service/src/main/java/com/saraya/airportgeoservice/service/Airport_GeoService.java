@@ -16,6 +16,7 @@ public class Airport_GeoService {
     private final Airport_GeoRepository repository;
 
     public Airport_GeoService(Airport_GeoRepository repository) {
+
         this.repository = repository;
     }
 
@@ -41,8 +42,8 @@ public class Airport_GeoService {
         repository.deleteById(geo_id);
     }
 
-    public Airport_Geo getIdAirport_Geo(String country, String city) {
-        return repository.findAirport_GeoByCountryAndCity(country,city);
+    public Long getIdAirport_Geo(String country, String city) {
+        return repository.getIdAirport_Geo(country,city);
 
     }
 

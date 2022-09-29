@@ -2,7 +2,6 @@ package com.saraya.airportgeoservice.controller;
 
 import com.saraya.airportgeoservice.model.Airport_Geo;
 import com.saraya.airportgeoservice.service.Airport_GeoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +14,7 @@ public class Airport_GeoController {
     private final Airport_GeoService service;
 
     public Airport_GeoController(Airport_GeoService service) {
+
         this.service = service;
     }
 
@@ -25,6 +25,7 @@ public class Airport_GeoController {
     }
     @GetMapping("/{geo_id}")
     public Airport_Geo getById(@PathVariable Long geo_id){
+
         return service.getById(geo_id);
     }
 
@@ -32,6 +33,7 @@ public class Airport_GeoController {
     public Airport_Geo create(@RequestBody Airport_Geo airport_geo ){
         return service.create(airport_geo);
     }
+
     @PutMapping
     public Airport_Geo edit(@RequestBody Airport_Geo airport_geo){
 
@@ -42,8 +44,8 @@ public class Airport_GeoController {
         service.delete(geo_id);
     }
 
-
-    public Airport_Geo getAirport_Geo(String country, String city){
-        return service.getIdAirport_Geo(country,city);
+    @GetMapping("/country/city/{country}/{city}")
+    public Long getAirportGeoId(@PathVariable String country, @PathVariable String city){
+        return service.getIdAirport_Geo(country, city);
     }
 }
