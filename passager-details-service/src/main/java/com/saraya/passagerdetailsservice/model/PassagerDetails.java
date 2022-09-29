@@ -7,8 +7,7 @@ import java.time.LocalDate;
 public class PassagerDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int passagerDetailsId;
+    private String passportNo;
 
     private LocalDate birthdate;
 
@@ -27,12 +26,12 @@ public class PassagerDetails {
     public PassagerDetails() {
     }
 
-    public int getPassagerDetailsId() {
-        return passagerDetailsId;
+    public String getPassportNo() {
+        return passportNo;
     }
 
-    public void setPassagerDetailsId(int passagerDetailsId) {
-        this.passagerDetailsId = passagerDetailsId;
+    public void setPassportNo(String passportNo) {
+        this.passportNo = passportNo;
     }
 
     public LocalDate getBirthdate() {
@@ -91,14 +90,4 @@ public class PassagerDetails {
         this.telephone = telephone;
     }
 
-    public PassagerDetails(int passagerDetailsId, LocalDate birthdate, String sex, String street, String city, String country, String email, String telephone) {
-        this.passagerDetailsId = passagerDetailsId;
-        this.birthdate = birthdate;
-        this.sex = sex;
-        this.street = street;
-        this.city = city;
-        this.country = country;
-        this.email = email;
-        this.telephone = telephone;
-    }
 }

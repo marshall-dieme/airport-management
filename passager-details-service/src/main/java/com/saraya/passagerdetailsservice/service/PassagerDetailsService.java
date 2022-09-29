@@ -1,7 +1,7 @@
 package com.saraya.passagerdetailsservice.service;
 
+import com.saraya.passagerdetailsservice.model.PassagerDTO;
 import com.saraya.passagerdetailsservice.model.PassagerDetails;
-import com.saraya.passagerdetailsservice.model.PassagerDetailsDTO;
 import com.saraya.passagerdetailsservice.repository.PassagerDetailsRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +39,12 @@ public class PassagerDetailsService {
         return repo.findByEmail(email);
     }
 
-    public PassagerDetails create (PassagerDetailsDTO passagerDetails){
+    public PassagerDTO create (PassagerDTO passagerDetails){
         PassagerDetails details = mapper.map(passagerDetails, PassagerDetails.class);
         //details.setBirthdate(LocalDate.parse(passagerDetails.getBirthdate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
-        return repo.save(details);
+        details =  repo.save(details);
+        PassagerDTO detailsPassager = mapper.map(details, PassagerDTO.class);
+        return detailsPassager;
     }
 
     public PassagerDetails update(PassagerDetails passagerDetails){

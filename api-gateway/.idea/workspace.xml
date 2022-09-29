@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6af1116-e333-4d8c-b250-66978cef35da" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../passager-service/src/main/java/com/saraya/passagerservice/proxies/PassagerDetailProxy.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../timetable-service/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../timetable-service/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../timetable-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
@@ -15,8 +17,14 @@
       <change afterPath="$PROJECT_DIR$/../timetable-service/src/main/resources/application.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../timetable-service/src/test/java/com/saraya/timetableservice/TimetableServiceApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../airport-geo/src/main/java/com/saraya/airportgeo/controller/AirportGeoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../airport-geo/src/main/java/com/saraya/airportgeo/controller/AirportGeoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/controller/PassagerDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/controller/PassagerDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/model/PassagerDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/model/PassagerDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/model/PassagerDetailsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/model/PassagerDetailsDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/model/PassagerDetailsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/model/PassagerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/service/PassagerDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../passager-details-service/src/main/java/com/saraya/passagerdetailsservice/service/PassagerDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../passager-service/src/main/java/com/saraya/passagerservice/PassagerServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../passager-service/src/main/java/com/saraya/passagerservice/PassagerServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../passager-service/src/main/java/com/saraya/passagerservice/model/Passager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../passager-service/src/main/java/com/saraya/passagerservice/model/Passager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../passager-service/src/main/java/com/saraya/passagerservice/model/PassagerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../passager-service/src/main/java/com/saraya/passagerservice/model/PassagerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../passager-service/src/main/java/com/saraya/passagerservice/service/PassagerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../passager-service/src/main/java/com/saraya/passagerservice/service/PassagerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rentals-service/src/main/java/com/saraya/rentalsservice/controller/RentalsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rentals-service/src/main/java/com/saraya/rentalsservice/controller/RentalsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rentals-service/src/main/java/com/saraya/rentalsservice/repository/RentalsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rentals-service/src/main/java/com/saraya/rentalsservice/repository/RentalsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rentals-service/src/main/java/com/saraya/rentalsservice/service/RentalsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../rentals-service/src/main/java/com/saraya/rentalsservice/service/RentalsService.java" afterDir="false" />

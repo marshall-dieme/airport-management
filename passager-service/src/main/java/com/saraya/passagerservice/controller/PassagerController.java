@@ -33,7 +33,7 @@ public class PassagerController {
     }
 
     @PostMapping
-    public Passager create(@RequestBody PassagerDTO passager){
+    public PassagerDTO create(@RequestBody PassagerDTO passager){
         LOGGER.info("CREATING a NEW PASSAGER...");
         return service.create(passager);
     }

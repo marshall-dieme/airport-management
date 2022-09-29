@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableFeignClients("com.saraya.passagerservice")  //specifier le feign clii
+@EnableFeignClients("com.saraya.passagerservice")  //specifier le feign clii
 // ent
 public class PassagerServiceApplication {
 

@@ -2,6 +2,7 @@ package com.saraya.passagerservice.service;
 
 import com.saraya.passagerservice.model.Passager;
 import com.saraya.passagerservice.model.PassagerDTO;
+import com.saraya.passagerservice.proxies.PassagerDetailProxy;
 import com.saraya.passagerservice.repository.PassagerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class PassagerService {
     @Autowired
     private ModelMapper mapper;
 
+    @Autowired
+    PassagerDetailProxy proxy;
+
     private final PassagerRepository repo;
 
     public PassagerService(PassagerRepository repo) {
@@ -35,15 +39,13 @@ public class PassagerService {
         return repo.findByFirstNameAndLastName(firstName, lastName);
     }
 
-    public Passager create (PassagerDTO dto){
-        Passager passager = mapper.map(dto , Passager.class);
-        RestTemplate template = new RestTemplate();
-        Map<String , String> UrlValues = new HashMap<>();
-        UrlValues.put(("email") , dto.getEmail());
-        Integer passagerDetailsId = template.getForEntity(
-        "http://localhost:8088/passagers-details/{email}",Integer.class, UrlValues).getBody();
-        passager.setPassagerDetailsId(passagerDetailsId);
-        return repo.save(passager);
+    public PassagerDTO create (PassagerDTO dto){
+        Passager passager = mapper.map(dto, Passager.class);
+        passager = repo.save(passager);
+        dto = proxy.create(dto);
+        dto.setFirstName(passager.getFirstName());
+        dto.setLastName(passager.getLastName());
+        return dto;
     }
 
     public Passager update(Passager passager){

@@ -1,7 +1,7 @@
 package com.saraya.passagerdetailsservice.controller;
 
+import com.saraya.passagerdetailsservice.model.PassagerDTO;
 import com.saraya.passagerdetailsservice.model.PassagerDetails;
-import com.saraya.passagerdetailsservice.model.PassagerDetailsDTO;
 import com.saraya.passagerdetailsservice.service.PassagerDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ public class PassagerDetailsController {
     }
 
     @PostMapping
-    public PassagerDetails create(@RequestBody PassagerDetailsDTO passagerDetails){
+    public PassagerDTO create(@RequestBody PassagerDTO passagerDetails){
         LOGGER.info("CREATING NEW Passagers Details...");
         return service.create(passagerDetails);
     }
@@ -57,9 +57,9 @@ public class PassagerDetailsController {
     }
 
     @GetMapping("/{email}")
-    public Integer findByEmail(
+    public PassagerDetails findByEmail(
             @PathVariable String email) {
-        return  service.findByEmail(email).getPassagerDetailsId();
+        return  service.findByEmail(email);
     }
 
 }

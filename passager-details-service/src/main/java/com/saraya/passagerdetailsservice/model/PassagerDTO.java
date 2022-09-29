@@ -2,7 +2,7 @@ package com.saraya.passagerdetailsservice.model;
 
 public class PassagerDTO {
 
-    private int passagerDetailsId;
+
 
     private String birthdate;
 
@@ -18,14 +18,14 @@ public class PassagerDTO {
 
     private String telephone;
 
+    private String passportNo;
 
-
-    public int getPassagerDetailsId() {
-        return passagerDetailsId;
+    public String getPassportNo() {
+        return passportNo;
     }
 
-    public void setPassagerDetailsId(int passagerDetailsId) {
-        this.passagerDetailsId = passagerDetailsId;
+    public void setPassportNo(String passportNo) {
+        this.passportNo = passportNo;
     }
 
     public String getBirthdate() {
@@ -85,14 +85,5 @@ public class PassagerDTO {
     }
 
 
-    public PassagerDTO(int passagerDetailsId, String birthdate, String sex, String street, String city, String country, String email, String telephone) {
-        this.passagerDetailsId = passagerDetailsId;
-        this.birthdate = birthdate;
-        this.sex = sex;
-        this.street = street;
-        this.city = city;
-        this.country = country;
-        this.email = email;
-        this.telephone = telephone;
-    }
+
 }
