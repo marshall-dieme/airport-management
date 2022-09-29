@@ -8,26 +8,39 @@ public class AirportDto {
     private String icao;
 
     private String airport_name;
+    private String country;
 
-    private String arp;
+    private String city;
 
-    public String getArp() {
-        return arp;
+    public String getCountry() {
+        return country;
     }
 
-    public void setArp(String arp) {
-        this.arp = arp;
+    public void setAirport_id(Integer airport_id) {
+        this.airport_id = airport_id;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String arp) {
+        this.city = arp;
     }
 
     public AirportDto() {
     }
 
 
-    public Integer getAirport_id() {
+    public int getAirport_id() {
         return airport_id;
     }
 
-    public void setAirport_id(Integer airport_id) {
+    public void setAirport_id(int airport_id) {
         this.airport_id = airport_id;
     }
 

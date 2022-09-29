@@ -4,7 +4,7 @@ package com.saraya.microservice.airportservice.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "airport_data")
+
 public class Airport {
     @Id
     @GeneratedValue( strategy=GenerationType.IDENTITY )
@@ -15,7 +15,8 @@ public class Airport {
     private String icao;
 
     private String airport_name;
-    private String id;
+    private Integer idGeo;
+
     //@Transient
     //private static int cpt = 0;
 
@@ -34,12 +35,12 @@ public class Airport {
         return airport_name;
     }
 
-    public String getId() {
-        return id;
+    public Integer getIdGeo() {
+        return idGeo;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdGeo(Integer idGeo) {
+        this.idGeo = idGeo;
     }
 
     public Integer getAirport_id() {
