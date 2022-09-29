@@ -1,4 +1,4 @@
-package com.regulus.passengerservice.Bean;
+package com.regulus.passengerdetailservice.Bean;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

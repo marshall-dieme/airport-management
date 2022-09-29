@@ -22,6 +22,7 @@ public class Mapper {
         dto.setContry(details.getContry());
         dto.setEmail(details.getEmail());
         dto.setTelephone(details.getTelephone());
+        dto.setPassenger_id(details.getPassenger_id());
         return dto;
     }
 
@@ -37,6 +38,7 @@ public class Mapper {
         details.setContry(dto.getContry());
         details.setEmail(dto.getEmail());
         details.setTelephone(dto.getTelephone());
+        details.setPassenger_id(dto.getPassenger_id());
         return details;
     }
 
