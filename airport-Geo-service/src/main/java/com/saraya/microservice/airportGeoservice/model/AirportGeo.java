@@ -7,11 +7,10 @@ import javax.persistence.*;
 public class AirportGeo {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
-    private int airport_geo_id;
+    private Integer airport_geo_id;
     private String country;
     private String city;
-    @Transient
-    private static int cpt = 0;
+
     public AirportGeo(String country, String city) {
 
         this.country = country;
@@ -22,11 +21,11 @@ public class AirportGeo {
     }
 
 
-    public int getAirport_geo_id() {
+    public Integer getAirport_geo_id() {
         return airport_geo_id;
     }
 
-    public void setAirport_geo_id(int  airport_geo_id) {
+    public void setAirport_geo_id(Integer  airport_geo_id) {
         this.airport_geo_id = airport_geo_id;
     }
 

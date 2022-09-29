@@ -4,6 +4,8 @@ import com.saraya.microservice.airportGeoservice.model.AirportGeo;
 import com.saraya.microservice.airportGeoservice.repo.AirportGeoRepo;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,8 +25,8 @@ public class AirportGeoService {
         return repo.findAll();
     }
 
-    public AirportGeo getById(int id) {
-        return repo.findById(id).get();
+    public AirportGeo getById(Integer airport_geo_id) {
+        return repo.findById(airport_geo_id).get();
     }
 
     public AirportGeo create(AirportGeo arp) {
@@ -35,9 +37,16 @@ public class AirportGeoService {
         return repo.save(arp);
     }
 
-    public void delete(int id) {
-        repo.deleteById(id);
+    public void delete(Integer airport_geo_id) {
+        repo.deleteById(airport_geo_id);
     }
+
+    public Integer getIdAirportGeo(String country,String city) {
+
+        return repo.getIdAirportGeo(country,city);
+    }
+
+
 
     /*public AirportGeo getIdArp(String country) {
 
