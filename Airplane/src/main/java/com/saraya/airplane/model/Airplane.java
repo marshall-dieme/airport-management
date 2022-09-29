@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,4 +21,7 @@ public class Airplane {
     private long airplane_id;
     private String airplane_capacity;
     private long airline_id;
+    private long airplane_type_id;
+    private long flight_id;
+
 }

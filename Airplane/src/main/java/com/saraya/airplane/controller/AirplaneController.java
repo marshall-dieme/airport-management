@@ -3,7 +3,6 @@ package com.saraya.airplane.controller;
 
 import com.saraya.airplane.model.Airplane;
 import com.saraya.airplane.service.AirplaneService;
-import com.saraya.airplane.vo.ResponseTemplateVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +21,9 @@ public class AirplaneController {
     }
 
     @GetMapping("/{airplane_id}")
-    public ResponseTemplateVo getAirplaneWithAirline(@PathVariable long airplane_id){
-        return service.getAirplaneWithAirline(airplane_id);
+    public Airplane getById(@PathVariable long airplane_id){
+        return service.findAirplaneById(airplane_id);
     }
-
 
     @GetMapping
     public List<Airplane> getAll(){

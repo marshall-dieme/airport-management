@@ -30,10 +30,10 @@ public class AirportService {
      return repo.findAll();
     }
 
-//    public Airport findById(long airport_id){
-//        return repo.findById(airport_id);
-//    }
-//
+    public Airport findById(long airport_id){
+        return repo.findById(airport_id);
+    }
+
     public Airport update(Airport airport){
         return repo.save(airport);
     }

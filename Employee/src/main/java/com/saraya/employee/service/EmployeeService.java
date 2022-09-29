@@ -43,11 +43,7 @@ public class EmployeeService {
         Employee employee = repository.findById(employee_id);
         return mapper.toDto(employee);
     }
-//
-//    public EmployeeDto findById(long id){
-//        Employee employee = repository.findById(id);
-//        return employee != null ? mapper.toDto(employee) : null;
-//    }
+
 //    public ResponseTemplateVo getEmployeeWithService(long employee_id){
 //        ResponseTemplateVo vo = new ResponseTemplateVo();
 //        Employee employee =  repository.findById(employee_id);

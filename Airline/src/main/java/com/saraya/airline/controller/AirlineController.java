@@ -1,6 +1,7 @@
 package com.saraya.airline.controller;
 
 import com.saraya.airline.model.Airline;
+import com.saraya.airline.repo.AirlineRepository;
 import com.saraya.airline.service.AirlineService;
 import com.saraya.airline.vo.ResponseTemplateVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +13,25 @@ import java.util.List;
 @RequestMapping("/airline")
 public class AirlineController {
 
+
     @Autowired
     private AirlineService service;
+
 
     @PostMapping("/")
     public Airline save(@RequestBody Airline airline){
         return service.create(airline);
     }
 
+
     @GetMapping("/{airline_id}")
+    public Airline getAirline(@PathVariable long airline_id){
+        return service.findAirlineById(airline_id);
+    }
+
+    @GetMapping("/airlineWithAirplane/{airline_id}")
     public ResponseTemplateVo getAirlineWithAirport(@PathVariable long airline_id){
-        return service.getAirlineWithAirport(airline_id);
+        return service.getAirlineWithAirplane(airline_id);
     }
 
     @GetMapping("/")

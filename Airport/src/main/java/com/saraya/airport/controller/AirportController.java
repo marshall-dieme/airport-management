@@ -35,19 +35,18 @@ public class AirportController {
 //        return service.getAirportWithService(service_id);
 //    }
 
-    @GetMapping("/services/{id}")
+    @GetMapping("/{airport_id}")
+    public Airport getAirportById(@PathVariable long airport_id){
+        return service.findById(airport_id);
+    }
+
+    @GetMapping("/airport-AirportGeo-Service/services/{id}")
     public ResponseTemplateVo getAirportWithAirportGeoWithService(@PathVariable("id") long service_id ){
         return service.findAirportAirportGeoServiceAirline(service_id);
     }
 
 
-
-//    @GetMapping("/{airport_name}")
-//    public Airport getByName(@PathVariable String airport_name){
-//        return service.findByAirportName(airport_name);
-//    }
-
-    @PutMapping("/update")
+    @PutMapping
     public Airport update(@RequestBody Airport airport){
         return service.update(airport);
     }

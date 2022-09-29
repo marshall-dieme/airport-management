@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ResponseTemplateVo {
 
-    private Airport airport;
+
     private Airline airline;
     private Airplane airplane;
 
