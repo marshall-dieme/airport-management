@@ -14,6 +14,8 @@ public class Mapper {
         dto.setFirstName(passenger.getFirstName());
         dto.setLastName(passenger.getLastName());
         dto.setBooking_id(passenger.getBooking_id());
+        dto.setParking_id(passenger.getParking_id());
+        dto.setRental_id(passenger.getRental_id());
         return dto;
     }
 
@@ -24,6 +26,8 @@ public class Mapper {
         passenger.setFirstName(dto.getFirstName());
         passenger.setLastName(dto.getLastName());
         passenger.setBooking_id(dto.getBooking_id());
+        passenger.setParking_id(dto.getParking_id());
+        passenger.setRental_id(dto.getRental_id());
         return passenger;
     }
 
