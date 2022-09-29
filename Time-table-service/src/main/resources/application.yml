@@ -1,1 +1,13 @@
+spring:
+  application:
+    name: time-table-service
 
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  profiles:
+    active:  dev
+
+server:
+  port: 8088
