@@ -1,5 +1,6 @@
 package com.saraya.servicesservice.controller;
 
+import com.saraya.servicesservice.model.ServiceDto;
 import com.saraya.servicesservice.model.Services;
 import com.saraya.servicesservice.service.ServicesService;
 import org.springframework.web.bind.annotation.*;
@@ -26,15 +27,15 @@ public class ServicesController {
         return service.getByIdServices(services_id);
     }
 @PostMapping
-    public Services create(@RequestBody Services services){
+    public Services create(@RequestBody ServiceDto dto){
 
-        return service.createServices(services);
+        return service.createServices(dto);
     }
 
     @PutMapping
-    public Services edit(@RequestBody Services services){
+    public Services edit(@RequestBody ServiceDto dto){
 
-        return service.updateServices(services);
+        return service.updateServices(dto);
     }
     @DeleteMapping("/{services_id}")
     public void delete(@PathVariable Long services_id)

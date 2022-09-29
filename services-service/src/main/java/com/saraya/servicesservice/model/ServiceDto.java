@@ -1,25 +1,18 @@
 package com.saraya.servicesservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class ServiceDto {
 
-@Entity
-public class Services {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long services_id;
-
-    private Long airport_id;
     private String services_name;
+    private String airport_name;
 
-    public Services() {
+    public ServiceDto() {
     }
 
-    public Services(Long services_id, String services_name) {
+    public ServiceDto(Long services_id, String services_name, String airport_name) {
         this.services_id = services_id;
         this.services_name = services_name;
+        this.airport_name = airport_name;
     }
 
     public Long getServices_id() {
@@ -27,7 +20,6 @@ public class Services {
     }
 
     public void setServices_id(Long services_id) {
-
         this.services_id = services_id;
     }
 
@@ -36,15 +28,14 @@ public class Services {
     }
 
     public void setServices_name(String services_name) {
-
         this.services_name = services_name;
     }
 
-    public Long getAirport_id() {
-        return airport_id;
+    public String getAirport_name() {
+        return airport_name;
     }
 
-    public void setAirport_id(Long airport_id) {
-        this.airport_id = airport_id;
+    public void setAirport_name(String airport_name) {
+        this.airport_name = airport_name;
     }
 }
