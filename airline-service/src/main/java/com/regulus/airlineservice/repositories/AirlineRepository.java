@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AirlineRepository extends JpaRepository<Airline, Integer> {
 
-    @Query("select a.airline_id from Airline a where a.airline_name=:name and a.iata=:iata")
-    Integer findByAirline_nameAndIata(String name, String iata);
+    @Query("select a.airline_id from Airline a where a.airline_name=:name")
+    Integer findByAirline_name(String name);
 }

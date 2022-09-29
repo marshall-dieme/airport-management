@@ -13,7 +13,7 @@ public class Mapper {
         dto.setAirline_id(airline.getAirline_id());
         dto.setAirline_name(airline.getAirline_name());
         dto.setIata(airline.getIata());
-        dto.setAirplane_id(airline.getAirplane_id());
+        dto.setAirport_id(airline.getAirport_id());
         return dto;
     }
 
@@ -22,7 +22,7 @@ public class Mapper {
         airline.setAirline_id(dto.getAirline_id());
         airline.setAirline_name(dto.getAirline_name());
         airline.setIata(dto.getIata());
-        airline.setAirplane_id(dto.getAirplane_id());
+        airline.setAirport_id(dto.getAirport_id());
         return airline;
     }
 }

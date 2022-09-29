@@ -1,10 +1,7 @@
 package com.regulus.airlineservice.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Airline {
@@ -13,20 +10,21 @@ public class Airline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int airline_id;
 
+    @Column(unique = true)
     private String airline_name;
 
     private String iata;
 
-    private int airplane_id;
+    private int airport_id;
 
     public Airline() {
     }
 
-    public Airline(int airline_id, String airline_name, String iata, int airplane_id) {
+    public Airline(int airline_id, String airline_name, String iata, int airport_id) {
         this.airline_id = airline_id;
         this.airline_name = airline_name;
         this.iata = iata;
-        this.airplane_id = airplane_id;
+        this.airport_id = airport_id;
     }
 
     public int getAirline_id() {
@@ -53,11 +51,11 @@ public class Airline {
         this.iata = iata;
     }
 
-    public int getAirplane_id() {
-        return airplane_id;
+    public int getAirport_id() {
+        return airport_id;
     }
 
-    public void setAirplane_id(int airplane_id) {
-        this.airplane_id = airplane_id;
+    public void setAirport_id(int airport_id) {
+        this.airport_id = airport_id;
     }
 }

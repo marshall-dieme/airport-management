@@ -8,18 +8,18 @@ public class AirlineDto {
 
     private String iata;
 
-    private int airplane_id;
+    private int airport_id;
 
-    private int airplane_capacity;
+    private String airport_name;
     public AirlineDto() {
     }
 
-    public AirlineDto(int airline_id, String airline_name, String iata, int airplane_id, int airplane_capacity) {
+    public AirlineDto(int airline_id, String airline_name, String iata, int airport_id, String airport_name) {
         this.airline_id = airline_id;
         this.airline_name = airline_name;
         this.iata = iata;
-        this.airplane_id=airplane_id;
-        this.airplane_capacity=airplane_capacity;
+        this.airport_id=airport_id;
+        this.airport_name=airport_name;
     }
 
     public int getAirline_id() {
@@ -46,19 +46,19 @@ public class AirlineDto {
         this.iata = iata;
     }
 
-    public int getAirplane_id() {
-        return airplane_id;
+    public int getAirport_id() {
+        return airport_id;
     }
 
-    public void setAirplane_id(int airplane_id) {
-        this.airplane_id = airplane_id;
+    public void setAirport_id(int airport_id) {
+        this.airport_id = airport_id;
     }
 
-    public int getAirplane_capacity() {
-        return airplane_capacity;
+    public String getAirport_name() {
+        return airport_name;
     }
 
-    public void setAirplane_capacity(int airplane_capacity) {
-        this.airplane_capacity = airplane_capacity;
+    public void setAirport_name(String airport_name) {
+        this.airport_name = airport_name;
     }
 }

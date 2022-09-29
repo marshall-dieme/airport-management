@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/airlines")
+@RequestMapping("/airline")
 public class AirlineController {
 
     private final AirlineService serviceAirline;
@@ -37,9 +37,9 @@ public class AirlineController {
         return serviceAirline.getAirline(id);
     }
 
-    @GetMapping("/airlineName/airlineIata/{airlineName}/{airlineIata}")
-    public Integer getAirlineByNameAndIata(@PathVariable("airlineName") String airlineName,@PathVariable("airlineIata") String airlineIata){
-        return serviceAirline.getAirlineId(airlineName, airlineIata);
+    @GetMapping("/airlineName/{airlineName}")
+    public Integer getAirlineByName(@PathVariable("airlineName") String airlineName){
+        return serviceAirline.getAirlineId(airlineName);
     }
 
     @DeleteMapping("/{id}")
