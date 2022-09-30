@@ -11,4 +11,6 @@ public interface PassengerRepository extends JpaRepository<Passenger , Integer> 
 
 	void deleteByPassengerId(int passengerId);
 
+	Passenger findByPassportNo(Passenger passenger);
+
 }

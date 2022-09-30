@@ -36,7 +36,7 @@ public class PassagerDetailsController {
 	    }
 
 	 @PostMapping
-	    public PassagerDetails create(@RequestBody PassagerDetailsDto passagerDetailsDto){
+	    public PassagerDetailsDto create(@RequestBody PassagerDetailsDto passagerDetailsDto){
 	        return service.create(passagerDetailsDto);
 	    }
 	 

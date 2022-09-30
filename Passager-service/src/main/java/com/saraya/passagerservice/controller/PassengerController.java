@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.saraya.passagerservice.model.Passenger;
+import com.saraya.passagerservice.model.PassengerDto;
 import com.saraya.passagerservice.service.PassengerService;
 
 @RestController
@@ -38,8 +39,8 @@ public class PassengerController {
     }
 	
     @PostMapping
-    public Passenger create(@RequestBody Passenger passenger){
-    	LOGGER.info("*********CREATING NEW AIRPORT*****");
+    public PassengerDto create(@RequestBody PassengerDto passenger){
+    	LOGGER.info("*********CREATING NEW PASSENGER*****");
         return service.create(passenger);
     }
 
@@ -59,7 +60,7 @@ public class PassengerController {
     }
 
     @GetMapping("/passportNo/{passportNo}")
-    public Integer  findByPassportNo(@PathVariable String passportNo) {
+    public Integer findByPassportNo(@PathVariable String passportNo) {
         return  service.findByPassportNo(passportNo).getPassengerId();
     }
 

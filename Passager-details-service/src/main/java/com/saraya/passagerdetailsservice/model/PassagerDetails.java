@@ -23,9 +23,8 @@ public class PassagerDetails {
 	private String country;
 	private String email;
 	private String telephone;
-	private int passengerId;
 	private String passportNo;
-
+	
 	
 	public PassagerDetails() {
 	}
@@ -121,16 +120,6 @@ public class PassagerDetails {
 	}
 
 
-	public int getPassengerId() {
-		return passengerId;
-	}
-
-
-	public void setPassengerId(int passengerId) {
-		this.passengerId = passengerId;
-	}
-
-
 	public String getPassportNo() {
 		return passportNo;
 	}
@@ -138,7 +127,9 @@ public class PassagerDetails {
 
 	public void setPassportNo(String passportNo) {
 		this.passportNo = passportNo;
-	}	
+	}
+
+
 	
 	
 	

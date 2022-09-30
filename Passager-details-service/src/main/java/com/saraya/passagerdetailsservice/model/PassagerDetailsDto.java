@@ -15,6 +15,10 @@ public class PassagerDetailsDto {
 	private String telephone;
 	private String passportNo;
 	private int passengerId;
+	/*
+	 * private String firstname; private String lastname;
+	 */
+	
 
 
 	
@@ -22,6 +26,25 @@ public class PassagerDetailsDto {
 	public PassagerDetailsDto() {
 	}
 
+	
+	public PassagerDetailsDto(int passengerDetailsId, String birthdate, String sex, String street, String city,
+			String zip, String country, String email, String telephone, String passportNo, int passengerId
+			) {
+		this.passengerDetailsId = passengerDetailsId;
+		this.birthdate = birthdate;
+		this.sex = sex;
+		this.street = street;
+		this.city = city;
+		this.zip = zip;
+		this.country = country;
+		this.email = email;
+		this.telephone = telephone;
+		this.passportNo = passportNo;
+		this.passengerId = passengerId;
+		/*
+		 * this.firstname = firstname; this.lastname = lastname;
+		 */
+	}
 
 	public int getPassengerDetailsId() {
 		return passengerDetailsId;
@@ -112,25 +135,28 @@ public class PassagerDetailsDto {
 		this.telephone = telephone;
 	}
 
-
+	/*
+	 * public String getFirstname() { return firstname; }
+	 * 
+	 * 
+	 * public void setFirstname(String firstname) { this.firstname = firstname; }
+	 * 
+	 * public String getLastname() { return lastname; }
+	 * 
+	 * public void setLastname(String lastname) { this.lastname = lastname; }
+	 */
 
 	public String getPassportNo() {
 		return passportNo;
 	}
 
-
-
 	public void setPassportNo(String passportNo) {
 		this.passportNo = passportNo;
 	}
 
-
-
 	public int getPassengerId() {
 		return passengerId;
 	}
-
-
 
 	public void setPassengerId(int passengerId) {
 		this.passengerId = passengerId;

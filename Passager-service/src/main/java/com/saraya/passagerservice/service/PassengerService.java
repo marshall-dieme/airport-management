@@ -3,14 +3,25 @@ package com.saraya.passagerservice.service;
 import java.util.List;
 
 import javax.transaction.Transactional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.saraya.passagerservice.model.Passenger;
+import com.saraya.passagerservice.model.PassengerDto;
+import com.saraya.passagerservice.proxies.Proxy;
 import com.saraya.passagerservice.repository.PassengerRepository;
 
 
 @Service
 @Transactional
 public class PassengerService {
+	
+	@Autowired
+	private ModelMapper mapper;
+	
+	@Autowired
+	Proxy proxy;
 	 private final PassengerRepository repo;
 	 
 	public PassengerService(PassengerRepository repo) {
@@ -26,8 +37,13 @@ public class PassengerService {
 	        return repo.findByPassportNo(passportNo);
 	    }
 
-	 public Passenger create (Passenger passenger){
-	        return repo.save(passenger);
+	 public PassengerDto create (PassengerDto passengerDto){
+		 Passenger passenger = mapper.map(passengerDto, Passenger.class);
+		 passenger = repo.save(passenger);
+		 passengerDto = proxy.create(passengerDto);
+		 passengerDto.setFirstname(passenger.getFirstname());
+		 passengerDto.setLastname(passenger.getLastname());
+	        return passengerDto;
 	    }
 	 
 	 public Passenger update(Passenger passenger){

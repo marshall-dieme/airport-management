@@ -1,0 +1,50 @@
+spring:
+ application:
+  name: api-gateway
+ config:
+  import= optional:
+           configserver: instead
+
+server:
+ port: 8765
+
+---
+
+spring:
+ cloud:
+  gateway:
+   routes:
+    - id: airportGeo-service
+      uri: http://localhost:8100
+      predicates:
+       - Path=/airportGeo/**
+    - id: passagerDetails-service
+      uri: http://localhost:8800
+      predicates:
+       - Path=/passagerDetails/**
+    - id: passenger-service
+      uri: http://localhost:8900
+      predicates:
+       - Path=/passenger/**
+    - id: airport-service
+      uri: http://localhost:8200
+      predicates:
+       - Path=/airport/**
+    - id: services-service
+      uri: http://localhost:8300
+      predicates:
+       - Path=/services/**
+    - id: airline-service
+      uri: http://localhost:8500
+      predicates:
+       - Path=/airline/**
+    - id: airplane-service
+      uri: http://localhost:8600
+      predicates:
+       - Path=/airplane/**
+    - id: airplaneType-service
+      uri: http://localhost:8700
+      predicates:
+       - Path=/airplaneType/**
+
+
