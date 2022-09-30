@@ -60,9 +60,10 @@ public class AirportController {
 		return responseEntity;
 	}
 	
-	@GetMapping("/{country}/{city}")
+	@GetMapping("/Geo/{country}/{city}")
 	public Long findByCountryAndCity(@PathVariable String country, @PathVariable String city) {
-		return airportService.findByCountryAndCity(country, city).getAirport_geo_id();
+//		return airportService.findByCountryAndCity(country, city).getAirport_geo_id();
+		return airportService.findByCountryAndCity(country, city);
 	}
 }
 

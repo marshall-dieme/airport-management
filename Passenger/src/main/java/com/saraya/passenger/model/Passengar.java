@@ -13,9 +13,25 @@ public class Passengar {
 	private String passport_no;
 	private String firstname;
 	private String lastname;
+	private Long passenger_details_id;
+	
+	
+	
 	public Passengar() {
 		super();
 	}
+	
+
+	public Long getPassenger_details_id() {
+		return passenger_details_id;
+	}
+
+
+	public void setPassenger_details_id(Long passenger_details_id) {
+		this.passenger_details_id = passenger_details_id;
+	}
+
+
 	public Long getPassenger_id() {
 		return passenger_id;
 	}

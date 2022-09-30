@@ -1,7 +1,5 @@
 package com.saraya.passengerdetails.dto;
 
-import java.time.LocalDate;
-
 public class PassengerDetailsDTo {
 	private Long passenger_details_id;
 	private String birthdate;

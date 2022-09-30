@@ -44,4 +44,8 @@ public class PassengerDetailsController {
 	public void delete(@PathVariable Long id) {
 		detailsServices.deletePassengerDetails(id);
 	}
+	@GetMapping("/Details/{telephone}/{email}")
+	public Long getPassengerByTelepAndMail(@PathVariable String telephone, @PathVariable String email) {
+		return detailsServices.FinByTelephoneAndEmail(telephone, email).getPassenger_details_id();
+	}
 }

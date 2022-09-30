@@ -1,11 +1,14 @@
 package com.saraya.passenger.services.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.saraya.passenger.dto.PassengerDTO;
 import com.saraya.passenger.mapper.ConvertPassenger;
@@ -22,8 +25,23 @@ public class PassengerServiceImpl implements PassengerServices {
 	@Override
 	public PassengerDTO createPassenger(PassengerDTO passengerDTO) {
 		Passengar passenger = convertPassenger.toPassenger(passengerDTO);
-		passengerRepository.save(passenger);
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		Map<String, String> urlValue = new HashMap<>();
+		urlValue.put("telephone", passengerDTO.getTelephone());
+		urlValue.put("email", passengerDTO.getEmail());
+		
+		String url= "http://localhost:8300/passengerdetails/Details/{telephone}/{email}";
+		
+		Long passenger_details_id = restTemplate.getForEntity(url, Long.class, urlValue).getBody();
+		
+		passenger.setPassenger_details_id(passenger_details_id);
+		
+		passenger = passengerRepository.save(passenger);
+		
 		PassengerDTO dto = convertPassenger.toDTO(passenger);
+		
 		return dto;
 	}
 

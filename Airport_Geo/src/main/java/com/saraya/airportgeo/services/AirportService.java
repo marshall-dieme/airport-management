@@ -13,6 +13,6 @@ public interface AirportService {
 	AirportGeoDTO getAiportGeoById(Long airportgeoId);
 	AirportGeoDTO updateAirportGeo(AirportGeoDTO airportGeoDTO, Long airportgeoId);
 	void deleteAirportGeo(Long airportgeoId);
-	AirportGeoDTO findByCountryAndCity(String country, String city);
-
+	//AirportGeoDTO findByCountryAndCity(String country, String city);
+	Long findByCountryAndCity(String country, String city);
 }

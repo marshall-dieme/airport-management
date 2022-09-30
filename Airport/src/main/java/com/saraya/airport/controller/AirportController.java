@@ -18,7 +18,7 @@ import com.saraya.airport.dto.AiportDTO;
 import com.saraya.airport.services.AirportService;
 
 @RestController
-@RequestMapping("/Airport")
+@RequestMapping("/airport")
 public class AirportController {
 	@Autowired
 	private AirportService airportService;

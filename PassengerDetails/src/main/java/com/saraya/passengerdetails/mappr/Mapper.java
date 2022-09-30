@@ -27,6 +27,7 @@ public class Mapper {
 	
 	public PassengerDetailsDTo toDto(PassengerDetails passengerDetails) {
 		PassengerDetailsDTo detailsDTO = new PassengerDetailsDTo();
+		detailsDTO.setPassenger_details_id(passengerDetails.getPassenger_details_id());
 		detailsDTO.setBirthdate(passengerDetails.getBirthdate().toString());
 		detailsDTO.setCity(passengerDetails.getCity());
 		detailsDTO.setCountry(passengerDetails.getCountry());

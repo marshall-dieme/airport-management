@@ -33,7 +33,7 @@ public class ServicesImpl implements PassengerDetailsServices{
 		List<PassengerDetailsDTo> detailsDTos = new ArrayList<>();
 		for (PassengerDetails passengerDetails : details) {
 			PassengerDetailsDTo detailsDTo = mapper.toDto(passengerDetails);
-			details.add(passengerDetails);
+			detailsDTos.add(detailsDTo);
 		}
 		return detailsDTos;
 	}
@@ -74,5 +74,13 @@ public class ServicesImpl implements PassengerDetailsServices{
 	public void deletePassengerDetails(Long i) {
 		repository.deleteById(i);
 	}
+
+	@Override
+	public PassengerDetailsDTo FinByTelephoneAndEmail(String telephone, String email) {
+		PassengerDetails details = repository.findByTelephoneAndEmail(telephone, email);
+		
+		return mapper.toDto(details);
+	}
+
 
 }

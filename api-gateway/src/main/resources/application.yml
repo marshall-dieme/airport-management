@@ -1,0 +1,35 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+      - id: Airport
+        uri: http://localhost:8700/
+        predicates:
+        - Path= /airport/**
+      - id: AirportGeo
+        uri: http://localhost:9900/
+        predicates:
+        - Path= /airport-geo/**           
+      - id: Passenger
+        uri: http://localhost:8400/
+        predicates:
+        - Path= /passenger/**
+      - id: PassengerDetails
+        uri: http://localhost:8300/
+        predicates:
+        - Path= /passengerdetails/**
+      - id: Employees
+        uri: http://localhost:7500/
+        predicates:
+        - Path= /Employees/**
+      - id: Services
+        uri: http://localhost:8100/
+        predicates:
+        - Path= /services/** 
+       
+       
+       

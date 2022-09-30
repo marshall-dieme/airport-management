@@ -10,4 +10,5 @@ public interface PassengerDetailsServices {
 	PassengerDetailsDTo getPassengerDetails(Long id);
 	PassengerDetailsDTo updatePassengerDelais(PassengerDetailsDTo detailsDTo, Long id);
 	void deletePassengerDetails(Long id);
+	PassengerDetailsDTo FinByTelephoneAndEmail(String telephone, String email);
 }

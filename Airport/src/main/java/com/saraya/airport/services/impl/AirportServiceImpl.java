@@ -73,16 +73,22 @@ public class AirportServiceImpl implements AirportService{
 	@Override
 	public AiportDTO create(AiportDTO aiportDTO) {
 		AirportEntity airportEntity = convertAirport.dtoTOEntity(aiportDTO);
+		
 		RestTemplate restTemplate = new RestTemplate();
+		
 		Map<String, String> UrlValues = new HashMap<>();
-		UrlValues.put(("country"), aiportDTO.getCountry());
-		UrlValues.put(("city"), aiportDTO.getCity());
-		Long airport_geo_id = restTemplate.getForEntity(
-				"http://localhost:8700/airport-geo/{country}/{city}", Long.class, UrlValues)
+		UrlValues.put("country", aiportDTO.getCountry());
+		UrlValues.put("city", aiportDTO.getCity());
+		
+		Long airport_geo_id = restTemplate.getForEntity("http://localhost:9900/airport-geo/Geo/{country}/{city}", Long.class, UrlValues)
 				.getBody();
+		System.out.println(airport_geo_id);
 		airportEntity.setAirport_geo_id(airport_geo_id);
-		airportRepo.save(airportEntity);
-		return convertAirport.EntityTOdto(airportEntity);
+	
+		airportEntity = airportRepo.save(airportEntity);
+		
+		AiportDTO dto = convertAirport.EntityTOdto(airportEntity);
+		return dto;
 	}
 
 }

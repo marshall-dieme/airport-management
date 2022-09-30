@@ -71,10 +71,10 @@ public class ServiceImpl implements AirportService{
 	}
 
 	@Override
-	public AirportGeoDTO findByCountryAndCity(String country, String city) {
-		AirportGeo airportGeo = airportGeoRepository.findByCountryAndCity(country, city);
-		return convertDtoTOEntity.EntityTodto(airportGeo);
+	public Long findByCountryAndCity(String country, String city) {
+//		AirportGeo airportGeo = airportGeoRepository.findByCountryAndCity(country, city);
+//		return convertDtoTOEntity.EntityTodto(airportGeo);
+		return airportGeoRepository.findByCountryAndCity(country, city);
 	}
-	
 
 }

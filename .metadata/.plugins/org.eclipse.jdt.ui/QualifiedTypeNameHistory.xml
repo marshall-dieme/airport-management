@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.saraya.TimeTable.mapper.Mapper"/>
-    <fullyQualifiedTypeName name="com.saraya.TimeTable.repository.TimeTableRepository"/>
-    <fullyQualifiedTypeName name="com.saraya.TimeTable.dto.TimeTableDTO"/>
-    <fullyQualifiedTypeName name="com.saraya.TimeTable.model.TimeTable"/>
-    <fullyQualifiedTypeName name="com.saraya.TimeTable.services.impl.TimeTableServiceImpl"/>
-    <fullyQualifiedTypeName name="com.saraya.appli.services.ServicesE"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="com.saraya.appli.dto.ServicesDTO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
@@ -23,9 +14,7 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.saraya.passengerdetails.reository.PassengerDetailsRepository"/>
     <fullyQualifiedTypeName name="com.saraya.passengerdetails.mappr.Mapper"/>
-    <fullyQualifiedTypeName name="com.saraya.passengerdetails.dto.PassengerDetailsDTo"/>
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
-    <fullyQualifiedTypeName name="com.saraya.passengerdetails.model.PassengerDetails"/>
     <fullyQualifiedTypeName name="com.saraya.passengerdetails.services.PassengerDetailsServices"/>
     <fullyQualifiedTypeName name="com.saraya.passenger.repository.PassengerRepository"/>
     <fullyQualifiedTypeName name="com.saraya.passenger.mapper.ConvertPassenger"/>
@@ -59,5 +48,16 @@
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.saraya.AirplaneType.services.AirplaneTypeService"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
+    <fullyQualifiedTypeName name="com.saraya.passengerdetails.model.PassengerDetails"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.saraya.passengerdetails.dto.PassengerDetailsDTo"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="org.springframework.web.client.RestTemplate"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
 </qualifiedTypeNameHistroy>

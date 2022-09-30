@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.saraya.passenger.dto.PassengerDTO;
 import com.saraya.passenger.services.PassengerServices;
 
 @RestController
+@RequestMapping("/passenger")
 public class PassengerController {
 	@Autowired
 	private PassengerServices passengerServices;
@@ -34,7 +36,7 @@ public class PassengerController {
 	}
 	
 	@PutMapping("/updatePassenger/{id}")
-	public PassengerDTO updatePassenger(@RequestBody PassengerDTO dto, Long id) {
+	public PassengerDTO updatePassenger(@RequestBody PassengerDTO dto,@PathVariable Long id) {
 		return passengerServices.updatePassenger(dto, id);
 	}
 	@DeleteMapping("/deletePassenger/{id}")
