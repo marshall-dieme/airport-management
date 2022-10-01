@@ -40,7 +40,8 @@ public class AirplaneController {
             @RequestParam(defaultValue = "3") int size
     ) {
         List<Airplane> airplaneList = new ArrayList<>();
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC);
+
+        Pageable pageable = PageRequest.of(page, size );
         Page<Airplane> airplanePage = this.airplaneService.getAirplanes(pageable);
         airplaneList = airplanePage.getContent();
         Map<String,Object>  response = new HashMap<>();

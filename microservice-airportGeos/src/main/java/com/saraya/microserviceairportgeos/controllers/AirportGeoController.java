@@ -40,7 +40,7 @@ public class AirportGeoController {
             @RequestParam(defaultValue = "3") int size
     ) {
         List<AirportGeo> airportGeoList = new ArrayList<>();
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC);
+        Pageable pageable = PageRequest.of(page, size);
         Page<AirportGeo> airportGeoPage = this.airportGeoService.getAirportGeos(pageable);
         airportGeoList = airportGeoPage.getContent();
         Map<String,Object>  response = new HashMap<>();

@@ -40,7 +40,7 @@ public class AirlineController {
             @RequestParam(defaultValue = "3") int size
     ) {
         List<Airline> airlineList = new ArrayList<>();
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC);
+        Pageable pageable = PageRequest.of(page, size);
         Page<Airline> airlinePage = this.airlineService.getAirlines(pageable);
         airlineList = airlinePage.getContent();
         Map<String,Object>  response = new HashMap<>();
@@ -62,6 +62,15 @@ public class AirlineController {
 
         return new ResponseEntity<AirlineDto>(this.airlineMapper.airlineToAirlineDto(airline),HttpStatus.OK);
 
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<?> update(@RequestBody AirlineDto airlineDto, @PathVariable Long id){
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        Airline airline = airlineService.update(airlineMapper.airlineDtoToAirline(airlineDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(airlineMapper.airlineToAirlineDto(airline));
     }
 
     @DeleteMapping(value = "/{id}")
