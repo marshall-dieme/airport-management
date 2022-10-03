@@ -1,4 +1,4 @@
-package com.saraya.microserviceairportgeos.servicesImpl;
+package com.saraya.microserviceairportgeos.services;
 
 import com.saraya.microserviceairportgeos.exceptions.ResourceNotFoundException;
 import com.saraya.microserviceairportgeos.models.AirportGeo;

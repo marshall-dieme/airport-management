@@ -1,10 +1,10 @@
 package com.saraya.microserviceservices.controllers;
 
 import com.saraya.microserviceservices.dto.ServicesDto;
+import com.saraya.microserviceservices.exceptions.ResourceNotFoundException;
 import com.saraya.microserviceservices.mappers.ServicesMapper;
 import com.saraya.microserviceservices.models.Services;
 import com.saraya.microserviceservices.services.ServicesService;
-import com.saraya.microserviceservices.services.exceptions.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,23 +28,25 @@ public class ServicesController {
         this.servicesService = servicesService;
         this.servicesMapper = servicesMapper;
     }
+
     @PostMapping
     public ResponseEntity<?> create(@RequestBody ServicesDto servicesDto){
 
         Services services = servicesService.add(servicesMapper.servicesDtoToServices(servicesDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(servicesMapper.servicesToServicesDto(services));
     }
+
     @GetMapping
     public ResponseEntity<Map<String,Object>> findAll(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size
     ) {
         List<Services> servicesList = new ArrayList<>();
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC);
+        Pageable pageable = PageRequest.of(page, size);
         Page<Services> servicesPage = this.servicesService.getServicess(pageable);
         servicesList = servicesPage.getContent();
         Map<String,Object>  response = new HashMap<>();
-        response.put("servicess",this.servicesMapper.servicesToServicesDtos(servicesList));
+        response.put("services",this.servicesMapper.servicesToServicesDtos(servicesList));
         response.put("currentPage",servicesPage.getNumber());
         response.put("totalItems",servicesPage.getTotalElements());
         response.put("totalPages",servicesPage.getTotalPages());
@@ -62,6 +64,25 @@ public class ServicesController {
 
         return new ResponseEntity<ServicesDto>(this.servicesMapper.servicesToServicesDto(services),HttpStatus.OK);
 
+    }
+
+    @GetMapping(value = "/services_id/{id}")
+    public ResponseEntity<Long> findByServicesId(@PathVariable Long id) throws ResourceNotFoundException {
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        Services services = this.servicesService.getServices(id);
+
+        return new ResponseEntity<Long>(this.servicesMapper.servicesToServicesDto(services).getServices_id(),HttpStatus.OK);
+
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<?> update(@RequestBody ServicesDto servicesDto, @PathVariable Long id){
+        if (id==null || id<1)
+            return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+
+        Services services = servicesService.update(servicesMapper.servicesDtoToServices(servicesDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(servicesMapper.servicesToServicesDto(services));
     }
 
     @DeleteMapping(value = "/{id}")

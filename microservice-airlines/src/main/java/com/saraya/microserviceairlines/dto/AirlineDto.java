@@ -7,6 +7,7 @@ public class AirlineDto implements Serializable {
 
     private String airplane_name;
     private String iata;
+    private Long airplaneId;
 
     public Long getAirline_id() {
         return airline_id;
@@ -30,5 +31,13 @@ public class AirlineDto implements Serializable {
 
     public void setIata(String iata) {
         this.iata = iata;
+    }
+
+    public Long getAirplaneId() {
+        return airplaneId;
+    }
+
+    public void setAirplaneId(Long airplaneId) {
+        this.airplaneId = airplaneId;
     }
 }

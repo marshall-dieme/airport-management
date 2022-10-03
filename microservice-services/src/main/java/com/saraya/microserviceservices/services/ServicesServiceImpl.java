@@ -1,9 +1,8 @@
-package com.saraya.microserviceservices.serviceImpl;
+package com.saraya.microserviceservices.services;
 
+import com.saraya.microserviceservices.exceptions.ResourceNotFoundException;
 import com.saraya.microserviceservices.models.Services;
 import com.saraya.microserviceservices.repositories.ServicesRepository;
-import com.saraya.microserviceservices.services.ServicesService;
-import com.saraya.microserviceservices.services.exceptions.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -11,12 +10,13 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class ServicesImpl implements ServicesService {
+public class ServicesServiceImpl implements ServicesService {
     private final ServicesRepository servicesRepository;
 
-    public ServicesImpl(ServicesRepository servicesRepository) {
+    public ServicesServiceImpl(ServicesRepository servicesRepository) {
         this.servicesRepository = servicesRepository;
     }
+
 
     @Override
     public Services add(Services services) {

@@ -6,7 +6,10 @@ import com.saraya.microserviceairlines.repositories.AirlineRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -18,15 +21,36 @@ public class AirlineServiceImp implements AirlineService {
     }
 
     @Override
-    public Airline add(Airline airline) {
-        return this.airlineRepository.save(airline);
+    public Airline add(Airline airline) throws ResourceNotFoundException {
+        return getAirline(airline) ;
     }
 
     @Override
-    public Airline update(Airline airline) {
+    public Airline update(Airline airline) throws ResourceNotFoundException {
+        return getAirline(airline) ;
+    }
+    private Airline getAirline(Airline airline) throws ResourceNotFoundException {
+
+        if(airline.getAirplaneId()!=null){
+            try {
+                Map<String,Long> paramAirplines = new HashMap<>();
+                paramAirplines.put("airpline_id",airline.getAirplaneId());
+                Long servicesId = new RestTemplate().getForEntity("http://localhost:9002/airplines/airpline_id/{airpline_id}",
+                        Long.class,paramAirplines).getBody();
+
+                airline.setAirplaneId(servicesId);
+            }catch (Exception e){
+                throw new ResourceNotFoundException(String.format("Service ID = %d not found",airline.getAirplaneId()));
+            }
+
+        }
+
+
+
+
+
         return this.airlineRepository.save(airline);
     }
-
     @Override
     public Airline getAirline(Long airline_id) throws ResourceNotFoundException {
         Optional<Airline> airline = this.airlineRepository.findById(airline_id);

@@ -8,8 +8,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface AirlineService {
 
-    Airline add(Airline airline);
-    Airline update(Airline airline);
+    Airline add(Airline airline) throws ResourceNotFoundException;
+    Airline update(Airline airline) throws ResourceNotFoundException;
     Airline getAirline(Long airline_id) throws ResourceNotFoundException;
     Page<Airline> getAirlines(Pageable pageable);
     void delete(Long airline_id) throws ResourceNotFoundException;

@@ -1,14 +1,15 @@
 package com.saraya.microserviceairports.dto;
 
-import javax.persistence.*;
-
 
 public class AirportDto {
     private Long airport_id;
 
     private String iata;
-   private String icao;
-   private String airport_name;
+    private String icao;
+    private String airport_name;
+    private Long airportGeoId;
+    private Long servicesId;
+    private Long airlineId;
 
     public AirportDto() {
     }
@@ -50,5 +51,29 @@ public class AirportDto {
 
     public void setAirport_name(String airport_name) {
         this.airport_name = airport_name;
+    }
+
+    public Long getAirportGeoId() {
+        return airportGeoId;
+    }
+
+    public void setAirportGeoId(Long airportGeoId) {
+        this.airportGeoId = airportGeoId;
+    }
+
+    public Long getServicesId() {
+        return servicesId;
+    }
+
+    public void setServicesId(Long servicesId) {
+        this.servicesId = servicesId;
+    }
+
+    public Long getAirlineId() {
+        return airlineId;
+    }
+
+    public void setAirlineId(Long airlineId) {
+        this.airlineId = airlineId;
     }
 }

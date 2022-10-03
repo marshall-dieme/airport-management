@@ -1,7 +1,7 @@
 package com.saraya.microserviceservices.services;
 
-import com.saraya.servicesservice.models.Services;
-import com.saraya.servicesservice.services.exceptions.ResourceNotFoundException;
+import com.saraya.microserviceservices.exceptions.ResourceNotFoundException;
+import com.saraya.microserviceservices.models.Services;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

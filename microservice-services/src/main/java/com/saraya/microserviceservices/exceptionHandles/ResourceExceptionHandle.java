@@ -1,7 +1,7 @@
 package com.saraya.microserviceservices.exceptionHandles;
 
+import com.saraya.microserviceservices.exceptions.ResourceNotFoundException;
 import com.saraya.microserviceservices.models.ErrorMessage;
-import com.saraya.microserviceservices.services.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

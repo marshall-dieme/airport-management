@@ -1,4 +1,4 @@
-package com.saraya.microserviceairplanes.servicesImpl;
+package com.saraya.microserviceairplanes.services;
 
 import com.saraya.microserviceairplanes.exceptions.ResourceNotFoundException;
 import com.saraya.microserviceairplanes.models.Airplane;

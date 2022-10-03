@@ -63,7 +63,15 @@ public class AirlineController {
         return new ResponseEntity<AirlineDto>(this.airlineMapper.airlineToAirlineDto(airline),HttpStatus.OK);
 
     }
+    @GetMapping(value = "/airline_id/{id}")
+    public ResponseEntity<Long> findAirlineId(@PathVariable Long id) throws ResourceNotFoundException {
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        Airline airline = this.airlineService.getAirline(id);
 
+        return new ResponseEntity<Long>(this.airlineMapper.airlineToAirlineDto(airline).getAirline_id(),HttpStatus.OK);
+
+    }
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> update(@RequestBody AirlineDto airlineDto, @PathVariable Long id){
         if (id==null || id<1)

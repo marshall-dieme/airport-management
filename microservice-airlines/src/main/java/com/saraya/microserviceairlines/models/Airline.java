@@ -11,6 +11,7 @@ public class Airline {
 
     private String airplane_name;
     private String iata;
+    private Long airplaneId;
 
     public Airline() {
     }
@@ -43,5 +44,13 @@ public class Airline {
 
     public void setIata(String iata) {
         this.iata = iata;
+    }
+
+    public Long getAirplaneId() {
+        return airplaneId;
+    }
+
+    public void setAirplaneId(Long airplaneId) {
+        this.airplaneId = airplaneId;
     }
 }

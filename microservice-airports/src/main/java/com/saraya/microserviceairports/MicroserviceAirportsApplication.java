@@ -5,8 +5,10 @@ import com.saraya.microserviceairports.repositories.AirportRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class MicroserviceAirportsApplication implements CommandLineRunner {
     private final AirportRepository airportRepository;
 

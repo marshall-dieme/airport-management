@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/airportGeos")
+@RequestMapping(value = "/airportgeos")
 public class AirportGeoController {
     private final AirportGeoService airportGeoService;
     private final AirportGeoMapper airportGeoMapper;
@@ -54,6 +54,7 @@ public class AirportGeoController {
 
         return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
     }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<AirportGeoDto> findById(@PathVariable Long id) throws ResourceNotFoundException {
         if (id==null || id<1)
@@ -62,6 +63,24 @@ public class AirportGeoController {
 
         return new ResponseEntity<AirportGeoDto>(this.airportGeoMapper.airportGeoToAirportGeoDto(airportGeo),HttpStatus.OK);
 
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<?> update(@RequestBody AirportGeoDto airportGeoDto,@PathVariable Long id){
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        AirportGeo airportGeo = airportGeoService.update(airportGeoMapper.airportGeoDtoToAirportGeo(airportGeoDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(airportGeoMapper.airportGeoToAirportGeoDto(airportGeo));
+    }
+
+    @GetMapping(value = "/airportgeo_id/{id}")
+    public ResponseEntity<Long> findByairportgeoId(@PathVariable Long id) throws ResourceNotFoundException {
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        AirportGeo airportGeo = this.airportGeoService.getAirportGeo(id);
+
+        return new ResponseEntity<Long>(this.airportGeoMapper.airportGeoToAirportGeoDto(airportGeo).getAirport_geo_id(),HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")

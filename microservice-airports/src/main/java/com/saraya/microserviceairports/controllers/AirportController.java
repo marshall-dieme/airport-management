@@ -29,7 +29,7 @@ public class AirportController {
         this.airportMapper = airportMapper;
     }
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody AirportDto airportDto){
+    public ResponseEntity<?> create(@RequestBody AirportDto airportDto) throws ResourceNotFoundException{
 
         Airport airport = airportService.add(airportMapper.airportDtoToAirport(airportDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(airportMapper.airportToAirportDto(airport));
@@ -40,7 +40,7 @@ public class AirportController {
             @RequestParam(defaultValue = "3") int size
     ) {
         List<Airport> airportList = new ArrayList<>();
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC);
+        Pageable pageable = PageRequest.of(page, size);
         Page<Airport> airportPage = this.airportService.getAirports(pageable);
         airportList = airportPage.getContent();
         Map<String,Object>  response = new HashMap<>();
@@ -62,6 +62,15 @@ public class AirportController {
 
         return new ResponseEntity<AirportDto>(this.airportMapper.airportToAirportDto(airport),HttpStatus.OK);
 
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<?> update(@RequestBody AirportDto airportDto,@PathVariable Long id) throws ResourceNotFoundException {
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+        Airport airport = airportService.update(airportMapper.airportDtoToAirport(airportDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(airportMapper.airportToAirportDto(airport));
     }
 
     @DeleteMapping(value = "/{id}")

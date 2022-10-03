@@ -1,4 +1,4 @@
-package com.saraya.microserviceservices.services.exceptions;
+package com.saraya.microserviceservices.exceptions;
 
 public class ResourceNotFoundException extends Exception {
     public ResourceNotFoundException() {

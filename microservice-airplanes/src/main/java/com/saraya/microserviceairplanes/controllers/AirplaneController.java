@@ -53,7 +53,7 @@ public class AirplaneController {
         if (airplaneList.isEmpty())
             return new ResponseEntity<Map<String, Object>>(HttpStatus.NO_CONTENT);
 
-        return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
+        return new ResponseEntity<Map<String,Object>>(response,HttpStatus.FOUND);
     }
     @GetMapping(value = "/{id}")
     public ResponseEntity<AirplaneDto> findById(@PathVariable Long id) throws ResourceNotFoundException {
@@ -61,8 +61,24 @@ public class AirplaneController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         Airplane airplane = this.airplaneService.getAirplane(id);
 
-        return new ResponseEntity<AirplaneDto>(this.airplaneMapper.airplaneToAirplaneDto(airplane),HttpStatus.OK);
+        return new ResponseEntity<AirplaneDto>(this.airplaneMapper.airplaneToAirplaneDto(airplane),HttpStatus.FOUND);
 
+    }
+    @GetMapping(value = "/airpline_id/{id}")
+    public ResponseEntity<Long> findAirplaneId(@PathVariable Long id) throws ResourceNotFoundException {
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        Airplane airplane = this.airplaneService.getAirplane(id);
+
+        return new ResponseEntity<Long>(this.airplaneMapper.airplaneToAirplaneDto(airplane).getAirplane_id(),HttpStatus.FOUND);
+
+    }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<AirplaneDto> update(@RequestBody AirplaneDto airplaneDto,@PathVariable Long id){
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        Airplane airplane = airplaneService.update(airplaneMapper.airplaneDtoToAirplane(airplaneDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(airplaneMapper.airplaneToAirplaneDto(airplane));
     }
 
     @DeleteMapping(value = "/{id}")
