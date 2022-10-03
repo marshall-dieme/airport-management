@@ -6,6 +6,7 @@ public class AirplaneTypeDto implements Serializable {
     private Long airplane_type_id;
     private String airplane_type_identifier;
     private String description;
+    private Long airplineId;
 
     public Long getAirplane_type_id() {
         return airplane_type_id;
@@ -29,5 +30,13 @@ public class AirplaneTypeDto implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getAirplineId() {
+        return airplineId;
+    }
+
+    public void setAirplineId(Long airplineId) {
+        this.airplineId = airplineId;
     }
 }

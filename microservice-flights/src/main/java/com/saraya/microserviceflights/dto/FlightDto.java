@@ -10,6 +10,7 @@ public class FlightDto implements Serializable {
     private LocalDate departure_date;
     private String from;
     private String to;
+    private Long airplaneId;
 
     public Long getFlight_id() {
         return flight_id;
@@ -49,5 +50,13 @@ public class FlightDto implements Serializable {
 
     public void setTo(String to) {
         this.to = to;
+    }
+
+    public Long getAirplaneId() {
+        return airplaneId;
+    }
+
+    public void setAirplaneId(Long airplaneId) {
+        this.airplaneId = airplaneId;
     }
 }

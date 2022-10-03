@@ -21,6 +21,7 @@ public class Rentals {
     private LocalTime return_time;
     private String car_no;
     private double amount;
+    private Long passengerId;
 
     public Rentals() {
     }
@@ -125,5 +126,13 @@ public class Rentals {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public Long getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(Long passengerId) {
+        this.passengerId = passengerId;
     }
 }

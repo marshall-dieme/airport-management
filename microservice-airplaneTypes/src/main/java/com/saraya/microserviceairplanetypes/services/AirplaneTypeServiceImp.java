@@ -6,7 +6,10 @@ import com.saraya.microserviceairplanetypes.repositories.AirplaneTypeRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -18,15 +21,32 @@ public class AirplaneTypeServiceImp implements AirplaneTypeService {
     }
 
     @Override
-    public AirplaneType add(AirplaneType airplaneType) {
-        return this.airplaneTypeRepository.save(airplaneType);
+    public AirplaneType add(AirplaneType airplaneType) throws ResourceNotFoundException {
+        return getAirplaneType(airplaneType);
     }
 
     @Override
-    public AirplaneType update(AirplaneType airplaneType) {
+    public AirplaneType update(AirplaneType airplaneType) throws ResourceNotFoundException {
+        return getAirplaneType(airplaneType);
+    }
+    private AirplaneType getAirplaneType(AirplaneType airplaneType) throws ResourceNotFoundException {
+
+        if(airplaneType.getAirplineId()!=null){
+            try {
+                Map<String,Long> paramAirplines = new HashMap<>();
+                paramAirplines.put("airpline_id",airplaneType.getAirplineId());
+                Long airplineId = new RestTemplate().getForEntity("http://localhost:9002/airplines/airpline_id/{airpline_id}",
+                        Long.class,paramAirplines).getBody();
+
+                airplaneType.setAirplineId(airplineId);
+            }catch (Exception e){
+                throw new ResourceNotFoundException(String.format("Airpline ID = %d not found",airplaneType.getAirplineId()));
+            }
+
+        }
+
         return this.airplaneTypeRepository.save(airplaneType);
     }
-
     @Override
     public AirplaneType getAirplaneType(Long airplaneType_id) throws ResourceNotFoundException {
         Optional<AirplaneType> airplaneType = this.airplaneTypeRepository.findById(airplaneType_id);

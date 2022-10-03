@@ -8,8 +8,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface BookingService {
 
-    Booking add(Booking booking);
-    Booking update(Booking booking);
+    Booking add(Booking booking) throws ResourceNotFoundException;
+    Booking update(Booking booking) throws ResourceNotFoundException;
     Booking getBooking(Long booking_id) throws ResourceNotFoundException;
     Page<Booking> getBookings(Pageable pageable);
     void delete(Long booking_id) throws ResourceNotFoundException;

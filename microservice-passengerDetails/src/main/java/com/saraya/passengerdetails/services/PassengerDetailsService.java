@@ -9,8 +9,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface PassengerDetailsService {
 
-    PassengerDetails add(PassengerDetails passengerDetails);
-    PassengerDetails update(PassengerDetails passengerDetails);
+    PassengerDetails add(PassengerDetails passengerDetails) throws ResourceNotFoundException;
+    PassengerDetails update(PassengerDetails passengerDetails) throws ResourceNotFoundException;
     PassengerDetails getPassengerDetails(Long passengerDetails_id) throws ResourceNotFoundException;
     Page<PassengerDetails> getPassengerDetailss(Pageable pageable);
     void delete(Long passengerDetails_id) throws ResourceNotFoundException;

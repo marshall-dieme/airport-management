@@ -8,8 +8,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface ParkingService {
 
-    Parking add(Parking parking);
-    Parking update(Parking parking);
+    Parking add(Parking parking) throws ResourceNotFoundException;
+    Parking update(Parking parking) throws ResourceNotFoundException;
     Parking getParking(Long parking_id) throws ResourceNotFoundException;
     Page<Parking> getParkings(Pageable pageable);
     void delete(Long parking_id) throws ResourceNotFoundException;

@@ -8,8 +8,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface AirplaneTypeService {
 
-    AirplaneType add(AirplaneType airplaneType);
-    AirplaneType update(AirplaneType airplaneType);
+    AirplaneType add(AirplaneType airplaneType) throws ResourceNotFoundException;
+    AirplaneType update(AirplaneType airplaneType) throws ResourceNotFoundException;
     AirplaneType getAirplaneType(Long airplaneType_id) throws ResourceNotFoundException;
     Page<AirplaneType> getAirplaneTypes(Pageable pageable);
     void delete(Long airplaneType_id) throws ResourceNotFoundException;

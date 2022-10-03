@@ -28,7 +28,7 @@ public class BookingController {
         this.bookingMapper = bookingMapper;
     }
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody BookingDto bookingDto){
+    public ResponseEntity<?> create(@RequestBody BookingDto bookingDto) throws ResourceNotFoundException {
 
         Booking booking = bookingService.add(bookingMapper.bookingDtoToBooking(bookingDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingMapper.bookingToBookingDto(booking));
@@ -64,7 +64,7 @@ public class BookingController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> update(@RequestBody BookingDto bookingDto, @PathVariable Long id){
+    public ResponseEntity<?> update(@RequestBody BookingDto bookingDto, @PathVariable Long id) throws ResourceNotFoundException {
         if (id==null || id<1)
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

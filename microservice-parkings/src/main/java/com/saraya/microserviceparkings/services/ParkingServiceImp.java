@@ -6,7 +6,10 @@ import com.saraya.microserviceparkings.repositories.ParkingRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -18,12 +21,30 @@ public class ParkingServiceImp implements ParkingService {
     }
 
     @Override
-    public Parking add(Parking parking) {
-        return this.parkingRepository.save(parking);
+    public Parking add(Parking parking) throws ResourceNotFoundException {
+        return getParking(parking);
     }
 
     @Override
-    public Parking update(Parking parking) {
+    public Parking update(Parking parking) throws ResourceNotFoundException {
+        return getParking(parking);
+    }
+
+    private Parking getParking(Parking parking) throws ResourceNotFoundException {
+
+        if(parking.getPassengerId()!=null){
+            try {
+                Map<String,Long> paramPassengers = new HashMap<>();
+                paramPassengers.put("passenger_id ",parking.getPassengerId());
+                Long passengerId = new RestTemplate().getForEntity("http://localhost:9010/passengers/passenger_id/{passenger_id}",
+                        Long.class,paramPassengers).getBody();
+
+                parking.setPassengerId( passengerId );
+            }catch (Exception e){
+                throw new ResourceNotFoundException(String.format("Passenger ID = %d not found",parking.getPassengerId()));
+            }
+        }
+
         return this.parkingRepository.save(parking);
     }
 

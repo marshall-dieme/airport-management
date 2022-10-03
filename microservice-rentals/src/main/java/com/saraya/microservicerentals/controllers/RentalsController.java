@@ -28,7 +28,7 @@ public class RentalsController {
         this.rentalsMapper = rentalsMapper;
     }
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody RentalsDto rentalsDto){
+    public ResponseEntity<?> create(@RequestBody RentalsDto rentalsDto) throws ResourceNotFoundException {
 
         Rentals rentals = rentalsService.add(rentalsMapper.rentalsDtoToRentals(rentalsDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(rentalsMapper.rentalsToRentalsDto(rentals));
@@ -64,7 +64,7 @@ public class RentalsController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> update(@RequestBody RentalsDto rentalsDto, @PathVariable Long id){
+    public ResponseEntity<?> update(@RequestBody RentalsDto rentalsDto, @PathVariable Long id) throws ResourceNotFoundException {
         if (id==null || id<1)
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

@@ -28,7 +28,7 @@ public class AirplaneTypeController {
         this.airplaneTypeMapper = airplaneTypeMapper;
     }
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody AirplaneTypeDto airplaneTypeDto){
+    public ResponseEntity<?> create(@RequestBody AirplaneTypeDto airplaneTypeDto) throws ResourceNotFoundException {
 
         AirplaneType airplaneType = airplaneTypeService.add(airplaneTypeMapper.airplaneTypeDtoToAirplaneType(airplaneTypeDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(airplaneTypeMapper.airplaneTypeToAirplaneTypeDto(airplaneType));
@@ -51,7 +51,7 @@ public class AirplaneTypeController {
         if (airplaneTypeList.isEmpty())
             return new ResponseEntity<Map<String, Object>>(HttpStatus.NO_CONTENT);
 
-        return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
+        return new ResponseEntity<Map<String,Object>>(response,HttpStatus.FOUND);
     }
     @GetMapping(value = "/{id}")
     public ResponseEntity<AirplaneTypeDto> findById(@PathVariable Long id) throws ResourceNotFoundException {
@@ -59,7 +59,7 @@ public class AirplaneTypeController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         AirplaneType airplaneType = this.airplaneTypeService.getAirplaneType(id);
 
-        return new ResponseEntity<AirplaneTypeDto>(this.airplaneTypeMapper.airplaneTypeToAirplaneTypeDto(airplaneType),HttpStatus.OK);
+        return new ResponseEntity<AirplaneTypeDto>(this.airplaneTypeMapper.airplaneTypeToAirplaneTypeDto(airplaneType),HttpStatus.FOUND);
 
     }
 
@@ -69,7 +69,7 @@ public class AirplaneTypeController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         AirplaneType airplaneType = this.airplaneTypeService.update(this.airplaneTypeMapper.airplaneTypeDtoToAirplaneType(airplaneTypeDto));
 
-        return new ResponseEntity<AirplaneTypeDto>(this.airplaneTypeMapper.airplaneTypeToAirplaneTypeDto(airplaneType),HttpStatus.OK);
+        return new ResponseEntity<AirplaneTypeDto>(this.airplaneTypeMapper.airplaneTypeToAirplaneTypeDto(airplaneType),HttpStatus.CREATED);
 
     }
 

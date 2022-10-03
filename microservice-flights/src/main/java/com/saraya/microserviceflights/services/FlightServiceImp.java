@@ -6,7 +6,10 @@ import com.saraya.microserviceflights.repositories.FlightRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -18,12 +21,30 @@ public class FlightServiceImp implements FlightService {
     }
 
     @Override
-    public Flight add(Flight flight) {
-        return this.flightRepository.save(flight);
+    public Flight add(Flight flight) throws ResourceNotFoundException {
+        return getFlight(flight);
     }
 
     @Override
-    public Flight update(Flight flight) {
+    public Flight update(Flight flight) throws ResourceNotFoundException {
+        return getFlight(flight);
+    }
+    private Flight getFlight(Flight flight) throws ResourceNotFoundException {
+
+        if(flight.getAirplaneId()!=null){
+            try {
+                Map<String,Long> paramAirplines = new HashMap<>();
+                paramAirplines.put("airpline_id",flight.getAirplaneId());
+                Long airplineId = new RestTemplate().getForEntity("http://localhost:9002/airplines/airpline_id/{airpline_id}",
+                        Long.class,paramAirplines).getBody();
+
+                flight.setAirplaneId( airplineId);
+            }catch (Exception e){
+                throw new ResourceNotFoundException(String.format("Airpline ID = %d not found",flight.getAirplaneId()));
+            }
+
+        }
+
         return this.flightRepository.save(flight);
     }
 

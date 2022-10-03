@@ -7,6 +7,8 @@ public class BookingDto implements Serializable {
 
     private String seat;
     private double price;
+    private Long flightId;
+    private Long passengerId;
 
     public Long getBooking_id() {
         return booking_id;
@@ -30,5 +32,21 @@ public class BookingDto implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Long getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(Long flightId) {
+        this.flightId = flightId;
+    }
+
+    public Long getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(Long passengerId) {
+        this.passengerId = passengerId;
     }
 }

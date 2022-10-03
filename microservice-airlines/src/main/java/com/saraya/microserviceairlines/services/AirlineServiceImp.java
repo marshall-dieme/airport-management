@@ -35,19 +35,15 @@ public class AirlineServiceImp implements AirlineService {
             try {
                 Map<String,Long> paramAirplines = new HashMap<>();
                 paramAirplines.put("airpline_id",airline.getAirplaneId());
-                Long servicesId = new RestTemplate().getForEntity("http://localhost:9002/airplines/airpline_id/{airpline_id}",
+                Long airplineId = new RestTemplate().getForEntity("http://localhost:9002/airplines/airpline_id/{airpline_id}",
                         Long.class,paramAirplines).getBody();
 
-                airline.setAirplaneId(servicesId);
+                airline.setAirplaneId( airplineId);
             }catch (Exception e){
-                throw new ResourceNotFoundException(String.format("Service ID = %d not found",airline.getAirplaneId()));
+                throw new ResourceNotFoundException(String.format("Airpline ID = %d not found",airline.getAirplaneId()));
             }
 
         }
-
-
-
-
 
         return this.airlineRepository.save(airline);
     }

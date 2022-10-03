@@ -14,6 +14,7 @@ public class Flight {
     private LocalDate departure_date;
     private String from;
     private String to;
+    private Long airplaneId;
 
     public Flight() {
     }
@@ -64,5 +65,13 @@ public class Flight {
 
     public void setTo(String to) {
         this.to = to;
+    }
+
+    public Long getAirplaneId() {
+        return airplaneId;
+    }
+
+    public void setAirplaneId(Long airplaneId) {
+        this.airplaneId = airplaneId;
     }
 }

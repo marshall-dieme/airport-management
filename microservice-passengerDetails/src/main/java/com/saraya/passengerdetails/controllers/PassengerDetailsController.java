@@ -28,7 +28,7 @@ public class PassengerDetailsController {
         this.passengerDetailsMapper = passengerDetailsMapper;
     }
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody PassengerDetailsDto passengerDetailsDto){
+    public ResponseEntity<?> create(@RequestBody PassengerDetailsDto passengerDetailsDto) throws ResourceNotFoundException {
 
         PassengerDetails passengerDetails = passengerDetailsService.add(passengerDetailsMapper.passengerDetailsDtoToPassengerDetails(passengerDetailsDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(passengerDetailsMapper.passengerDetailsToPassengerDetailsDto(passengerDetails));
@@ -64,7 +64,7 @@ public class PassengerDetailsController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> update(@RequestBody PassengerDetailsDto passengerDetailsDto, @PathVariable Long id){
+    public ResponseEntity<?> update(@RequestBody PassengerDetailsDto passengerDetailsDto, @PathVariable Long id) throws ResourceNotFoundException {
         if (id==null || id<1)
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

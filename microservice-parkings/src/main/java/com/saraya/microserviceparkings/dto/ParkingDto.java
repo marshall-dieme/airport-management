@@ -15,6 +15,7 @@ public class ParkingDto implements Serializable {
     private String exit_time;
     private String car_no;
     private String amount;
+    private Long passengerId;
 
     public Long getParking_id() {
         return parking_id;
@@ -94,5 +95,13 @@ public class ParkingDto implements Serializable {
 
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public Long getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(Long passengerId) {
+        this.passengerId = passengerId;
     }
 }

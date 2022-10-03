@@ -7,7 +7,10 @@ import com.saraya.microservicerentals.repositories.RentalsRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -19,15 +22,31 @@ public class RentalsServiceImp implements RentalsService {
     }
 
     @Override
-    public Rentals add(Rentals rentals) {
-        return this.rentalsRepository.save(rentals);
+    public Rentals add(Rentals rentals) throws ResourceNotFoundException {
+        return getRentals(rentals);
     }
 
     @Override
-    public Rentals update(Rentals rentals) {
+    public Rentals update(Rentals rentals) throws ResourceNotFoundException {
+        return getRentals(rentals);
+    }
+    private Rentals getRentals(Rentals rentals) throws ResourceNotFoundException {
+
+        if(rentals.getPassengerId()!=null){
+            try {
+                Map<String,Long> paramPassengers = new HashMap<>();
+                paramPassengers.put("passenger_id ",rentals.getPassengerId());
+                Long passengerId = new RestTemplate().getForEntity("http://localhost:9010/passengers/passenger_id/{passenger_id}",
+                        Long.class,paramPassengers).getBody();
+
+                rentals.setPassengerId( passengerId );
+            }catch (Exception e){
+                throw new ResourceNotFoundException(String.format("Passenger ID = %d not found",rentals.getPassengerId()));
+            }
+        }
+
         return this.rentalsRepository.save(rentals);
     }
-
     @Override
     public Rentals getRentals(Long rentals_id) throws ResourceNotFoundException {
         Optional<Rentals> rentals = this.rentalsRepository.findById(rentals_id);

@@ -20,6 +20,7 @@ public class Parking {
     private LocalTime exit_time;
     private String car_no;
     private float amount;
+    private Long passengerId;
 
     public Parking(Long parking_id, String name, String email, String contact, LocalDate entry_date, LocalTime entry_time, LocalDate exit_date, LocalTime exit_time, String car_no, float amount) {
         this.parking_id = parking_id;
@@ -112,5 +113,13 @@ public class Parking {
 
     public void setAmount(float amount) {
         this.amount = amount;
+    }
+
+    public Long getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(Long passengerId) {
+        this.passengerId = passengerId;
     }
 }

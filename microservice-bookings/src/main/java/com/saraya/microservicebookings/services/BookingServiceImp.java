@@ -6,7 +6,10 @@ import com.saraya.microservicebookings.repositories.BookingRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -18,12 +21,44 @@ public class BookingServiceImp implements BookingService {
     }
 
     @Override
-    public Booking add(Booking booking) {
-        return this.bookingRepository.save(booking);
+    public Booking add(Booking booking) throws ResourceNotFoundException {
+        return getBooking(booking);
     }
 
     @Override
-    public Booking update(Booking booking) {
+    public Booking update(Booking booking) throws ResourceNotFoundException {
+        return getBooking(booking);
+    }
+
+    private Booking getBooking(Booking booking) throws ResourceNotFoundException {
+
+        if(booking.getFlightId()!=null){
+            try {
+                Map<String,Long> paramFlights = new HashMap<>();
+                paramFlights.put("flight_id",booking.getFlightId());
+                Long flightId = new RestTemplate().getForEntity("http://localhost:9009/flights/flight_id/{flight_id}",
+                        Long.class,paramFlights).getBody();
+
+                booking.setFlightId( flightId);
+            }catch (Exception e){
+                throw new ResourceNotFoundException(String.format("Flight ID = %d not found",booking.getFlightId()));
+            }
+
+        }
+
+        if(booking.getPassengerId()!=null){
+            try {
+                Map<String,Long> paramPassengers = new HashMap<>();
+                paramPassengers.put("passenger_id ",booking.getPassengerId());
+                Long passengerId = new RestTemplate().getForEntity("http://localhost:9010/passengers/passenger_id/{passenger_id}",
+                        Long.class,paramPassengers).getBody();
+
+                booking.setPassengerId( passengerId );
+            }catch (Exception e){
+                throw new ResourceNotFoundException(String.format("Passenger ID = %d not found",booking.getPassengerId()));
+            }
+        }
+
         return this.bookingRepository.save(booking);
     }
 

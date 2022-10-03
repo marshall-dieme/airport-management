@@ -3,18 +3,18 @@ package com.saraya.passengers.dto;
 import java.io.Serializable;
 
 public class PassengerDto implements Serializable {
-    private Long airline_id;
+    private Long passenger_id;
 
     private String passport_no;
     private String firstname;
     private String lastname;
 
-    public Long getAirline_id() {
-        return airline_id;
+    public Long getPassenger_id() {
+        return passenger_id;
     }
 
-    public void setAirline_id(Long airline_id) {
-        this.airline_id = airline_id;
+    public void setPassenger_id(Long passenger_id) {
+        this.passenger_id = passenger_id;
     }
 
     public String getPassport_no() {

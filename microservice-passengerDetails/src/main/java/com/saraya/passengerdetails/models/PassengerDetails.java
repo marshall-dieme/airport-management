@@ -19,6 +19,7 @@ public class PassengerDetails {
     private String country;
     private String email;
     private String telephone;
+    private Long passengerId;
 
     public PassengerDetails() {
     }
@@ -114,5 +115,13 @@ public class PassengerDetails {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public Long getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(Long passengerId) {
+        this.passengerId = passengerId;
     }
 }

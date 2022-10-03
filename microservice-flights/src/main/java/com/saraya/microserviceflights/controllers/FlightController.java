@@ -28,7 +28,7 @@ public class FlightController {
         this.flightMapper = flightMapper;
     }
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody FlightDto flightDto){
+    public ResponseEntity<?> create(@RequestBody FlightDto flightDto) throws ResourceNotFoundException {
 
         Flight flight = flightService.add(flightMapper.flightDtoToFlight(flightDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(flightMapper.flightToFlightDto(flight));
@@ -51,7 +51,7 @@ public class FlightController {
         if (flightList.isEmpty())
             return new ResponseEntity<Map<String, Object>>(HttpStatus.NO_CONTENT);
 
-        return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
+        return new ResponseEntity<Map<String,Object>>(response,HttpStatus.FOUND);
     }
     @GetMapping(value = "/{id}")
     public ResponseEntity<FlightDto> findById(@PathVariable Long id) throws ResourceNotFoundException {
@@ -59,12 +59,22 @@ public class FlightController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         Flight flight = this.flightService.getFlight(id);
 
-        return new ResponseEntity<FlightDto>(this.flightMapper.flightToFlightDto(flight),HttpStatus.OK);
+        return new ResponseEntity<FlightDto>(this.flightMapper.flightToFlightDto(flight),HttpStatus.FOUND);
+
+    }
+
+    @GetMapping(value = "/flight_id/{id}")
+    public ResponseEntity<Long> findFlightId(@PathVariable Long id) throws ResourceNotFoundException {
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        Flight flight = this.flightService.getFlight(id);
+
+        return new ResponseEntity<Long>(this.flightMapper.flightToFlightDto(flight).getFlight_id(),HttpStatus.FOUND);
 
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> update(@RequestBody FlightDto flightDto, @PathVariable Long id){
+    public ResponseEntity<?> update(@RequestBody FlightDto flightDto, @PathVariable Long id) throws ResourceNotFoundException {
         if (id==null || id<1)
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

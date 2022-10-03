@@ -63,6 +63,16 @@ public class PassengerController {
 
     }
 
+    @GetMapping(value = "/passenger_id/{id}")
+    public ResponseEntity<Long> findPassengerId(@PathVariable Long id) throws ResourceNotFoundException {
+        if (id==null || id<1)
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        Passenger passenger = this.passengerService.getPassenger(id);
+
+        return new ResponseEntity<Long>(this.passengerMapper.passengerToPassengerDto(passenger).getPassenger_id(),HttpStatus.OK);
+
+    }
+
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> update(@RequestBody PassengerDto passengerDto, @PathVariable Long id){
         if (id==null || id<1)

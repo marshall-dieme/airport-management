@@ -10,6 +10,7 @@ public class AirplaneType {
     private Long airplane_type_id;
     private String airplane_type_identifier;
     private String description;
+    private Long airplineId;
 
     public AirplaneType() {
     }
@@ -38,6 +39,14 @@ public class AirplaneType {
 
     public String getDescription() {
         return description;
+    }
+
+    public Long getAirplineId() {
+        return airplineId;
+    }
+
+    public void setAirplineId(Long airplineId) {
+        this.airplineId = airplineId;
     }
 
     public void setDescription(String description) {

@@ -28,7 +28,7 @@ public class ParkingController {
         this.parkingMapper = parkingMapper;
     }
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody ParkingDto parkingDto){
+    public ResponseEntity<?> create(@RequestBody ParkingDto parkingDto) throws ResourceNotFoundException {
 
         Parking parking = parkingService.add(parkingMapper.parkingDtoToParking(parkingDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(parkingMapper.parkingToParkingDto(parking));
@@ -51,7 +51,7 @@ public class ParkingController {
         if (parkingList.isEmpty())
             return new ResponseEntity<Map<String, Object>>(HttpStatus.NO_CONTENT);
 
-        return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
+        return new ResponseEntity<Map<String,Object>>(response,HttpStatus.FOUND);
     }
     @GetMapping(value = "/{id}")
     public ResponseEntity<ParkingDto> findById(@PathVariable Long id) throws ResourceNotFoundException {
@@ -59,12 +59,12 @@ public class ParkingController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         Parking parking = this.parkingService.getParking(id);
 
-        return new ResponseEntity<ParkingDto>(this.parkingMapper.parkingToParkingDto(parking),HttpStatus.OK);
+        return new ResponseEntity<ParkingDto>(this.parkingMapper.parkingToParkingDto(parking),HttpStatus.FOUND);
 
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> update(@RequestBody ParkingDto parkingDto, @PathVariable Long id){
+    public ResponseEntity<?> update(@RequestBody ParkingDto parkingDto, @PathVariable Long id) throws ResourceNotFoundException {
         if (id==null || id<1)
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 

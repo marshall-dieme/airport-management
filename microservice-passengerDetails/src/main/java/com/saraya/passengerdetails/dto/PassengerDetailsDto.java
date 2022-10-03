@@ -14,6 +14,7 @@ public class PassengerDetailsDto implements Serializable {
     private String country;
     private String email;
     private String telephone;
+    private Long passengerId;
 
     public Long getPassenger_details_id() {
         return passenger_details_id;
@@ -93,5 +94,13 @@ public class PassengerDetailsDto implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public Long getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(Long passengerId) {
+        this.passengerId = passengerId;
     }
 }
