@@ -5,8 +5,10 @@ import com.saraya.microserviceairlines.repositories.AirlineRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class MicroserviceAirlinesApplication implements CommandLineRunner {
     private final AirlineRepository airlineRepository;
 

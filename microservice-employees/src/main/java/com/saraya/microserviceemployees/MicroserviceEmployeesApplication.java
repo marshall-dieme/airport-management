@@ -5,10 +5,12 @@ import com.saraya.microserviceemployees.repositories.EmployeeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import java.time.LocalDate;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class MicroserviceEmployeesApplication {
 
     public static void main(String[] args) {
