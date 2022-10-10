@@ -2,11 +2,14 @@ package com.saraya.flightservice.service;
 
 import com.saraya.flightservice.bean.Flight;
 import com.saraya.flightservice.dto.FlightDto;
+import com.saraya.flightservice.mapper.FlightMapper;
 import com.saraya.flightservice.repository.FlightRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class FlightService {
@@ -16,20 +19,7 @@ public class FlightService {
         this.repo = repo;
     }
 
-    public List<Flight> getAll() {
-        return repo.findAll();
-    }
-
-    public Flight create(FlightDto dto) {
-        return repo.save(toEntity(dto));
-    }
-
-    private Flight toEntity(FlightDto dto) {
-        Flight flight = new Flight();
-        flight.setFlightNo(dto.getFlightNo());
-        flight.setFrom(dto.getFrom());
-        return flight;
-    }
+    FlightMapper mapper = new FlightMapper();
 
     public Flight putAirplaneForFlight(int flightId, int airplaneCapacity) {
         Flight flight = repo.findById(flightId).get();
@@ -54,6 +44,36 @@ public class FlightService {
         flight.setBookingId(bookingId);
 
         return repo.save(flight);
+    }
+
+    public List<Flight> getAll() {
+        return repo.findAll();
+    }
+
+    public Flight create(FlightDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public Flight update(FlightDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public void delete(FlightDto dto) {
+        repo.delete(mapper.toEntity(dto));
+    }
+
+    public String putTimeTableForFlight(int flightId, String airline) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        int timeTableId = restTemplate.getForEntity("http://localhost:8014/TimeTable/"+airline,
+                Integer.class).getBody();
+
+        Map<String, Integer> urlValues = new HashMap<>();
+        urlValues.put("flightId", flightId);
+        urlValues.put("timeTableId", timeTableId);
+        new RestTemplate().getForEntity("http://localhost:8025/Relation2/{timeTableId}/{flightId}", void.class, urlValues).getBody();
+
+        return "add succefull";
     }
 }
 

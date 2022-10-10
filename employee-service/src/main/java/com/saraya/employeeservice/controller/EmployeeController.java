@@ -17,6 +17,22 @@ public class EmployeeController {
         this.service = service;
     }
 
+    @PostMapping("{employeeId}/{serviceName}")
+    public String putServiceForEmployee(@PathVariable("employeeId") int employeeId,
+                                        @PathVariable("serviceName") String serviceName){
+        return service.putServiceForEmployee(employeeId, serviceName);
+    }
+
+    @GetMapping("/listServiceId")
+    public List<Integer> getListServiceId(){
+        return service.getListServiceId();
+    }
+
+    @GetMapping("/{username}")
+    public int getIdByUsername(@PathVariable("username") String username){
+        return service.getIdEmpByUsername(username);
+    }
+
     @GetMapping
     public List<Employee> getAll(){
         return service.getAll();
@@ -27,19 +43,13 @@ public class EmployeeController {
         return service.create(dto);
     }
 
-    @PostMapping("{employeeId}/{serviceName}")
-    public String putServiceForEmployee(@PathVariable("employeeId") int employeeId,
-                                          @PathVariable("serviceName") String serviceName){
-        return service.putServiceForEmployee(employeeId, serviceName);
+    @PutMapping
+    public Employee update(@RequestBody EmployeeDto dto){
+        return service.update(dto);
     }
 
-    @GetMapping("/{username}")
-    public int getIdByUsername(@PathVariable("username") String username){
-        return service.getIdEmpByUsername(username);
-    }
-
-    @GetMapping("/listServiceId")
-    public List<Integer> getListServiceId(){
-        return service.getListServiceId();
+    @DeleteMapping
+    public void delete(@RequestBody EmployeeDto dto){
+        service.delete(dto);
     }
 }

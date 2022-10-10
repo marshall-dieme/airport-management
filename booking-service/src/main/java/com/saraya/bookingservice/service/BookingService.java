@@ -2,6 +2,7 @@ package com.saraya.bookingservice.service;
 
 import com.saraya.bookingservice.bean.Booking;
 import com.saraya.bookingservice.dto.BookingDto;
+import com.saraya.bookingservice.mapper.BookingMapper;
 import com.saraya.bookingservice.repository.BookingRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -17,26 +18,9 @@ public class BookingService {
         this.repo = repo;
     }
 
-    public List<Booking> getAll() {
-        return repo.findAll();
-    }
+    private BookingMapper mapper = new BookingMapper();
 
-    public int getId(int price) {
-        return repo.findByPrice(price).getId();
-    }
-
-    public Booking create(BookingDto dto) {
-        return repo.save(toEntity(dto));
-    }
-
-    private Booking toEntity(BookingDto dto) {
-        Booking booking = new Booking();
-        booking.setPrice(dto.getPrice());
-        booking.setSeat(dto.getSeat());
-        return booking;
-    }
-
-    public Booking putFlightForBooking(int bookingId, int flightNo) {
+    public Booking putFlightForBooking(int bookingId, String flightNo) {
 
         Booking booking = repo.findById(bookingId).get();
 
@@ -56,5 +40,25 @@ public class BookingService {
         booking.getPassengerId().add(passengerId);
 
         return repo.save(booking);
+    }
+
+    public List<Booking> getAll() {
+        return repo.findAll();
+    }
+
+    public int getId(int price) {
+        return repo.findByPrice(price).getId();
+    }
+
+    public Booking create(BookingDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public Booking update(BookingDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public void delete(BookingDto dto) {
+        repo.delete(mapper.toEntity(dto));
     }
 }

@@ -2,6 +2,7 @@ package com.saraya.employeeservice.service;
 
 import com.saraya.employeeservice.bean.Employee;
 import com.saraya.employeeservice.dto.EmployeeDto;
+import com.saraya.employeeservice.mapper.EmployeeMapper;
 import com.saraya.employeeservice.repo.EmployeeRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -19,17 +20,10 @@ public class EmployeeService {
         this.repo = repo;
     }
 
-    public Employee create(EmployeeDto dto){
-        Employee employee = toEntity(dto);
-        return repo.save(employee);
-    }
+    EmployeeMapper mapper = new EmployeeMapper();
 
-    public Employee toEntity(EmployeeDto dto){
-        Employee employee = new Employee();
-        employee.setFirstname(dto.getFirstname());
-        employee.setLastname(dto.getLastname());
-        employee.setUsername(dto.getUsername());
-        return employee;
+    public Employee create(EmployeeDto dto){
+        return repo.save(mapper.toEntity(dto));
     }
 
     public List<Employee> getAll() {
@@ -56,5 +50,13 @@ public class EmployeeService {
 
     public List<Integer> getListServiceId() {
         return new RestTemplate().getForEntity("http://localhost:8024/Relation/serviceId", List.class).getBody();
+    }
+
+    public Employee update(EmployeeDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public void delete(EmployeeDto dto) {
+        repo.delete(mapper.toEntity(dto));
     }
 }

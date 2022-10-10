@@ -17,14 +17,16 @@ public class Flight {
 
     private String arriveDAte;
 
-    private String from;
+    private String frome;
 
-    private String to;
+    private String toe;
+
+    private int bookingId;
 
     @ElementCollection
     private List<Integer> airplaneId;
 
-    private int bookingId;
+
 
     public int getId() {
         return id;
@@ -59,19 +61,19 @@ public class Flight {
     }
 
     public String getFrom() {
-        return from;
+        return frome;
     }
 
     public void setFrom(String from) {
-        this.from = from;
+        this.frome = from;
     }
 
     public String getTo() {
-        return to;
+        return toe;
     }
 
     public void setTo(String to) {
-        this.to = to;
+        this.toe = to;
     }
 
     public List<Integer> getAirplaneId() {
