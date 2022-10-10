@@ -2,6 +2,7 @@ package com.saraya.airplanetypeservice.service;
 
 import com.saraya.airplanetypeservice.bean.AirplaneType;
 import com.saraya.airplanetypeservice.dto.AirplaneTypeDto;
+import com.saraya.airplanetypeservice.mapper.AirplanTypeMapper;
 import com.saraya.airplanetypeservice.repository.AirplaneTypeRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -17,20 +18,7 @@ public class AirplaneTypeService {
         this.repo = repo;
     }
 
-    public List<AirplaneType> getAll() {
-        return repo.findAll();
-    }
-
-    public AirplaneType create(AirplaneTypeDto dto) {
-        return repo.save(toEntity(dto));
-    }
-
-    private AirplaneType toEntity(AirplaneTypeDto dto) {
-        AirplaneType airplaneType = new AirplaneType();
-        airplaneType.setAirplaneTypeIdentifier(dto.getAirplaneTypeIdentifier());
-        airplaneType.setDescription(dto.getDescription());
-        return airplaneType;
-    }
+    AirplanTypeMapper mapper = new AirplanTypeMapper();
 
     public int getId(String identifier) {
         return repo.findByAirplaneTypeIdentifier(identifier).getId();
@@ -44,5 +32,21 @@ public class AirplaneTypeService {
         airplaneType.getAirplaneId().add(airpplaneId);
 
         return repo.save(airplaneType);
+    }
+
+    public List<AirplaneType> getAll() {
+        return repo.findAll();
+    }
+
+    public AirplaneType create(AirplaneTypeDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public AirplaneType update(AirplaneTypeDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public void delete(AirplaneTypeDto dto) {
+        repo.delete(mapper.toEntity(dto));
     }
 }

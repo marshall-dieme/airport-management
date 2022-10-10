@@ -17,21 +17,6 @@ public class AirportController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<Airport> getAll(){
-        return service.getAll();
-    }
-
-    @GetMapping("/{airportName}")
-    public int getIdByName(@PathVariable("airportName") String airportName){
-        return service.getIdAirportByName(airportName);
-    }
-//
-    @PostMapping
-    public Airport create(@RequestBody AirportDto dto){
-        return service.create(dto);
-    }
-
     @PostMapping("/{idAirport}/{country}/{city}")
     public Airport putAirportGeoByContryAndCity(@PathVariable("idAirport") int idAirport, @PathVariable("country") String country,
                                                 @PathVariable("city") String city){
@@ -48,6 +33,21 @@ public class AirportController {
         return service.putAirlineForAirport(idAirport, airlineName);
     }
 
+    @GetMapping
+    public List<Airport> getAll(){
+        return service.getAll();
+    }
+
+    @PostMapping
+    public Airport create(@RequestBody AirportDto dto){
+        return service.create(dto);
+    }
+
+    @GetMapping("/{airportName}")
+    public int getIdByName(@PathVariable("airportName") String airportName){
+        return service.getIdAirportByName(airportName);
+    }
+
     @PutMapping
     public AirportDto update(@RequestBody AirportDto dto){
         return service.update(dto);
@@ -57,4 +57,5 @@ public class AirportController {
     public void delete(@PathVariable("id") int id){
         service.delete(id);
     }
+
 }

@@ -2,6 +2,7 @@ package com.saraya.airportservice.service;
 
 import com.saraya.airportservice.bean.Airport;
 import com.saraya.airportservice.dto.AirportDto;
+import com.saraya.airportservice.mapper.AirportMapper;
 import com.saraya.airportservice.repo.AirportRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -19,36 +20,7 @@ public class AirportService {
         this.repo = repo;
     }
 
-    public List<Airport> getAll(){
-        return repo.findAll();
-    }
-
-//    public Optional<Airport> getByName(String name){
-//        return repo.findByName(name);
-//    }
-
-    public Airport create(AirportDto dto){
-        return repo.save(toEntity(dto));
-    }
-
-    public AirportDto update(AirportDto dto){
-       repo.save(toEntity(dto));
-       return dto;
-    }
-
-    public void delete(int id){
-        repo.deleteById(id);
-    }
-
-    public Airport toEntity(AirportDto dto){
-        Airport airport = new Airport();
-        airport.setAirportId(dto.getAirportId());
-        airport.setIata(dto.isIata());
-        airport.setIcao(dto.isIcao());
-        airport.setAirportGeoId(dto.getAirportGeoId());
-        airport.setName(dto.getName());
-        return airport;
-    }
+    private AirportMapper mapper = new AirportMapper();
 
     public Airport putIdAirportGeoForAirport(int idAirport, String country, String city) {
         RestTemplate restTemplate = new RestTemplate();
@@ -76,7 +48,7 @@ public class AirportService {
 
         RestTemplate restTemplate = new RestTemplate();
         int idService = restTemplate.getForEntity("http://localhost:8007/Services/"+serviceName,
-                        Integer.class).getBody();
+                Integer.class).getBody();
         System.out.println(idService);
         airport.getServiceId().add(idService);
         return repo.save(airport);
@@ -91,6 +63,23 @@ public class AirportService {
 
         airport.getAirlineId().add(idAirline);
         return repo.save(airport);
+    }
+
+    public List<Airport> getAll(){
+        return repo.findAll();
+    }
+
+    public Airport create(AirportDto dto){
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    public AirportDto update(AirportDto dto){
+       repo.save(mapper.toEntity(dto));
+       return dto;
+    }
+
+    public void delete(int id){
+        repo.deleteById(id);
     }
 
     public int getIdAirportByName(String name){

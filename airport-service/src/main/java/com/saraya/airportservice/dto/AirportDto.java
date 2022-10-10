@@ -13,13 +13,7 @@ public class AirportDto {
 
      private int airportGeoId;
 
-//    private String country;
-//
-//    private String city;
-
-    private String name;
-
-//    private List<String> services;
+     private String name;
 
     public int getAirportId() {
         return airportId;
@@ -53,22 +47,6 @@ public class AirportDto {
         this.airportGeoId = airportGeoId;
     }
 
-//    public String getCountry() {
-//        return country;
-//    }
-//
-//    public void setCountry(String country) {
-//        this.country = country;
-//    }
-//
-//    public String getCity() {
-//        return city;
-//    }
-//
-//    public void setCity(String city) {
-//        this.city = city;
-//    }
-
     public String getName() {
         return name;
     }
@@ -77,13 +55,6 @@ public class AirportDto {
         this.name = name;
     }
 
-//    public List<String> getServices() {
-//        return services;
-//    }
-//
-//    public void setServices(List<String> services) {
-//        this.services = services;
-//    }
 
     public List<String> getNameServices() {
         return nameServices;

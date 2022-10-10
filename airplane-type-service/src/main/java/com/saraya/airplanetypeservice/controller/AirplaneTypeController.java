@@ -17,9 +17,10 @@ public class AirplaneTypeController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<AirplaneType> getAll(){
-        return service.getAll();
+
+    @PostMapping("/airplane/{airplaneTypeId}/{airplaneCapacity}")
+    public AirplaneType putAirplaneForAirline(@PathVariable("airplaneTypeId") int airplaneTypeId, @PathVariable("airplaneCapacity") int airplaneCapacity){
+        return service.putAirplaneForAirplaneType(airplaneTypeId, airplaneCapacity);
     }
 
     @GetMapping("/{identifier}")
@@ -27,13 +28,23 @@ public class AirplaneTypeController {
         return service.getId(identifier);
     }
 
+    @GetMapping
+    public List<AirplaneType> getAll(){
+        return service.getAll();
+    }
+
     @PostMapping
     public AirplaneType create(@RequestBody AirplaneTypeDto dto){
         return service.create(dto);
     }
 
-    @PostMapping("/airplane/{airplaneTypeId}/{airplaneCapacity}")
-    public AirplaneType putAirplaneForAirline(@PathVariable("airplaneTypeId") int airplaneTypeId, @PathVariable("airplaneCapacity") int airplaneCapacity){
-        return service.putAirplaneForAirplaneType(airplaneTypeId, airplaneCapacity);
+    @PutMapping
+    public AirplaneType update(@RequestBody AirplaneTypeDto dto){
+        return service.update(dto);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody AirplaneTypeDto dto){
+        service.delete(dto);
     }
 }

@@ -1,16 +1,11 @@
 package com.saraya.airportgeoservice.controller;
 
-import com.saraya.airportgeoservice.bean.Airport;
 import com.saraya.airportgeoservice.bean.AirportGeo;
-import com.saraya.airportgeoservice.bean.AirportGeoDto;
+import com.saraya.airportgeoservice.dto.AirportGeoDto;
 import com.saraya.airportgeoservice.service.AirportGeoService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/AirportGeo")
@@ -22,9 +17,16 @@ public class AirportGeoController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<AirportGeo> getAll(){
-        return service.getAll();
+    @GetMapping("/airport/{airportGeoid}/{airportName}")
+    public String putAirportIdForAirportGeo(@PathVariable("airportGeoid") int airportId,
+                                            @PathVariable("airportName") String airportName){
+        return service.putAirportIdforAirportGeoId(airportId, airportName);
+    }
+
+    @GetMapping("/{country}/{city}")
+    public int getById(@PathVariable("country") String country,
+                       @PathVariable("city") String city){
+        return service.getIdByCountryAndCity(country, city);
     }
 
     @GetMapping("/{id}")
@@ -32,15 +34,9 @@ public class AirportGeoController {
         return service.getById(id);
     }
 
-    @GetMapping("/{country}/{city}")
-    public int getById(@PathVariable("country") String country,
-                                        @PathVariable("city") String city){
-        return service.getIdByCountryAndCity(country, city);
-    }
-
-    @GetMapping("/{name}")
-    public Airport getById(@PathVariable("name") String name) {
-        return service.getAirportByName(name);
+    @GetMapping
+    public List<AirportGeo> getAll(){
+        return service.getAll();
     }
 
     @PostMapping
@@ -49,19 +45,13 @@ public class AirportGeoController {
     }
 
     @PutMapping
-    public AirportGeo update(@RequestBody AirportGeo airportGeo){
+    public AirportGeo update(@RequestBody AirportGeoDto airportGeo){
         return service.update(airportGeo);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") int id){
         service.delete(id);
-    }
-
-    @GetMapping("/put/{airportId}/{airportGeoid}")
-    public void putAirportIdForAirportGeo(@PathVariable("airportId") int airportId,
-                                          @PathVariable("airportGeoid") int airportGeoid){
-      service.putAirportIdforAirportGeoId(airportId, airportGeoid);
     }
 
 }
