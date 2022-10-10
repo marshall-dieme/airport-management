@@ -17,16 +17,6 @@ public class PassengerController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<Passenger> getAll(){
-        return service.getAll();
-    }
-
-    @GetMapping("/{passportNo}")
-    public int idPassenger(@PathVariable("passportNo") String passportNo){
-        return service.getId(passportNo);
-    }
-
     @PostMapping
     public Passenger create(@RequestBody PassengerDto dto){
         return service.create(dto);
@@ -44,11 +34,32 @@ public class PassengerController {
 
     @PostMapping("/rentals/{passengerId}/{rentalsName}")
     public Passenger putRentalsForPassenger(@PathVariable("passengerId") int passengerId, @PathVariable("rentalsName") String rentalsName){
-        return service.putRentalsForPassenger(passengerId, rentalsName);
+        return service.putRentalsForRentals(passengerId, rentalsName);
     }
 
     @PostMapping("/passengerDetails/{passengerId}/{emailPassengerDetail}")
-    public Passenger putPassengerDetailsForPassenger(@PathVariable("passengerId") int passengerId, @PathVariable("rentalsName") String emailPassengerDetail){
+    public Passenger putPassengerDetailsForPassenger(@PathVariable("passengerId") int passengerId, @PathVariable("emailPassengerDetail") String emailPassengerDetail){
         return service.putPassengerDetailsForPassenger(passengerId, emailPassengerDetail);
     }
+
+    @GetMapping("/{passportNo}")
+    public int idPassenger(@PathVariable("passportNo") String passportNo){
+        return service.getId(passportNo);
+    }
+
+    @GetMapping
+    public List<Passenger> getAll(){
+        return service.getAll();
+    }
+
+    @PutMapping
+    public Passenger update(@RequestBody PassengerDto dto){
+        return service.update(dto);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody PassengerDto dto){
+        service.delete(dto);
+    }
+
 }

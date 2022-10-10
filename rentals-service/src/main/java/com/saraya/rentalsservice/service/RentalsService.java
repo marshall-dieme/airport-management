@@ -2,6 +2,7 @@ package com.saraya.rentalsservice.service;
 
 import com.saraya.rentalsservice.bean.Rentals;
 import com.saraya.rentalsservice.dto.RentalsDto;
+import com.saraya.rentalsservice.mapper.RentalsMapper;
 import com.saraya.rentalsservice.repository.RentalsRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -17,6 +18,8 @@ public class RentalsService {
         this.repo = repo;
     }
 
+    private RentalsMapper mapper = new RentalsMapper();
+
     public List<Rentals> getAll() {
         return repo.findAll();
     }
@@ -26,15 +29,7 @@ public class RentalsService {
     }
 
     public Rentals create(RentalsDto dto) {
-        return repo.save(toEntity(dto));
-    }
-
-    private Rentals toEntity(RentalsDto dto) {
-        Rentals rentals = new Rentals();
-        rentals.setName(dto.getName());
-        rentals.setCarNo(dto.getCarNo());
-        rentals.setAmount(dto.getAmount());
-        return rentals;
+        return repo.save(mapper.toEntity(dto));
     }
 
     public Rentals putPassengerForRentals(int rentalsId, int passportNo) {

@@ -2,8 +2,12 @@ package com.saraya.passengerservice.service;
 
 import com.saraya.passengerservice.bean.Passenger;
 import com.saraya.passengerservice.dto.PassengerDto;
+import com.saraya.passengerservice.mapper.PassengerMapper;
 import com.saraya.passengerservice.repository.PassengerRepo;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -21,20 +25,14 @@ public class PassengerService {
         return repo.findAll();
     }
 
+    private PassengerMapper mapper = new PassengerMapper();
+
     public int getId(String passportNo) {
         return repo.findByPassportNo(passportNo).getId();
     }
 
     public Passenger create(PassengerDto dto) {
-        return repo.save(toEntity(dto));
-    }
-
-    private Passenger toEntity(PassengerDto dto) {
-        Passenger passenger = new Passenger();
-        passenger.setFirstname(dto.getFirstname());
-        passenger.setLastname(dto.getLastname());
-        passenger.setPassportNo(dto.getPassportNo());
-        return passenger;
+        return repo.save(mapper.toEntity(dto));
     }
 
     public Passenger putbookingForPassenger(int passengerId, int priceBooking) {
@@ -52,19 +50,19 @@ public class PassengerService {
         Passenger passenger = repo.findById(passengerId).get();
 
         RestTemplate restTemplate = new RestTemplate();
-        int parckingId = restTemplate.getForEntity("http://localhost:8011/Parking/"+parkingName, Integer.class).getBody();
+        int parckingId = restTemplate.getForEntity("http://localhost:8012/Parking/"+parkingName, Integer.class).getBody();
         passenger.setParckingId(parckingId);
 
         return repo.save(passenger);
     }
 
-    public Passenger putRentalsForPassenger(int passengerId, String rentalsName) {
+    public Passenger putRentalsForRentals(int passengerId, String rentalsName) {
 
         Passenger passenger = repo.findById(passengerId).get();
 
         RestTemplate restTemplate = new RestTemplate();
-        int rentalsId = restTemplate.getForEntity("http://localhost:8011/Parking/"+rentalsName, Integer.class).getBody();
-        passenger.setParckingId(rentalsId);
+        int rentalsId = restTemplate.getForEntity("http://localhost:8013/Rentals/"+rentalsName, Integer.class).getBody();
+        passenger.setRentalsId(rentalsId);
 
         return repo.save(passenger);
     }
@@ -74,9 +72,19 @@ public class PassengerService {
         Passenger passenger = repo.findById(passengerId).get();
 
         RestTemplate restTemplate = new RestTemplate();
-        int passengerDetailsId = restTemplate.getForEntity("http://localhost:8011/PassengerDetail/"+emailPassengerDetail, Integer.class).getBody();
+        int passengerDetailsId = restTemplate.getForEntity("http://localhost:8011/PassengerDetails/"+emailPassengerDetail, Integer.class).getBody();
         passenger.setPassengerDetailsId(passengerDetailsId);
 
         return repo.save(passenger);
+    }
+
+    @PutMapping
+    public Passenger update(@RequestBody PassengerDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
+    @GetMapping
+    public void delete(@RequestBody PassengerDto dto) {
+        repo.delete(mapper.toEntity(dto));
     }
 }

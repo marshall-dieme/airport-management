@@ -2,6 +2,7 @@ package com.saraya.passengerdetails.service;
 
 import com.saraya.passengerdetails.bean.PassengerDetails;
 import com.saraya.passengerdetails.dto.PassengerDetailsDto;
+import com.saraya.passengerdetails.mapper.PassengerDetailsMapper;
 import com.saraya.passengerdetails.repository.PassengerDetailsRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,26 +17,6 @@ public class PassengerDetailsService {
         this.repo = repo;
     }
 
-    public List<PassengerDetails> getAll() {
-        return repo.findAll();
-    }
-
-    public int getId(String emailPassengerDetails) {
-        return repo.findByEmail(emailPassengerDetails).getId();
-    }
-
-    public PassengerDetails create(PassengerDetailsDto dto) {
-        return repo.save(toEntity(dto));
-    }
-
-    private PassengerDetails toEntity(PassengerDetailsDto dto) {
-        PassengerDetails passengerDetails = new PassengerDetails();
-        passengerDetails.setEmail(dto.getEmail());
-        passengerDetails.setTelephone(dto.getTelephone());
-        return passengerDetails;
-    }
-
-
     public PassengerDetails putPassengerForPassengerDetails(int passengerDetailsId, String passportNo) {
 
         PassengerDetails passengerDetails = repo.findById(passengerDetailsId).get();
@@ -46,4 +27,19 @@ public class PassengerDetailsService {
 
         return repo.save(passengerDetails);
     }
+
+    private PassengerDetailsMapper mapper = new PassengerDetailsMapper();
+
+    public List<PassengerDetails> getAll() {
+        return repo.findAll();
+    }
+
+    public int getId(String emailPassengerDetails) {
+        return repo.findByEmail(emailPassengerDetails).getId();
+    }
+
+    public PassengerDetails create(PassengerDetailsDto dto) {
+        return repo.save(mapper.toEntity(dto));
+    }
+
 }

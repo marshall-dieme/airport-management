@@ -17,14 +17,19 @@ public class PassengerDetailsController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<PassengerDetails> getAll(){
-        return service.getAll();
-    }
-
     @GetMapping("/{emailPassengerDetails}")
     public int idPassenger(@PathVariable("emailPassengerDetails") String emailPassengerDetails){
         return service.getId(emailPassengerDetails);
+    }
+
+    @PostMapping("/passenger/{passengerDetailsId}/{passportNo}")
+    public PassengerDetails putPassengerForPassengerDetails(@PathVariable("passengerDetailsId") int passengerDetailsId, @PathVariable("passportNo") String passportNo){
+        return service.putPassengerForPassengerDetails(passengerDetailsId, passportNo);
+    }
+
+    @GetMapping
+    public List<PassengerDetails> getAll(){
+        return service.getAll();
     }
 
     @PostMapping
@@ -32,8 +37,4 @@ public class PassengerDetailsController {
         return service.create(dto);
     }
 
-    @PostMapping("/passenger/{passengerDetailsId}/{passportNo}")
-    public PassengerDetails putPassengerForPassengerDetails(@PathVariable("passengerDetailsId") int passengerDetailsId, @PathVariable("passportNo") String passportNo){
-        return service.putPassengerForPassengerDetails(passengerDetailsId, passportNo);
-    }
 }

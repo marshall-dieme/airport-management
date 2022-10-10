@@ -17,16 +17,6 @@ public class ServiceController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<Services> getAll(){
-        return service.getAll();
-    }
-
-    @PostMapping
-    public Services create(@RequestBody ServiceDto dto){
-       return service.creat(dto);
-    }
-
     @PostMapping("airport/{serviceId}/{airportName}")
     public Services putAirpotIdForService(@PathVariable("serviceId") int serviceId,
                                           @PathVariable("airportName") String airportName){
@@ -35,8 +25,8 @@ public class ServiceController {
 
     @PostMapping("employee/{serviceId}/{employeeUsername}")
     public String putEmployeeForService(@PathVariable("serviceId") int serviceId,
-                                          @PathVariable("employeeUsername") String employeeUsername){
-       return service.putEmployeeForService(serviceId, employeeUsername);
+                                        @PathVariable("employeeUsername") String employeeUsername){
+        return service.putEmployeeForService(serviceId, employeeUsername);
     }
 
     @GetMapping("/{name}")
@@ -48,5 +38,25 @@ public class ServiceController {
     @GetMapping("/listEmployee")
     public List<Integer> getEmployeeId(){
         return service.getListEmployee();
+    }
+
+    @GetMapping
+    public List<Services> getAll(){
+        return service.getAll();
+    }
+
+    @PostMapping
+    public Services create(@RequestBody ServiceDto dto){
+       return service.creat(dto);
+    }
+
+    @PutMapping
+    public Services update(@RequestBody ServiceDto dto){
+        return service.update(dto);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody ServiceDto dto){
+        service.delete(dto);
     }
 }
